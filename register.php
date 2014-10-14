@@ -12,11 +12,6 @@ $row = mysql_fetch_array($result);
       
       <div class="row">
         <div class="col-lg-12">
-          <?php 
-          // a random hello
-          $helloArray = array("Hello", "Bonjour", "Salut", "Servas", "Aloha", "Ciao", "Howdy", "Hey,", "<span rel='tooltip' style='cursor:pointer;' title='Good luck, have fun'>glhf,</span>");
-          $randHello = array_rand($helloArray);
-          ?>
           <h1 class="page-header">Register an Account <small>Start ushering today and create an account</small></h1>
           <ol class="breadcrumb">
           	<li><a href="/">Home</a></li>

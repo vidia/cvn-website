@@ -21,11 +21,6 @@ if(!empty($_SESSION["Name"])) {
 
       <div class="row">
         <div class="col-lg-12">
-          <?php
-          // a random hello
-          $helloArray = array("Hello", "Bonjour", "Salut", "Servas", "Aloha", "Ciao", "Howdy", "Hey,", "<span rel='tooltip' style='cursor:pointer;' title='Good luck, have fun'>glhf,</span>");
-          $randHello = array_rand($helloArray);
-          ?>
           <h1 class="page-header">Log In <small>Gain access to sign up for events and manage your profile</small></h1>
           <ol class="breadcrumb">
           	<li><a href="/">Home</a></li>

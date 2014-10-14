@@ -10,12 +10,9 @@ include_once("assets/includes/constants.php");
 <div class="container">
       <div class="row">
         <div class="col-lg-12">
-          <?php
-          // a random hello
-          $helloArray = array("Hello", "Bonjour", "Salut", "Servas", "Aloha", "Ciao", "Howdy", "Hey,", "<span rel='tooltip' style='cursor:pointer;' title='Good luck, have fun'>glhf,</span>");
-          $randHello = array_rand($helloArray);
-          ?>
-          <h1 class="page-header">Manage Attendance <small><?= $helloArray[$randHello] . " " . $_SESSION["Name"] . " <a href='my-account.php#breakdown' rel='tooltip' title='Total points' class='label label-info'>" . $_SESSION["Points"] . "</a>"; ?></small></h1>
+	<?php
+	$PageTitle = "Manage Attendance";
+	include("assets/includes/randomHello.php"); ?>
           <ol class="breadcrumb">
           	<li><a href="dashboard.php">Dashboard</a></li>
             <li class="active">Manage Attendance</li>
