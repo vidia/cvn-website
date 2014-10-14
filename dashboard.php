@@ -180,6 +180,51 @@ include_once("assets/includes/constants.php");
           } // end while
           ?>
 
+
+<h3><i class="fa fa-times"></i> Cut Events</h3>
+          <p>Below is a list of events that you have been cut from. Being cut means you are on a waiting list in case otther ushers drop the show. <a href="http://www.purduecvn.com/resources/">Learn more about being cut</a>.</p>
+           <?php
+        $sqlScheduled = "SELECT E.Name as Name, UpTime, EndTime, E.ID as ID, E.CallTime as CallTime, E.Location as Location, E.Point as Point, E.Type as Type, E.Description as Description  FROM Event E, Attendance A WHERE A.UserID='".$_SESSION['UID']."' AND E.ID=A.EventID AND A.RequestStatus='Cut' AND E.CallTime >= '".date("Y-m-d H:i:s")."' ORDER BY RequestDate DESC";
+        $resultScheduled = mysql_query($sqlScheduled);
+        $counter = 0;
+        while($row = mysql_fetch_array($resultScheduled)){
+          if($row['UpTime'] <= date("Y-m-d H:i:s") && $row['EndTime'] >= date("Y-m-d H:i:s")) {
+        ?>
+
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <span rel="tooltip" title="Points offered for this event." class="pull-right badge"><?= $row["Point"]?></span>
+                <h4 class="list-group-item-heading"><?= $type . " " . $row["Name"] ?></h4>
+              </div>
+
+              <div class="panel-body">
+                <p><i class="fa fa-clock-o"></i> <?=date("F j, Y, g:i a", strtotime($row['CallTime'])) ?>
+                  <button type="button" class="btn btn-sm btn-default pull-right" data-toggle="collapse" data-target="#descScheduled<?= $counter; ?>">
+                    <i class="fa fa-eye"></i> Toggle Description
+                  </button>
+                  <br />
+                <i class="fa fa-building-o"></i> <?= $row["Location"] ?></p>
+
+                <div id="descScheduled<?= $counter; ?>" class="collapse">
+                  <blockquote>
+                    <?= $row["Description"] ?>
+                  </blockquote>
+                </div>
+
+                <p><a class="btn btn-sm btn-block btn-danger" href="doCancelRequest.php?id=<?php echo $row['ID']; ?>"><i class='fa fa-minus-circle'></i> Cancel Attendance</a></p>
+              </div>
+            </div>
+
+          <?php
+            $counter++;
+            }
+          } // end while
+          ?>
+
+
+
+
+
         </div>
       </div><!-- /.row -->
     </div><!-- /.container -->
