@@ -48,6 +48,12 @@ function showthetable(theTable)
         </div>
       </div><!-- /.row -->
 
+
+<div class="row">
+	<h3><?php echo $row["AcctType"]?></h3>
+</div>
+
+
       <div class="row">
         <div class="col-lg-6">
         <?php
