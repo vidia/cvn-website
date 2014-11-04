@@ -1,7 +1,7 @@
 <?php session_start(); 
-include_once("assets/includes/constants.php"); 
-include_once("assets/includes/db.php"); 
-include("assets/include/verify-admin.php"); 
+include_once("../assets/includes/constants.php");
+include_once("../assets/includes/db.php");
+include("../assets/include/verify-admin.php");
 
 if($_SESSION["AccountType"] == "ADMIN") {
 

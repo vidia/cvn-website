@@ -1,7 +1,7 @@
 <?php session_start();
-include_once("assets/includes/db.php");
-include("assets/includes/verify.php");
-include("assets/includes/constants.php");
+include_once("../assets/includes/db.php");
+include("../assets/includes/verify.php");
+include("../assets/includes/constants.php");
 
 //ini_set('display_errors', 1);
 //error_reporting('E_ALL');

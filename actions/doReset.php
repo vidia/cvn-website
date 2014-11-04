@@ -1,5 +1,5 @@
 <?php session_start();
-include_once("assets/includes/db.php");
+include_once("../assets/includes/db.php");
 
 $Password = $_POST['Password'];
 $CPassword = $_POST['CPassword'];

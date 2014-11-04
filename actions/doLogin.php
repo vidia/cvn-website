@@ -1,7 +1,7 @@
 <?php
 session_start();
-include("assets/includes/db.php");
-include("assets/includes/constants.php");
+include("../assets/includes/db.php");
+include("../assets/includes/constants.php");
 
 $Username = str_replace("'", " ", $_POST['username']);
 $Password = str_replace("'", " ", $_POST['password']);

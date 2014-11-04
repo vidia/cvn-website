@@ -1,7 +1,7 @@
 <?php session_start(); 
-include_once("assets/includes/db.php");
-include("assets/includes/verify.php");
-include("assets/includes/verify-admin.php");
+include_once("../assets/includes/db.php");
+include("../assets/includes/verify.php");
+include("../assets/includes/verify-admin.php");
 
 $eventid = $_GET['ID'];
 

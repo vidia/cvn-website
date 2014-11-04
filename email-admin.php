@@ -3,7 +3,7 @@
 include_once("assets/includes/verify.php");
 include_once("assets/includes/verify-admin.php");
 include_once("assets/includes/header.php");
-include_once("assets/includes/constants.php"); 	
+include_once("assets/includes/constants.php");
 ?>
 
 
@@ -60,5 +60,5 @@ include_once("assets/includes/constants.php");
 			?>
 
 <?php
-include_once("assets/includes/footer.php"); 	
+include_once("assets/includes/footer.php");
 ?>

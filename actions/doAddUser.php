@@ -1,8 +1,8 @@
 <?php 
 session_start();
-include("assets/includes/db.php");
-include("assets/includes/verify.php");
-include("assets/includes/verify-admin.php");
+include("../assets/includes/db.php");
+include("../assets/includes/verify.php");
+include("../assets/includes/verify-admin.php");
 
 $FirstName = str_replace("'", " ", $_POST['firstname']);
 $LastName = str_replace("'", " ", $_POST['lastname']);
@@ -37,7 +37,6 @@ $_SESSION['nAcctType'] = $AcctType;
 if($FirstName ==  "" || $LastName == "" || $Email == "" || $CEmail == "" || $Password == "" || $CPassword == "") { 
 	$_SESSION['error'] = "Please fill in all required fields.";
 	header("Location: add-user.php");
-	break;
 } else {
 	$sql = "SELECT Email FROM User WHERE Email='".$Email."'";
 	$result = mysql_query($sql);

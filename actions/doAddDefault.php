@@ -1,7 +1,7 @@
 <?php session_start();
-include("assets/includes/db.php");
-include("assets/includes/verify.php");
-include("assets/includes/verify-uc.php");
+include("../assets/includes/db.php");
+include("../assets/includes/verify.php");
+include("../assets/includes/verify-uc.php");
 
 $reason = $_POST["reason"];
 $UserID = $_POST["user"];

@@ -2,7 +2,7 @@
 include_once("assets/includes/verify.php");
 include_once("assets/includes/verify-admin.php");
 include_once("assets/includes/header.php");
-include_once("assets/includes/constants.php"); 	
+include_once("assets/includes/constants.php");
 
 $sql = "SELECT * FROM Event WHERE ID=" . (int) $_GET["ID"];
 $result = mysql_query($sql);
@@ -78,7 +78,7 @@ $event = mysql_fetch_array($result);
 
 
 <?php
-include_once("assets/includes/footer.php"); 	
+include_once("assets/includes/footer.php");
 ?>
 
 <script>

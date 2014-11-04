@@ -1,8 +1,8 @@
 <?php 
 session_start();
-include("assets/includes/db.php");
-include("assets/includes/verify.php");
-include("assets/includes/verify-admin.php");
+include("../assets/includes/db.php");
+include("../assets/includes/verify.php");
+include("../assets/includes/verify-admin.php");
 
 $emailID = $_POST['ID'];
 $emailSubject = $_POST['Email_Subject'];

@@ -1,6 +1,6 @@
 <?php session_start(); 
-include_once("assets/includes/db.php");
-include("assets/includes/verify.php");
+include_once("../assets/includes/db.php");
+include("../assets/includes/verify.php");
 
 $eventid = $_GET['id'];
 $requestDate = date("Y-m-d H:i:s");

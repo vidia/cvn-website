@@ -1,5 +1,5 @@
 <?php session_start();
-include_once("assets/includes/db.php");
+include_once("../assets/includes/db.php");
 
 $Email = mysql_real_escape_string($_POST['resetEmail']);
 

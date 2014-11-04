@@ -1,8 +1,8 @@
 <?php session_start();
-include("assets/includes/db.php");
-include("assets/includes/verify.php");
-include("assets/includes/verify-uc.php");
-include("assets/includes/constants.php");
+include("../assets/includes/db.php");
+include("../assets/includes/verify.php");
+include("../assets/includes/verify-uc.php");
+include("../assets/includes/constants.php");
 
 $action = $_GET["action"];
 $id = $_GET["ID"];

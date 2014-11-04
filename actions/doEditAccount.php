@@ -1,7 +1,7 @@
 <?php 
 session_start();
-include_once("assets/includes/db.php");
-include("assets/includes/verify.php");
+include_once("../assets/includes/db.php");
+include("../assets/includes/verify.php");
 
 $FirstName = mysql_escape_string($_POST['firstname']);
 $LastName = mysql_escape_string($_POST['lastname']);

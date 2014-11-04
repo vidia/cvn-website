@@ -1,8 +1,8 @@
 <?php
 ob_start();
-include_once("assets/includes/verify.php");
-include_once("assets/includes/verify-admin.php");
-include_once("assets/includes/header.php");
+include_once("../assets/includes/verify.php");
+include_once("../assets/includes/verify-admin.php");
+include_once("../assets/includes/header.php");
 
 
 $_SESSION["terms"] = htmlspecialchars(mysql_real_escape_string($_POST["terms"]));
@@ -83,7 +83,7 @@ else {
         <div class="col-lg-12">
 	<?php
 	$PageTitle = "Search Results";
-	include("assets/includes/randomHello.php"); ?>
+	include("../assets/includes/randomHello.php"); ?>
           <ol class="breadcrumb">
           	<li><a href="../dashboard.php">Dashboard</a></li>
           	<li><a href="../user-admin.php">Manage Users</a></li>
@@ -172,7 +172,7 @@ else {
 
 
 <?php
-include_once("assets/includes/footer.php");
+include_once("../assets/includes/footer.php");
 ?>
 
 <script src="../js/typeahead.jquery.min.js"></script>
