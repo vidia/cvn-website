@@ -1,6 +1,19 @@
 <?php
 session_start();
 include_once("assets/includes/db.php");
+
+function curPageURL() {
+ $pageURL = 'http';
+ if ($_SERVER["HTTPS"] == "on") {$pageURL .= "s";}
+ $pageURL .= "://";
+ if ($_SERVER["SERVER_PORT"] != "80") {
+  $pageURL .= $_SERVER["SERVER_NAME"].":".$_SERVER["SERVER_PORT"].$_SERVER["REQUEST_URI"];
+ } else {
+  $pageURL .= $_SERVER["SERVER_NAME"].$_SERVER["REQUEST_URI"];
+ }
+ return $pageURL;
+}
+ 
 ?>
 
 <!DOCTYPE html>
@@ -18,7 +31,9 @@ include_once("assets/includes/db.php");
     <!-- Add custom CSS here -->
     <link href="css/modern-business.css" rel="stylesheet">
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet">
-  
+ <?php 
+if (strpos( curPageUrl() ,'purduecvn.com') !== false) {
+?> 
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -29,6 +44,24 @@ include_once("assets/includes/db.php");
   ga('send', 'pageview');
 
 </script>
+
+<?php
+}
+ ?>
+
+    <script src="/assets/js/konami.js"></script>
+    <script>
+        var easter_egg = new Konami();
+        easter_egg.code = function(){
+            var s=document.createElement('script');
+            s.setAttribute('src','https://nthitz.github.io/turndownforwhatjs/tdfw.js');
+            document.body.appendChild(s);
+        };
+
+        easter_egg.load();
+
+    </script>
+
 
 </head>
 

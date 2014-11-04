@@ -1,6 +1,6 @@
 <?php
 // a random hello
-$helloArray = array("Halo", "ni hao", "Hola", "Gude", "Guten Tag",  "Hello", "Bonjour", "Salut", "Servas", "Aloha", "Ciao", "Howdy", "Hey,", "<span rel='tooltip' style='cursor:pointer;' title='Good luck, have fun'>glhf,</span>");
+$helloArray = array("Halo", "Moien",  "ni hao", "Hola", "Gude", "Guten Tag", "Hello", "Bonjour", "Salut", "Servas", "Aloha", "Ciao", "Howdy", "Hey", "A Gutn Tog", "Shalom", "Namaste", "<span rel='tooltip' style='cursor:pointer;' title='Good luck, have fun'>glhf,</span>");
 $randHello = array_rand($helloArray);
 
 ?>

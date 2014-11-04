@@ -9,6 +9,9 @@
 	$ctsop_height_display_length_s2 = get_option('ctsop_height_display_length_s2');
 	$ctsop_height_display_length_s3 = get_option('ctsop_height_display_length_s3');
 	
+	$ctsop_speed = get_option('ctsop_speed');
+	$ctsop_waitseconds = get_option('ctsop_waitseconds');
+	
 	$ctsop_height_display_length_s1_new = explode("_", $ctsop_height_display_length_s1);
 	$ctsop_height_1 = @$ctsop_height_display_length_s1_new[0];
 	$ctsop_display_1 = @$ctsop_height_display_length_s1_new[1];
@@ -38,6 +41,9 @@
 		$ctsop_display_3 = stripslashes($_POST['ctsop_display_3']);
 		$ctsop_length_3 = stripslashes($_POST['ctsop_length_3']);
 		
+		$ctsop_speed = stripslashes($_POST['ctsop_speed']);
+		$ctsop_waitseconds = stripslashes($_POST['ctsop_waitseconds']);
+		
 		$ctsop_height_display_length_s1 = $ctsop_height_1 . "_" . $ctsop_display_1. "_" . $ctsop_length_1;
 		$ctsop_height_display_length_s2 = $ctsop_height_2 . "_" . $ctsop_display_2. "_" . $ctsop_length_2;
 		$ctsop_height_display_length_s3 = $ctsop_height_3 . "_" . $ctsop_display_3. "_" . $ctsop_length_3;
@@ -46,6 +52,8 @@
 		update_option('ctsop_height_display_length_s2', $ctsop_height_display_length_s2 );
 		update_option('ctsop_height_display_length_s3', $ctsop_height_display_length_s3 );
 		
+		update_option('ctsop_speed', $ctsop_speed );
+		update_option('ctsop_waitseconds', $ctsop_waitseconds );
 		?>
 		<div class="updated fade">
 			<p><strong><?php _e('Details successfully updated.', 'content-text-slider'); ?></strong></p>
@@ -98,6 +106,18 @@
 		<input name="ctsop_length_3" type="text" id="ctsop_length_3" value="<?php echo $ctsop_length_3; ?>" maxlength="4" />
 		<p><?php _e('This is to maintain the record description length in the scroll.', 'content-text-slider'); ?></p>
 		
+		
+		<h3><?php _e('Scroll Setting', 'content-text-slider'); ?></h3>
+		
+		<label for="ctsop_speed"><?php _e( 'Scrolling speed', 'content-text-slider' ); ?></label>
+		<?php _e( 'Slow', 'content-text-slider' ); ?> 
+		<input name="ctsop_speed" type="range" value="<?php echo $ctsop_speed; ?>"  id="ctsop_speed" min="1" max="10" /> 
+		<?php _e( 'Fast', 'content-text-slider' ); ?> 
+		<p><?php _e( 'Set how fast you want to scroll.', 'content-text-slider' ); ?></p>
+		
+		<label for="cas_waitseconds"><?php _e( 'Seconds to wait', 'content-text-slider' ); ?></label>
+		<input name="ctsop_waitseconds" type="text" value="<?php echo $ctsop_waitseconds; ?>" id="ctsop_waitseconds" maxlength="4" />
+		<p><?php _e( 'How many seconds you want the wait to scroll', 'content-text-slider' ); ?> (<?php _e( 'Example', 'content-text-slider' ); ?>: 5)</p>
 		
 		<div style="height:5px;"></div>
 		<input type="hidden" name="ctsop_form_submit" value="yes"/>

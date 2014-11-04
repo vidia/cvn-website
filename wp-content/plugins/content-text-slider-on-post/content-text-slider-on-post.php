@@ -4,7 +4,7 @@ Plugin Name: Content text slider on post
 Plugin URI: http://www.gopiplus.com/work/2012/01/02/content-text-slider-on-post-wordpress-plugin/
 Description: Content text slider on post is a WordPress plugin from gopiplus.com website. We can use this plugin to scroll the content vertically in the posts and pages. We have option to enter content title, description and link for the content. All entered details scroll vertically into the posts and pages.
 Author: Gopi Ramasamy
-Version: 6.2
+Version: 6.4
 Author URI: http://www.gopiplus.com/work/2012/01/02/content-text-slider-on-post-wordpress-plugin/
 Donate link: http://www.gopiplus.com/work/2012/01/02/content-text-slider-on-post-wordpress-plugin/
 Tags: Wordpress, plugin, Content, Text, Slider
@@ -75,8 +75,10 @@ function ctsop_install()
 	add_option('ctsop_height_display_length_s1', "200_2_500");
 	add_option('ctsop_height_display_length_s2', "190_1_500");
 	add_option('ctsop_height_display_length_s3', "190_3_500");	
+	
+	add_option( 'ctsop_speed', 2 );
+    add_option( 'ctsop_waitseconds', 2 );
 }
-
 
 function ctsop_admin_options() 
 {
@@ -187,6 +189,11 @@ function ctsop_shortcode( $atts )
 	if(!is_numeric($ctsop_textlength)){ $ctsop_textlength = 250; }
 	if(!is_numeric($ctsop_sametimedisplay)){ $ctsop_sametimedisplay = 2; }
 	if(!is_numeric($ctsop_scrollheight)){ $ctsop_scrollheight = 150; }
+	
+	$ctsop_speed = get_option('ctsop_speed');
+	if(!is_numeric($ctsop_speed)) { $ctsop_speed = 2; }
+	$ctsop_waitseconds = get_option('ctsop_waitseconds');
+	if(!is_numeric($ctsop_waitseconds)) { $ctsop_waitseconds = 2; }
 	
 	$sSql = "select ctsop_id,ctsop_title,ctsop_text,ctsop_link from ".WP_ctsop_TABLE." where 1=1 and ctsop_status='YES'";
 	if($ctsop_group == "ALL" ) 
@@ -303,12 +310,14 @@ function ctsop_shortcode( $atts )
 		$ctsop = $ctsop . "var objctsop	= '';";
 		$ctsop = $ctsop . "var ctsop_scrollPos 	= '';";
 		$ctsop = $ctsop . "var ctsop_numScrolls	= '';";
-		$ctsop = $ctsop . 'var ctsop_heightOfElm = '. @$ctsop_scrollheight. ';';
-		$ctsop = $ctsop . 'var ctsop_numberOfElm = '. @$ctsop_count. ';';
+		$ctsop = $ctsop . 'var ctsop_heightOfElm = '. $ctsop_scrollheight. ';';
+		$ctsop = $ctsop . 'var ctsop_numberOfElm = '. $ctsop_count. ';';
+		$ctsop = $ctsop . 'var ctsop_speed = '. $ctsop_speed. ';';
+		$ctsop = $ctsop . 'var ctsop_waitseconds = '. $ctsop_waitseconds. ';';
 		$ctsop = $ctsop . "var ctsop_scrollOn 	= 'true';";
 		$ctsop = $ctsop . 'function ctsopScroll() ';
 		$ctsop = $ctsop . '{';
-		$ctsop = $ctsop . @$ctsop_x;
+		$ctsop = $ctsop . $ctsop_x;
 		$ctsop = $ctsop . "objctsop	= document.getElementById('IRHolder');";
 		$ctsop = $ctsop . "objctsop.style.height = (ctsop_numberOfElm * ctsop_heightOfElm) + 'px';";
 		$ctsop = $ctsop . 'ctsopContent();';

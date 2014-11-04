@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Content text slider on post\n"
-"POT-Creation-Date: 2014-04-19 00:33+0800\n"
-"PO-Revision-Date: 2014-04-19 00:33+0800\n"
+"POT-Creation-Date: 2014-09-28 13:29+0800\n"
+"PO-Revision-Date: 2014-09-28 13:29+0800\n"
 "Last-Translator: \n"
 "Language-Team: www.gopiplus.com <www.gopiplus.com>\n"
 "MIME-Version: 1.0\n"
@@ -13,8 +13,8 @@ msgstr ""
 "X-Poedit-Basepath: .\n"
 "X-Poedit-SearchPath-0: ..\n"
 
-#: ../content-text-slider-on-post.php:332
-#: ../content-text-slider-on-post.php:333
+#: ../content-text-slider-on-post.php:341
+#: ../content-text-slider-on-post.php:342
 msgid "Content text slider"
 msgstr ""
 
@@ -93,22 +93,22 @@ msgid "Insert Details"
 msgstr ""
 
 #: ../pages/content-add.php:151 ../pages/content-edit.php:183
-#: ../pages/content-setting.php:105
+#: ../pages/content-setting.php:125
 msgid "Cancel"
 msgstr ""
 
 #: ../pages/content-add.php:152 ../pages/content-edit.php:184
-#: ../pages/content-setting.php:106 ../pages/content-show.php:120
+#: ../pages/content-setting.php:126 ../pages/content-show.php:120
 msgid "Help"
 msgstr ""
 
 #: ../pages/content-add.php:158 ../pages/content-edit.php:190
-#: ../pages/content-setting.php:112 ../pages/content-show.php:130
+#: ../pages/content-setting.php:132 ../pages/content-show.php:130
 msgid "Check official website for more information"
 msgstr ""
 
 #: ../pages/content-add.php:159 ../pages/content-edit.php:191
-#: ../pages/content-setting.php:113 ../pages/content-show.php:131
+#: ../pages/content-setting.php:133 ../pages/content-show.php:131
 msgid "click here"
 msgstr ""
 
@@ -124,53 +124,85 @@ msgstr ""
 msgid "Update Details"
 msgstr ""
 
-#: ../pages/content-setting.php:51
+#: ../pages/content-setting.php:59
 msgid "Details successfully updated."
 msgstr ""
 
-#: ../pages/content-setting.php:59
+#: ../pages/content-setting.php:67
 msgid "Setting 1"
-msgstr ""
-
-#: ../pages/content-setting.php:61 ../pages/content-setting.php:75
-#: ../pages/content-setting.php:89
-msgid "Record height in scroll"
-msgstr ""
-
-#: ../pages/content-setting.php:63 ../pages/content-setting.php:77
-#: ../pages/content-setting.php:91
-msgid "This is the height of the each record in the scroll."
-msgstr ""
-
-#: ../pages/content-setting.php:65 ../pages/content-setting.php:79
-#: ../pages/content-setting.php:93
-msgid "Display records"
-msgstr ""
-
-#: ../pages/content-setting.php:67 ../pages/content-setting.php:81
-#: ../pages/content-setting.php:95
-msgid "No of records you want to show in the screen at same time."
 msgstr ""
 
 #: ../pages/content-setting.php:69 ../pages/content-setting.php:83
 #: ../pages/content-setting.php:97
-msgid "Text Length"
+msgid "Record height in scroll"
 msgstr ""
 
 #: ../pages/content-setting.php:71 ../pages/content-setting.php:85
 #: ../pages/content-setting.php:99
+msgid "This is the height of the each record in the scroll."
+msgstr ""
+
+#: ../pages/content-setting.php:73 ../pages/content-setting.php:87
+#: ../pages/content-setting.php:101
+msgid "Display records"
+msgstr ""
+
+#: ../pages/content-setting.php:75 ../pages/content-setting.php:89
+#: ../pages/content-setting.php:103
+msgid "No of records you want to show in the screen at same time."
+msgstr ""
+
+#: ../pages/content-setting.php:77 ../pages/content-setting.php:91
+#: ../pages/content-setting.php:105
+msgid "Text Length"
+msgstr ""
+
+#: ../pages/content-setting.php:79 ../pages/content-setting.php:93
+#: ../pages/content-setting.php:107
 msgid "This is to maintain the record description length in the scroll."
 msgstr ""
 
-#: ../pages/content-setting.php:73
+#: ../pages/content-setting.php:81
 msgid "Setting 2"
 msgstr ""
 
-#: ../pages/content-setting.php:87
+#: ../pages/content-setting.php:95
 msgid "Setting 3"
 msgstr ""
 
-#: ../pages/content-setting.php:104
+#: ../pages/content-setting.php:110
+msgid "Scroll Setting"
+msgstr ""
+
+#: ../pages/content-setting.php:112
+msgid "Scrolling speed"
+msgstr ""
+
+#: ../pages/content-setting.php:113
+msgid "Slow"
+msgstr ""
+
+#: ../pages/content-setting.php:115
+msgid "Fast"
+msgstr ""
+
+#: ../pages/content-setting.php:116
+msgid "Set how fast you want to scroll."
+msgstr ""
+
+#: ../pages/content-setting.php:118
+msgid "Seconds to wait"
+msgstr ""
+
+#: ../pages/content-setting.php:120
+msgid "How many seconds you want the wait to scroll"
+msgstr ""
+
+#: ../pages/content-setting.php:120
+msgid "Example"
+msgstr ""
+
+#: ../pages/content-setting.php:124
 msgid "Submit"
 msgstr ""
 

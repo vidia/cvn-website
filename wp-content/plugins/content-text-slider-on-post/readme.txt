@@ -5,8 +5,8 @@ Author URI: http://www.gopiplus.com/work/2012/01/02/content-text-slider-on-post-
 Plugin URI: http://www.gopiplus.com/work/2012/01/02/content-text-slider-on-post-wordpress-plugin/
 Tags: Wordpress, Plugin, Content, Text, Slider
 Requires at least: 3.2
-Tested up to: 3.9
-Stable tag: 6.2
+Tested up to: 4.0
+Stable tag: 6.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 	
@@ -23,15 +23,13 @@ Check official website for live demo [http://www.gopiplus.com/work/2012/01/02/co
 			
 Content text slider on post is a WordPress plugin from gopiplus.com website. We can use this plugin to scroll the content vertically in the posts and pages. We have option to enter content title, description and link for the content. All entered details scroll vertically into the posts and pages. Yes we can enter the html content into the description text area also we can include the images into the scroller.
 
-**Plugin configure**
+**Plugin configuration option**
 
-Use the given short code in the pages and posts.
+1. Add the plugin in the posts or pages using short code.
 
-http://www.gopiplus.com/work/2012/01/02/content-text-slider-on-post-wordpress-plugin/
+2. Add directly in to the theme using PHP code.
 
 == Installation ==	
-
-**Installation Instruction & Configuration**  	
 
 **Method 1**	
 
@@ -61,10 +59,9 @@ Plugin configure [click here](http://www.gopiplus.com/work/2012/01/02/content-te
 
 5. Is possible to display (scroll) all the records instead of particular group name?
 
-Click the below link to see answer for all questions!			
-More info : [click to go](http://www.gopiplus.com/work/2012/01/02/content-text-slider-on-post-wordpress-plugin/)		
+6. How to change scroll speend and wait time?
 
-http://www.gopiplus.com/work/2012/01/02/content-text-slider-on-post-wordpress-plugin/	
+More info : [click to go](http://www.gopiplus.com/work/2012/01/02/content-text-slider-on-post-wordpress-plugin/)		
 
 == Screenshots ==
 
@@ -116,6 +113,14 @@ Plugin *.po file (content-text-slider.po) available in the languages folder.
 1. Tested up to 3.9
 2. Added little security feature.
 
+= 6.3 =
+
+1. Tested up to 4.0
+
+= 6.4 =
+
+1. In Plugin Setting admin page, New option added to control scrolling speed and delay.
+
 == Changelog ==
 
 = 1.0 =			
@@ -159,3 +164,11 @@ Plugin *.po file (content-text-slider.po) available in the languages folder.
 
 1. Tested up to 3.9
 2. Added little security feature.
+
+= 6.3 =
+
+1. Tested up to 4.0
+
+= 6.4 =
+
+1. In Plugin Setting admin page, New option added to control scrolling speed and delay.

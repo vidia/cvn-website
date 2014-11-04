@@ -379,9 +379,9 @@ function showthetable(theTable)
 								- 45(<strong><acronym rel="tooltip" style="cursor: pointer;" title="Shows Signed Up & Skipped"><?php echo $points['No-Show']*1;  ?></acronym></strong>)
 								- 15(<strong><acronym rel="tooltip" style="cursor: pointer;" title="Shows Cancelled Within 48 Hours of Call Time"><?php echo $points['Cancelled']*1;  ?></acronym></strong>)
 								- 15(<strong><acronym rel="tooltip" style="cursor: pointer;" title="Arrived More Than 15 Minutes Late"><?php echo $points['Late']*1;  ?></acronym></strong>)
-								- 5(<strong><acronym rel="tooltip" style="cursor: pointer;" title="Arrived Less Than 15 Minutes Late"><?php echo $points['Tardy']*1;  ?></acronym></strong>)
-								- 5(<strong><acronym rel="tooltip" style="cursor: pointer;" title="Dress Code Violation"><?php echo $points['Dress-Violation']*1;  ?></acronym></strong>)
-								+ 7(<strong><acronym rel="tooltip" style="cursor: pointer;" title="Social Events/Meetings"><?php echo $points['Meeting']*1;  ?></acronym></strong>)
+								+ 5(<strong><acronym rel="tooltip" style="cursor: pointer;" title="Arrived Less Than 15 Minutes Late"><?php echo $points['Tardy']*1;  ?></acronym></strong>)
+								+ 5(<strong><acronym rel="tooltip" style="cursor: pointer;" title="Dress Code Violation"><?php echo $points['Dress-Violation']*1;  ?></acronym></strong>)
+								+ 3(<strong><acronym rel="tooltip" style="cursor: pointer;" title="Social Events/Meetings"><?php echo $points['Meeting']*1;  ?></acronym></strong>)
 								+ <strong><acronym rel="tooltip" style="cursor: pointer;" title="Years Involved"><?php echo $years*1;  ?></acronym></strong>
 								+ <strong><acronym rel="tooltip" style="cursor: pointer;" title="Previous Semester Rollover"><?php echo $previousPoints; ?></acronym></strong>
 

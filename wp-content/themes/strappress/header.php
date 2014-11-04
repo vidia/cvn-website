@@ -36,6 +36,19 @@
   <link rel="stylesheet" href="<?php get_template_directory_uri();?>/css/font-awesome-ie7.min.css">
 <![endif]-->
 
+    <script src="/assets/js/konami.js"></script>
+    <script>
+        var easter_egg = new Konami();
+        easter_egg.code = function(){
+            var s=document.createElement('script');
+            s.setAttribute('src','https://nthitz.github.io/turndownforwhatjs/tdfw.js');
+            document.body.appendChild(s);
+        };
+
+        easter_egg.load();
+
+    </script>
+
 <?php wp_head(); ?> 
 
 </head>

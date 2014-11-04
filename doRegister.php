@@ -28,21 +28,15 @@ $_SESSION['Marketing'] = $Marketing;
 
 //echo $Password." ".$CPassword;
 
-//check to see if the e-mail address is purdue or ivytech
-$emailCheck=split("@",$Email);
-if($emailCheck[1] == "purdue.edu" || $emailCheck[1] == "ivytech.edu") 
+if(isSchoolEmail($Email))
 {
 	if($FirstName ==  "" || $LastName == "" || $Email == "" || $CEmail == "" || $Password == "" || $CPassword == "") 
 	{ 
 		$_SESSION['error'] = "Please fill in all required fields.";
 		header("Location: register.php");
-		break;
-	} 
+	}
 	else {
-		$sql = "SELECT Email FROM User WHERE Email='".$Email."'";
-		$result = mysql_query($sql);
-		$num_rows = mysql_num_rows($result);
-		if($num_rows > 0) {
+		if(accountExistForEmail($Email)) {
 			$_SESSION['error'] = "The Email you are trying to register with already has an account setup. If you would like to login <a href='login.php'>click here</a> or if you have lost or forgotten you password <a href='recover-password.php'>click here.</a>";
 			header("Location: register.php");
 		} elseif($Email != $CEmail) { 
@@ -81,6 +75,18 @@ else
 {
 	$_SESSION['error'] = "You must register with a Purdue University or Ivy Tech e-mail address.";
 	header("Location: register.php");	
+}
+
+function accountExistForEmail($email) {
+    $sql = "SELECT Email FROM User WHERE Email='".$email."'";
+    $result = mysql_query($sql);
+    $num_rows = mysql_num_rows($result);
+    return ($num_rows > 0);
+}
+
+function isSchoolEmail($email) {
+    $emailCheck=split("@",$email);
+    return $emailCheck[1] == "purdue.edu" || $emailCheck[1] == "ivytech.edu";
 }
 
 

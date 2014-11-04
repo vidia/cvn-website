@@ -32,7 +32,8 @@ function scrollctsop() {
 			}
 		}
 	} else {
-		setTimeout("scrollctsop();", 10);
+		var speed = 60 - ( ctsop_speed * 10 );
+		setTimeout("scrollctsop();", speed);
 	}
 }
 
@@ -65,6 +66,6 @@ function ctsopContent() {
 	ctsop_numScrolls 	= ctsop.length;
 	objctsop.scrollTop 	= '0';
 	// start scrolling
-	setTimeout("scrollctsop();", 2000);
+	setTimeout("scrollctsop();", ctsop_waitseconds * 2000);
 }
 
