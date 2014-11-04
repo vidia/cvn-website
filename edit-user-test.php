@@ -69,7 +69,7 @@ function showthetable(theTable)
 
             <?php if($_SESSION['AccountType'] == 'ADMIN') { ?>
 
-            <form class="form-horizontal" action="doEditUser.php" method="post">
+            <form class="form-horizontal" action="actions/doEditUser.php" method="post">
             	<div class="panel panel-default">
 					<div class="panel-heading">
 						<h3 class="panel-title">General Information</h3>
@@ -320,7 +320,7 @@ function showthetable(theTable)
 
 					while($event = mysql_fetch_array($resultEvent)) {
 						?>
-						<form class="form-horizontal" action="doEditAttendance.php" method="post">
+						<form class="form-horizontal" action="actions/doEditAttendance.php" method="post">
 							<tr><td><?= $event["Name"]; ?></td>
 							<td valign="top">
 							<select class="form-control" name="RequestStatus" id="RequestStatus">
@@ -339,7 +339,7 @@ function showthetable(theTable)
 								<input type="submit" value="Update" class="btn btn-default" />
 							</td>
 							<td width="15%">
-								<a class="btn btn-danger" onclick='return Verify_Delete()' href="doEditAttendance.php?action=delete&user=<?php echo $_GET["ID"]; ?>&ID=<?php echo $attendance["ID"]; ?>">Delete</a>
+								<a class="btn btn-danger" onclick='return Verify_Delete()' href="actions/doEditAttendance.php?action=delete&user=<?php echo $_GET["ID"]; ?>&ID=<?php echo $attendance["ID"]; ?>">Delete</a>
 							</td>
 							</tr>
 							<input type="hidden" name="action" value="edit" />
@@ -383,7 +383,7 @@ function showthetable(theTable)
 			        <h4 class="modal-title" id="myModalLabel">Add Default</h4>
 			      </div>
 			      <div class="modal-body">
-			        	<form class="form-horizontal" action="doAddDefault.php" method="post">
+			        	<form class="form-horizontal" action="actions/doAddDefault.php" method="post">
 			        		<div class="form-group">
 								<label for="Name" class="col-sm-2 control-label">Reason</label>
 								<div class="col-sm-10">
@@ -435,7 +435,7 @@ function showthetable(theTable)
 	 				?>
 
 						<td width="20%">
-							<a class="btn btn-danger" onclick='return Verify_Delete()' href="doEditDefault.php?action=delete&user=<?php echo $_GET["ID"]; ?>&ID=<?php echo $defaults["DefaultID"]; ?>">Remove</a>
+							<a class="btn btn-danger" onclick='return Verify_Delete()' href="actions/doEditDefault.php?action=delete&user=<?php echo $_GET["ID"]; ?>&ID=<?php echo $defaults["DefaultID"]; ?>">Remove</a>
 						</td>
 					</tr>
 					<?php

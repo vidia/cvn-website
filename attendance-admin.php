@@ -58,7 +58,7 @@ include_once("assets/includes/constants.php");
 							    <div class="panel-body">
 
 							    	<a class="btn btn-default pull-right" href="export-event-list.php?ID=<?php echo $row['ID']; ?>"><i class="fa fa-download"></i> Download Usher List</a>
-                                	<form class="form-inline" action="doPullAttendanceFixed2.php" method="post">
+                                	<form class="form-inline" action="actions/doPullAttendanceFixed2.php" method="post">
                                 		<div class="form-group">
 										    <label class="sr-only" for="number-pull">Number of Ushers to Add</label>
 										    <input placeholder=" #" type="text" name="number-pull" id="number-pull" style="width: 50px;" class="form-control" maxlength="3" />
@@ -197,7 +197,7 @@ include_once("assets/includes/constants.php");
 							        <tr>
 							        	<td colspan="4">Confirmed Ushers</td>
 							       </tr>
-                                    <form class='form-horizontal' action="doEventAttendance.php" method="post">
+                                    <form class='form-horizontal' action="actions/doEventAttendance.php" method="post">
                                         <?php
                                         $query2 = "SELECT * FROM Attendance A, User U WHERE A.EventID='".$row['ID']."' AND U.ID=A.UserID AND (A.RequestStatus='Ushering' OR A.RequestStatus='Present' OR A.RequestStatus='No-Show')  ORDER BY U.LastName ASC";
                     					//echo $query;

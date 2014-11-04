@@ -36,7 +36,7 @@ include("assets/includes/constants.php");
 		?>
 
 			
-			 <form class="form-horizontal" action="doAddEvent.php" method="post">
+			 <form class="form-horizontal" action="actions/doAddEvent.php" method="post">
 				<div class="panel panel-default">
 					<div class="panel-heading">
 						<h3 class="panel-title">General Information</h3>

@@ -24,7 +24,7 @@ if($num_rows>0) {
 	header("Location: login.php");
 } else {
 	//echo "not valid";
-	$_SESSION['error'] = "The supplied email address does not match any in our system. Please try again or <a class='alert-link' href='register.php'>register here</a> for a new account.";
+	$_SESSION['error'] = "The supplied email address does not match any in our system. Please try again or <a class='alert-link' href='../register.php'>register here</a> for a new account.";
 	header("Location: login.php");
 }
 

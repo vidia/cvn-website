@@ -55,9 +55,9 @@ if($_SESSION['error'] != '') {
     		$settings = mysql_fetch_array($result);
     		if($settings["isMaintenance"]) :
     		?>
-	      <a href="doSettings.php?action=disablemm" class="btn btn-default btn-block"><i class="fa fa-times"></i> Disable Maintenance Mode</a>
+	      <a href="actions/doSettings.php?action=disablemm" class="btn btn-default btn-block"><i class="fa fa-times"></i> Disable Maintenance Mode</a>
 	      <?php else : ?>
-	      <a href="doSettings.php?action=enablemm" class="btn btn-default btn-block"><i class="fa fa-check"></i> Enable Maintenance Mode</a>
+	      <a href="actions/doSettings.php?action=enablemm" class="btn btn-default btn-block"><i class="fa fa-check"></i> Enable Maintenance Mode</a>
 	      <?php endif; ?>
 	    </div>
 	  </div>
@@ -73,7 +73,7 @@ if($_SESSION['error'] != '') {
 		$settings = mysql_fetch_array($result);
 		if($settings["isMaintenance"]) :
 		?>
-	      <a href="doPointUpdateDb.php" class="btn btn-default btn-block"><i class="fa fa-refresh"></i> Force update of all scores</a>
+	      <a href="actions/doPointUpdateDb.php" class="btn btn-default btn-block"><i class="fa fa-refresh"></i> Force update of all scores</a>
 	      <?php else : ?>
 	      <a class="btn btn-default btn-block"><i class="fa fa-exclamation-circle"></i> Force update of all scores</a>
 	      <?php endif; ?>

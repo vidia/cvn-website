@@ -34,7 +34,7 @@ $row = mysql_fetch_array($result);
 			}
 			?>
 
-			<form class="form-horizontal" enctype="application/x-www-form-urlencoded" action="doRegister.php" method="post">
+			<form class="form-horizontal" enctype="application/x-www-form-urlencoded" action="actions/doRegister.php" method="post">
 				<div class="panel panel-default">
 					<div class="panel-heading">
 						<h3 class="panel-title">General Information</h3>

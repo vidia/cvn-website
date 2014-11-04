@@ -87,7 +87,7 @@ function Verify_Delete()
 						echo "<td style='vertical-align: middle;'>".date("m/d/y", strtotime($row['CallTime']))."</td>";
 						echo "<td style='vertical-align: middle;'><a href='mailto:".$row['UC']."'>".$row['UC']."</a></td>";
 						echo "<td style='text-align: center;vertical-align: middle;'><a rel='tooltip' class='btn btn-default' href='edit-event.php?ID=".$row['ID']."' title='Edit " . $row['Name'] ."' ><i class='fa fa-edit'></i></a></td>";
-						echo "<td style='text-align: center;vertical-align: middle;'><a class='btn btn-default' onclick='return Verify_Delete()' href='doDeleteEvent.php?ID=".$row['ID']."' rel='tooltip' title='Delete " . $row['Name'] ."'><i class='fa fa-times'></i></a></td>";
+						echo "<td style='text-align: center;vertical-align: middle;'><a class='btn btn-default' onclick='return Verify_Delete()' href='actions/doDeleteEvent.php?ID=" .$row['ID']."' rel='tooltip' title='Delete " . $row['Name'] ."'><i class='fa fa-times'></i></a></td>";
 						echo "</td></tr>";
 				}
 			}
@@ -105,7 +105,7 @@ function Verify_Delete()
 					echo "<td style='vertical-align: middle;'>".date("m/d/Y", strtotime($row2['CallTime']))."</td>";
 					echo "<td style='vertical-align: middle;'><a href='mailto".$row2['UC']."'>".$row2['UC']."</a></td>";
 					echo "<td style='text-align: center; vertical-align: middle;'><a rel='tooltip' class='btn btn-default' href='edit-event.php?ID=".$row2['ID']."' title='Edit " . $row2['Name'] ."' ><i class='fa fa-edit'></i></a></td>";
-					echo "<td style='text-align: center; vertical-align: middle;'><a class='btn btn-default' onclick='return Verify_Delete()' href='doDeleteEvent.php?ID=".$row2['ID']."' rel='tooltip' title='Delete " . $row2['Name'] ."'><i class='fa fa-times'></i></a></td>";
+					echo "<td style='text-align: center; vertical-align: middle;'><a class='btn btn-default' onclick='return Verify_Delete()' href='actions/doDeleteEvent.php?ID=" .$row2['ID']."' rel='tooltip' title='Delete " . $row2['Name'] ."'><i class='fa fa-times'></i></a></td>";
 					echo "</td></tr>";
 				}
 			}
@@ -128,7 +128,7 @@ function Verify_Delete()
 			        <h4 class="modal-title" id="myModalLabel">Change Season</h4>
 			      </div>
 			      <div class="modal-body">
-			          <form class="form-horizontal" action="doChangeSeason.php" method="post">
+			          <form class="form-horizontal" action="actions/doChangeSeason.php" method="post">
 						 	<div class="form-group">
 								<label for="season" class="col-sm-2 control-label">Current Season</label>
 								<div class="col-sm-10">

@@ -108,7 +108,7 @@ include_once("assets/includes/constants.php");
 			    	
 
         <div class="pull-right" style="width: 210px; margin-right: 10px;">
-        	<form action="doSearchUser.php" method="post" role="form" >
+        	<form action="actions/doSearchUser.php" method="post" role="form" >
 			  <div class="form-group">
 			    <label class="sr-only" for="search">Search Users</label>
 			    <div class="input-group">

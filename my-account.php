@@ -54,7 +54,7 @@ function showthetable(theTable)
 				$returningUsher = $row['ReturningUsher']; ?>
 
 
-                <form class="form-horizontal" role="form" action="doEditAccount.php" method="post" />
+                <form class="form-horizontal" role="form" action="actions/doEditAccount.php" method="post" />
 				<!-- Start Personal Information Panel -->
 				<div class="panel panel-default">
 				  <div class="panel-heading">

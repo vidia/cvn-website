@@ -60,7 +60,7 @@ $result = mysql_query($SQL);
     			$result = mysql_query($SQL);
     			while($row = mysql_fetch_array($result)) { ?>
                 
-                <form class="form-horizontal" action="doEditEmail.php" method="post">
+                <form class="form-horizontal" action="actions/doEditEmail.php" method="post">
 
                 <div class="form-group">
                     <label for="Email_Name" class="col-sm-2 control-label">Name</label>

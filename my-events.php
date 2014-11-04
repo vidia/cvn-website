@@ -69,7 +69,7 @@ mysql_select_db($dbname);
                                 <div class="event-points">This <u><?php echo $row['Type']; ?></u> is worth <u><?php echo $row['Point']; ?></u> points.</div>
                                 <div class="event-description"><strong>Description:</strong> <br /><?php echo $row['Description']; ?></div>
                                 <br />
-                             	<a class="request" href="doRequest.php?id=<?php echo $row['ID']; ?>">Request Event</a>
+                             	<a class="request" href="actions/doRequest.php?id=<?php echo $row['ID']; ?>">Request Event</a>
                              </div>
 						<?php	
 						}
@@ -93,7 +93,7 @@ mysql_select_db($dbname);
                                 <div class="event-points">This <u><?php echo $row['Type']; ?></u> is worth <u><?php echo $row['Point']; ?></u> points.</div>
                                 <div class="event-description"><strong>Description:</strong> <br /><?php echo $row['Description']; ?></div>
                                 <br />
-                             	<a class="cancel" href="doCancelRequest.php?id=<?php echo $row['ID']; ?>">Cancel Request</a>
+                             	<a class="cancel" href="actions/doCancelRequest.php?id=<?php echo $row['ID']; ?>">Cancel Request</a>
                              </div>
 				<?php
 					}
@@ -116,7 +116,7 @@ mysql_select_db($dbname);
                                 <div class="event-points">This <u><?php echo $row['Type']; ?></u> is worth <u><?php echo $row['Point']; ?></u> points.</div>
                                 <div class="event-description"><strong>Description:</strong> <br /><?php echo $row['Description']; ?></div>
                                 <br />
-                             	<a class="cancel" href="doCancelRequest.php?id=<?php echo $row['ID']; ?>">Cancel Request</a>
+                             	<a class="cancel" href="actions/doCancelRequest.php?id=<?php echo $row['ID']; ?>">Cancel Request</a>
                          </div>
 				<?php
 					}

@@ -38,7 +38,7 @@ $event = mysql_fetch_array($result);
 
 
 
-			<form action="doMeetingAttendance.php" method="post">
+			<form action="actions/doMeetingAttendance.php" method="post">
             <table class="table table-hover table-striped table-bordered">
 			<tr>
 				<thead>

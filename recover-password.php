@@ -42,7 +42,7 @@
 					echo "<div class='success'>".$_SESSION['form-success']."</div>"; 
 			} else {
 			?>
-			<form enctype="application/x-www-form-urlencoded" action="doRecover.php" method="post">
+			<form enctype="application/x-www-form-urlencoded" action="actions/doRecover.php" method="post">
             	<label>Email</label><input type="text" name="email" id="email" /><br /><br />
                 <input type="submit" value="Recover Password" name="recover" id="recover" /><br />
             </form>

@@ -37,7 +37,7 @@ if(isSchoolEmail($Email))
 	}
 	else {
 		if(accountExistForEmail($Email)) {
-			$_SESSION['error'] = "The Email you are trying to register with already has an account setup. If you would like to login <a href='login.php'>click here</a> or if you have lost or forgotten you password <a href='recover-password.php'>click here.</a>";
+			$_SESSION['error'] = "The Email you are trying to register with already has an account setup. If you would like to login <a href='../login.php'>click here</a> or if you have lost or forgotten you password <a href='../recover-password.php'>click here.</a>";
 			header("Location: register.php");
 		} elseif($Email != $CEmail) { 
 			$_SESSION['error'] = "Please make sure that the emails match. It will be used as your username.";
@@ -65,9 +65,6 @@ if(isSchoolEmail($Email))
 				$_SESSION["success"] = "Welcome to your Dashboard. From here, you can sign up to usher upcoming events.";
 				header("Location: dashboard.php");
 			}
-			
-			
-			
 		}
 	}
 }

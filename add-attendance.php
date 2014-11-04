@@ -35,7 +35,7 @@ include_once("assets/includes/constants.php");
 		?>
 
 
-	 		<form class="form-horizontal" action="doEditAttendance.php" method="post">			
+	 		<form class="form-horizontal" action="actions/doEditAttendance.php" method="post">
 	 			<div class="alert alert-info">Use this page only when <b>adding</b> attendance. If the user already has attendance marked for the event,
 	 			 please modify it through the <a class="alert-link" href="user-admin.php">user's profile page</a>.</div>		
 

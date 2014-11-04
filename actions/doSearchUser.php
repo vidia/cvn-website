@@ -85,8 +85,8 @@ else {
 	$PageTitle = "Search Results";
 	include("assets/includes/randomHello.php"); ?>
           <ol class="breadcrumb">
-          	<li><a href="dashboard.php">Dashboard</a></li>
-          	<li><a href="user-admin.php">Manage Users</a></li>
+          	<li><a href="../dashboard.php">Dashboard</a></li>
+          	<li><a href="../user-admin.php">Manage Users</a></li>
             <li class="active">Search Results</li>
           </ol>
         </div>
@@ -153,9 +153,9 @@ else {
 					($row['AcctType'] == "UC") ? $starUC = "<i rel='tooltip' title='Usher Coordinator' class='fa fa-star-o'></i>" : $starUC ="";
 
 					if($_SESSION['AccountType'] == 'ADMIN') {
-						echo "<tr><td>" . $star . $starUC . "</td><td><a href='edit-user.php?ID=".$row['ID']."'> ".$row['LastName'].", ".$row['FirstName']."</a></td><td><a href='mailto:".$row['Email']."'>".$row['Email']."</a></td><td style='text-align:center;'><a rel='tooltip' href='edit-user.php?ID=".$row['ID']."' title='Edit " . $row['FirstName'] . " " . $row['LastName']. "'  class='btn btn-default'><i class='fa fa-edit'></i></a></td><td style='text-align:center;'><a onclick='return Verify_Delete(".$row['ID'].")' style='cursor: pointer;' rel='tooltip' title='Delete " . $row['FirstName'] . " " . $row['LastName']. "' class='btn btn-danger'><i class='fa fa-trash-o'></i></a></td></tr>";
+						echo "<tr><td>" . $star . $starUC . "</td><td><a href='../edit-user.php?ID=" .$row['ID']."'> ".$row['LastName'].", ".$row['FirstName']."</a></td><td><a href='mailto:".$row['Email']."'>".$row['Email']. "</a></td><td style='text-align:center;'><a rel='tooltip' href='../edit-user.php?ID=" .$row['ID']."' title='Edit " . $row['FirstName'] . " " . $row['LastName']. "'  class='btn btn-default'><i class='fa fa-edit'></i></a></td><td style='text-align:center;'><a onclick='return Verify_Delete(".$row['ID'].")' style='cursor: pointer;' rel='tooltip' title='Delete " . $row['FirstName'] . " " . $row['LastName']. "' class='btn btn-danger'><i class='fa fa-trash-o'></i></a></td></tr>";
 					} else {
-						echo "<tr><td>" . $star . $starUC . "</td><td><a href='edit-user.php?ID=".$row['ID']."'> ".$row['LastName'].", ".$row['FirstName']."</a></td><td><a href='mailto:".$row['Email']."'>".$row['Email']."</a></td><td style='text-align:center;'><a rel='tooltip' href='edit-user.php?ID=".$row['ID']."' title='Edit " . $row['FirstName'] . " " . $row['LastName']. "'  class='btn btn-default'><i class='fa fa-edit'></i></a></td></tr>";
+						echo "<tr><td>" . $star . $starUC . "</td><td><a href='../edit-user.php?ID=" .$row['ID']."'> ".$row['LastName'].", ".$row['FirstName']."</a></td><td><a href='mailto:".$row['Email']."'>".$row['Email']. "</a></td><td style='text-align:center;'><a rel='tooltip' href='../edit-user.php?ID=" .$row['ID']."' title='Edit " . $row['FirstName'] . " " . $row['LastName']. "'  class='btn btn-default'><i class='fa fa-edit'></i></a></td></tr>";
 					}
 				}
 
@@ -175,7 +175,7 @@ else {
 include_once("assets/includes/footer.php");
 ?>
 
-<script src="js/typeahead.jquery.min.js"></script> 
+<script src="../js/typeahead.jquery.min.js"></script>
 
 <script>
 var substringMatcher = function(strs) {

@@ -33,7 +33,7 @@ include("assets/includes/header.php");
 		?>
 
 
-            <form class="form-horizontal" action="doAddUser.php" method="post">
+            <form class="form-horizontal" action="actions/doAddUser.php" method="post">
             	<div class="panel panel-default">
 					<div class="panel-heading">
 						<h3 class="panel-title">General Information</h3>
@@ -69,7 +69,7 @@ include("assets/includes/header.php");
 					</div>
 				</div> <!-- / .panel-->
 
-				 <form class="form-horizontal" action="doAddUser.php" method="post">
+				 <form class="form-horizontal" action="actions/doAddUser.php" method="post">
             	<div class="panel panel-default">
 					<div class="panel-heading">
 						<h3 class="panel-title">Account Information</h3>

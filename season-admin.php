@@ -60,7 +60,7 @@ function Verify_Delete()
             <div class="col-md-5">
             <h3>Create a New Season</h3>
 
-              <form class="form-inline" role="form" method="post" action="doEditSeason.php">
+              <form class="form-inline" role="form" method="post" action="actions/doEditSeason.php">
                 <div class="form-group">
                   <label class="sr-only" for="season">Season</label>
                   <input type="text" class="form-control" name="seasonName" value="<?= $season["Season"]?>">
@@ -93,7 +93,7 @@ function Verify_Delete()
                 <tr>
                   <td style="text-align: center; vertical-align: middle;"><?php if($season["Current"] == 1) { echo "<i class='fa fa-star'></i>"; } ?></td>
                   <td>
-                  <form class="form-inline" role="form" method="post" action="doEditSeason.php">
+                  <form class="form-inline" role="form" method="post" action="actions/doEditSeason.php">
                     <div class="form-group">
                       <label class="sr-only" for="season">Season</label>
                       <input type="text" class="form-control" name="seasonName" value="<?= $season["Season"]?>">

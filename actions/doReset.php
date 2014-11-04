@@ -41,7 +41,7 @@ if($num_rows>0) {
 	
 } else {
 	//echo "not valid";
-	$_SESSION['error'] = "Our system has encountered an error while trying to reset your password. For security purposes please start the recovery process over by <a href='recover-password.php'>clicking here.</a>";
+	$_SESSION['error'] = "Our system has encountered an error while trying to reset your password. For security purposes please start the recovery process over by <a href='../recover-password.php'>clicking here.</a>";
 	header("Location: reset-password.php");
 }
 

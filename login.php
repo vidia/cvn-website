@@ -51,7 +51,7 @@ if(!empty($_SESSION["Name"])) {
 			}
 			?>
 
-			<form class="form-horizontal" enctype="application/x-www-form-urlencoded" action="doLogin.php" method="post">
+			<form class="form-horizontal" enctype="application/x-www-form-urlencoded" action="actions/doLogin.php" method="post">
 				<div class="form-group">
 					<label for="username" class="col-sm-2 control-label">Username</label>
 					<div class="col-sm-6">
@@ -90,7 +90,7 @@ if(!empty($_SESSION["Name"])) {
 			      </div>
 			      <div class="modal-body">
 			      	<p>To recover your account, please type in your email address with which you've registered and check your email.</p>
-			        <form class="form-horizontal" enctype="application/x-www-form-urlencoded" action="doRecover.php" method="post">
+			        <form class="form-horizontal" enctype="application/x-www-form-urlencoded" action="actions/doRecover.php" method="post">
 			        	<div class="form-group">
 							<label for="resetEmail" class="col-sm-2 control-label">Email</label>
 							<div class="col-sm-6">

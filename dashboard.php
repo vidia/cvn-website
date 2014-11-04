@@ -74,7 +74,7 @@ include_once("assets/includes/constants.php");
                             <?= $row["Description"] ?>
                           </blockquote>
                         </div>
-                        <p><a class="btn btn-sm btn-block btn-success" href="doRequest.php?id=<?php echo $row['ID']; ?>"><i class='fa fa-plus-circle'></i> Request Event</a></p>
+                        <p><a class="btn btn-sm btn-block btn-success" href="actions/doRequest.php?id=<?php echo $row['ID']; ?>"><i class='fa fa-plus-circle'></i> Request Event</a></p>
                       </div>
                     </div>
 
@@ -115,7 +115,7 @@ include_once("assets/includes/constants.php");
                             </blockquote>
                           </div>
 
-                          <p><a class="btn btn-sm btn-block btn-danger" href="doCancelRequest.php?id=<?php echo $row['ID']; ?>"><i class='fa fa-minus-circle'></i> Cancel Request</a></p>
+                          <p><a class="btn btn-sm btn-block btn-danger" href="actions/doCancelRequest.php?id=<?php echo $row['ID']; ?>"><i class='fa fa-minus-circle'></i> Cancel Request</a></p>
                         </div>
                       </div>
 
@@ -168,7 +168,7 @@ include_once("assets/includes/constants.php");
                   </blockquote>
                 </div>
 
-                <p><a class="btn btn-sm btn-block btn-danger" href="doCancelRequest.php?id=<?php echo $row['ID']; ?>"><i class='fa fa-minus-circle'></i> Cancel Attendance</a></p>
+                <p><a class="btn btn-sm btn-block btn-danger" href="actions/doCancelRequest.php?id=<?php echo $row['ID']; ?>"><i class='fa fa-minus-circle'></i> Cancel Attendance</a></p>
               </div>
             </div>
 
@@ -209,7 +209,7 @@ include_once("assets/includes/constants.php");
                   </blockquote>
                 </div>
 
-                <p><a class="btn btn-sm btn-block btn-danger" href="doCancelRequest.php?id=<?php echo $row['ID']; ?>"><i class='fa fa-minus-circle'></i> Cancel Attendance</a></p>
+                <p><a class="btn btn-sm btn-block btn-danger" href="actions/doCancelRequest.php?id=<?php echo $row['ID']; ?>"><i class='fa fa-minus-circle'></i> Cancel Attendance</a></p>
               </div>
             </div>
 

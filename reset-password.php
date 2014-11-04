@@ -51,7 +51,7 @@ $row = mysql_fetch_array($result);
 					$_SESSION['error'] = '';
 			}
 		?>
-			<form class="form-horizontal" enctype="application/x-www-form-urlencoded" action="doReset.php" method="post">
+			<form class="form-horizontal" enctype="application/x-www-form-urlencoded" action="actions/doReset.php" method="post">
 				<div class="form-group">
 					<label for="Password" class="col-sm-2 control-label">Password</label>
 					<div class="col-sm-6">

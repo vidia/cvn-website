@@ -41,7 +41,7 @@ $row = mysql_fetch_array($result);
 			}
 			?>
 
-            <form class="form-horizontal" role="form" action="doEditEvent.php" method="post">
+            <form class="form-horizontal" role="form" action="actions/doEditEvent.php" method="post">
             	<div class="panel panel-default">
 					<div class="panel-heading">
 						<h3 class="panel-title">General Information</h3>
