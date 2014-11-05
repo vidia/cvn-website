@@ -1,9 +1,9 @@
 <?php session_start();
-$hostname='mydb.ics.purdue.edu';
-$username='cvn';
-$password='stag3d00r';
-$dbname='cvn';
-mysql_connect($hostname,$username, $password) OR DIE ('Unable to connect to database! Please try again later.');
+$hostname = 'mydb.ics.purdue.edu';
+$username = 'cvn';
+$password = 'stag3d00r';
+$dbname = 'cvn';
+mysql_connect($hostname, $username, $password) OR DIE ('Unable to connect to database! Please try again later.');
 mysql_select_db($dbname);
 include("assets/includes/verify.php");
 include("assets/includes/verify-uc.php");
@@ -39,14 +39,14 @@ while($row = mysql_fetch_array($result)) {
 */
 
 /******************************
-	GRAB HOW MANY STUDENTS WERE REQUESTED
-******************************/
+ * GRAB HOW MANY STUDENTS WERE REQUESTED
+ ******************************/
 
 
 //	$requestCount = count($userArray);
-	$numberWanted = $_GET['number-pull'];
-	
-	pullAttendance($numberWanted,$eventID,0,0);
+$numberWanted = $_GET['number-pull'];
+
+pullAttendance($numberWanted, $eventID, 0, 0);
 
 /*	
 //	$cutArray = subval_sort($cutArray, 'PointTotal'); 
@@ -62,7 +62,7 @@ while($row = mysql_fetch_array($result)) {
 		$numberWanted = $requestCount;
 	}
 */
-	//if ($requestCount == 0) {
+//if ($requestCount == 0) {
 /*		//echo "ERROR";
 		$_SESSION['attendance-error'] = "There are no current usher requests for that show.";
 		header("Location: attendance-admin.php");*/
@@ -71,39 +71,39 @@ while($row = mysql_fetch_array($result)) {
 		
 		for($i=0; $i<$numberWanted; $i++) {
 			echo "SELECTED: " .$finishedArray[$i]['PointTotal'] . " | ". $finishedArray[$i]['AcctType']. " ".$finishedArray[$i]['LastName']. ", ". $finishedArray[$i]['FirstName']. ", " . $finishedArray[$i]['ID']. "<br />";
-*/	
-	/*	$SQL = "UPDATE Attendance SET RequestStatus='Ushering' WHERE UserID='".$finishedArray[$i]['ID']."' AND EventID='".$eventID."'";
-			sendEmail($finishedArray[$i]['ID'], $eventID, 'confirmation-email');
-			mysql_query($SQL);*/
-	/*	}
-	
-		for($i=$numberWanted; $i<$requestCount; $i++) {
-			echo "CUT: " .$finishedArray[$i]['PointTotal'] . " | ". $finishedArray[$i]['AcctType']. " ".$finishedArray[$i]['LastName']. ", ". $finishedArray[$i]['FirstName']. ", " . $finishedArray[$i]['ID'].  "<br />";
-*/	
-	/*	$SQL = "UPDATE Attendance SET RequestStatus='Cut' WHERE UserID='".$finishedArray[$i]['ID']."' AND EventID='".$eventID."'";
-			sendEmail($finishedArray[$i]['ID'], $eventID, 'cut-email');
-			mysql_query($SQL);*/
-	/*	}*/
-		
-		
-		/*
-			USHER COORDINATORS GET A SPOT ON THE SHOW NO MATTER WHAT
-		*/
+*/
+/*	$SQL = "UPDATE Attendance SET RequestStatus='Ushering' WHERE UserID='".$finishedArray[$i]['ID']."' AND EventID='".$eventID."'";
+        sendEmail($finishedArray[$i]['ID'], $eventID, 'confirmation-email');
+        mysql_query($SQL);*/
+/*	}
 
-	/*for($i=0; $i<$requestCount; $i++)
-		{
-			if($finishedArray[$i]['AcctType'] == "UC")
-			{
-			//	echo "UC: " . $finishedArray[$i]['LastName']. " " . $finishedArray[$i]['ID']. " | ".$finishedArray[$i]['PointTotal'] . "<br /><br />";
-				$SQL = "UPDATE Attendance SET RequestStatus='Ushering' WHERE UserID='".$finishedArray[$i]['ID']."' AND EventID='".$eventID."'";
-				sendEmail($finishedArray[$i]['ID'], $eventID, 'confirmation-email');
-				mysql_query($SQL);
-				// Change UC to Ushering and then remove them from the Array
-				// After deleting, subtract 1 wanted for each loop
-				unset($finishedArray[$i]);
-			}
-		}
-	
+    for($i=$numberWanted; $i<$requestCount; $i++) {
+        echo "CUT: " .$finishedArray[$i]['PointTotal'] . " | ". $finishedArray[$i]['AcctType']. " ".$finishedArray[$i]['LastName']. ", ". $finishedArray[$i]['FirstName']. ", " . $finishedArray[$i]['ID'].  "<br />";
+*/
+/*	$SQL = "UPDATE Attendance SET RequestStatus='Cut' WHERE UserID='".$finishedArray[$i]['ID']."' AND EventID='".$eventID."'";
+        sendEmail($finishedArray[$i]['ID'], $eventID, 'cut-email');
+        mysql_query($SQL);*/
+/*	}*/
+
+
+/*
+    USHER COORDINATORS GET A SPOT ON THE SHOW NO MATTER WHAT
+*/
+
+/*for($i=0; $i<$requestCount; $i++)
+    {
+        if($finishedArray[$i]['AcctType'] == "UC")
+        {
+        //	echo "UC: " . $finishedArray[$i]['LastName']. " " . $finishedArray[$i]['ID']. " | ".$finishedArray[$i]['PointTotal'] . "<br /><br />";
+            $SQL = "UPDATE Attendance SET RequestStatus='Ushering' WHERE UserID='".$finishedArray[$i]['ID']."' AND EventID='".$eventID."'";
+            sendEmail($finishedArray[$i]['ID'], $eventID, 'confirmation-email');
+            mysql_query($SQL);
+            // Change UC to Ushering and then remove them from the Array
+            // After deleting, subtract 1 wanted for each loop
+            unset($finishedArray[$i]);
+        }
+    }
+
 */
 /*	
 		$_SESSION['attendance-message'] = "The attendance has been successfully pulled and the ushers have been notified.";

@@ -21,26 +21,26 @@ $season = $_POST['season'];
 
 $uc = $_POST['UC'];
 
-function formatDate($plainDate) {
-	$month = substr($plainDate, 0, 2);
-	$day = substr($plainDate, 3, 2);
-	$year = substr($plainDate, 6, 4);
-	$hour = substr($plainDate, 11, 2);
-	$minute = substr($plainDate, 14, 2);
-	$amORpm1 = substr($plainDate, 16, 3);
-	$amORpm =  str_replace(" ", "", $amORpm1);
+function formatDate($plainDate)
+{
+    $month = substr($plainDate, 0, 2);
+    $day = substr($plainDate, 3, 2);
+    $year = substr($plainDate, 6, 4);
+    $hour = substr($plainDate, 11, 2);
+    $minute = substr($plainDate, 14, 2);
+    $amORpm1 = substr($plainDate, 16, 3);
+    $amORpm = str_replace(" ", "", $amORpm1);
 
 
-	
-	if (($amORpm == 'PM' || $amORpm == 'pm') && $hour != 12) {
-		$hour = $hour + 12;
-	}
-	
-	$date = $year."-".$month."-".$day;
-	$time = $hour.":".$minute.":00";
-	$fullDate = $date." ".$time;
-	
-	return $fullDate;
+    if (($amORpm == 'PM' || $amORpm == 'pm') && $hour != 12) {
+        $hour = $hour + 12;
+    }
+
+    $date = $year . "-" . $month . "-" . $day;
+    $time = $hour . ":" . $minute . ":00";
+    $fullDate = $date . " " . $time;
+
+    return $fullDate;
 }
 
 $upTime = formatDate($upTime);
@@ -48,12 +48,11 @@ $endTime = formatDate($endTime);
 $callTime = formatDate($callTime);
 
 
-
-$SQL = "UPDATE Event SET Name='".$name."', Description='".$description."', SpecialInstr='".$specialinstr."', Point='".$point."', Type='".$type."', Location='".$location."', MeetingLoc='".$meetingloc."', UpTime='".$upTime."', EndTime='".$endTime."', CallTime='".$callTime."', SeasonID=" . $season . ", NoRegister=" . $preshow . ", UC='".$uc."' WHERE ID=".$eventID;
+$SQL = "UPDATE Event SET Name='" . $name . "', Description='" . $description . "', SpecialInstr='" . $specialinstr . "', Point='" . $point . "', Type='" . $type . "', Location='" . $location . "', MeetingLoc='" . $meetingloc . "', UpTime='" . $upTime . "', EndTime='" . $endTime . "', CallTime='" . $callTime . "', SeasonID=" . $season . ", NoRegister=" . $preshow . ", UC='" . $uc . "' WHERE ID=" . $eventID;
 //echo $SQL;
 mysql_query($SQL) or die($SQL);
 
 
 $_SESSION['success'] = "The event has successfully been edited!";
-header("Location: edit-event.php?ID=".$eventID);
+header("Location: edit-event.php?ID=" . $eventID);
 ?>

@@ -1,4 +1,4 @@
-<?php 
+<?php
 session_start();
 include("assets/includes/db.php");
 include("assets/includes/verify.php");
@@ -34,44 +34,43 @@ $_SESSION['nAcctType'] = $AcctType;
 
 //echo $Password." ".$CPassword;
 
-if($FirstName ==  "" || $LastName == "" || $Email == "" || $CEmail == "" || $Password == "" || $CPassword == "") { 
-	$_SESSION['error'] = "Please fill in all required fields.";
-	header("Location: add-user.php");
-	break;
+if ($FirstName == "" || $LastName == "" || $Email == "" || $CEmail == "" || $Password == "" || $CPassword == "") {
+    $_SESSION['error'] = "Please fill in all required fields.";
+    header("Location: add-user.php");
+    break;
 } else {
-	$sql = "SELECT Email FROM User WHERE Email='".$Email."'";
-	$result = mysql_query($sql);
-	$num_rows = mysql_num_rows($result);
-	if($num_rows > 0) {
-		$_SESSION['error'] = "The Email you are trying to register with already has an account setup.";
-		header("Location: add-user.php");
-	} elseif($Email != $CEmail) { 
-		$_SESSION['error'] = "Please make sure that the emails match. It will be used as your username.";
-		header("Location: add-user.php");
-	} else {
+    $sql = "SELECT Email FROM User WHERE Email='" . $Email . "'";
+    $result = mysql_query($sql);
+    $num_rows = mysql_num_rows($result);
+    if ($num_rows > 0) {
+        $_SESSION['error'] = "The Email you are trying to register with already has an account setup.";
+        header("Location: add-user.php");
+    } elseif ($Email != $CEmail) {
+        $_SESSION['error'] = "Please make sure that the emails match. It will be used as your username.";
+        header("Location: add-user.php");
+    } else {
 
-		if($Password != $CPassword || $Password == "" || $CPassword == "") { 
-			$_SESSION['error'] = "Please make sure that your passwords match.";
-			header("Location: add-user.php");
-		} else {
-			$Password = md5($Password);		
-			$sql = "INSERT INTO User (Username, Password, FirstName, LastName, Email, AcctType, Class, GraduationDate, College, Marketing, Created, ConfirmationKey) VALUES ('".$Email."', '".$Password."', '".$FirstName."', '".$LastName."', '".$Email."', '".$AcctType."', '".$Class."', '".$Graduation."', '".$College."', '".$Marketing."', '".$Created."', '".$ConfirmationKey."')";
-			mysql_query($sql);
-			$_SESSION['add-message'] = "The user has successfully been added.";
-			$_SESSION['nFirstName'] = '';
-			$_SESSION['nLastName'] = '';
-			$_SESSION['nEmail'] = '';
-			$_SESSION['nCEmail'] = '';
-			$_SESSION['nGrad'] = '';
-			$_SESSION['nYear'] = '';
-			$_SESSION['nCollege'] = '';
-			$_SESSION['nMarketing'] = '';
-			$_SESSION["success"] = "You've successfully created a new user.";
-			header("Location: user-admin.php");
-		}
-		
-		
-		
-	}
+        if ($Password != $CPassword || $Password == "" || $CPassword == "") {
+            $_SESSION['error'] = "Please make sure that your passwords match.";
+            header("Location: add-user.php");
+        } else {
+            $Password = md5($Password);
+            $sql = "INSERT INTO User (Username, Password, FirstName, LastName, Email, AcctType, Class, GraduationDate, College, Marketing, Created, ConfirmationKey) VALUES ('" . $Email . "', '" . $Password . "', '" . $FirstName . "', '" . $LastName . "', '" . $Email . "', '" . $AcctType . "', '" . $Class . "', '" . $Graduation . "', '" . $College . "', '" . $Marketing . "', '" . $Created . "', '" . $ConfirmationKey . "')";
+            mysql_query($sql);
+            $_SESSION['add-message'] = "The user has successfully been added.";
+            $_SESSION['nFirstName'] = '';
+            $_SESSION['nLastName'] = '';
+            $_SESSION['nEmail'] = '';
+            $_SESSION['nCEmail'] = '';
+            $_SESSION['nGrad'] = '';
+            $_SESSION['nYear'] = '';
+            $_SESSION['nCollege'] = '';
+            $_SESSION['nMarketing'] = '';
+            $_SESSION["success"] = "You've successfully created a new user.";
+            header("Location: user-admin.php");
+        }
+
+
+    }
 }
 ?>

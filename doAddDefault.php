@@ -16,17 +16,14 @@ $seasonID = $row["SeasonID"];
 //grab UserID
 
 
-if($reason != "Select a Reason")
-{
-	$SQL2 = "INSERT INTO Defaults (UserID, ReportedBy, Reason, SeasonID, Archived) VALUES (" . $UserID . ", " . $CurrentUser . ", '" . $reason . "', " . $seasonID . ", 0);";
-	mysql_query($SQL2);
-	$_SESSION['success'] = "You have successfully reported the UC for <strong>" . $reason . "</strong>.";
-	header("Location: edit-user.php?ID=" . $UserID);
-}
-else
-{
-	$_SESSION['error'] = "Please select a reason for the UC's default.";
-	header("Location: edit-user.php?ID=" . $UserID);
+if ($reason != "Select a Reason") {
+    $SQL2 = "INSERT INTO Defaults (UserID, ReportedBy, Reason, SeasonID, Archived) VALUES (" . $UserID . ", " . $CurrentUser . ", '" . $reason . "', " . $seasonID . ", 0);";
+    mysql_query($SQL2);
+    $_SESSION['success'] = "You have successfully reported the UC for <strong>" . $reason . "</strong>.";
+    header("Location: edit-user.php?ID=" . $UserID);
+} else {
+    $_SESSION['error'] = "Please select a reason for the UC's default.";
+    header("Location: edit-user.php?ID=" . $UserID);
 }
 
 

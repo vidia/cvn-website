@@ -18,25 +18,26 @@ $season = $_POST['season'];
 
 $uc = $_POST['UC'];
 
-function formatDate($plainDate) {
-	$month = substr($plainDate, 0, 2);
-	$day = substr($plainDate, 3, 2);
-	$year = substr($plainDate, 6, 4);
-	$hour = substr($plainDate, 11, 2);
-	$minute = substr($plainDate, 14, 2);
-	$amORpm = substr($plainDate, 16, 3);
-	$amORpm = preg_replace('/\s+/', '', $amORpm);
+function formatDate($plainDate)
+{
+    $month = substr($plainDate, 0, 2);
+    $day = substr($plainDate, 3, 2);
+    $year = substr($plainDate, 6, 4);
+    $hour = substr($plainDate, 11, 2);
+    $minute = substr($plainDate, 14, 2);
+    $amORpm = substr($plainDate, 16, 3);
+    $amORpm = preg_replace('/\s+/', '', $amORpm);
 
-	
-	if ($amORpm == 'PM') {
-		$hour = $hour + 12;
-	}
-	
-	$date = $year."-".$month."-".$day;
-	$time = $hour.":".$minute.":00";
-	$fullDate = $date." ".$time;
-	
-	return $fullDate;
+
+    if ($amORpm == 'PM') {
+        $hour = $hour + 12;
+    }
+
+    $date = $year . "-" . $month . "-" . $day;
+    $time = $hour . ":" . $minute . ":00";
+    $fullDate = $date . " " . $time;
+
+    return $fullDate;
 
 }
 
@@ -44,7 +45,7 @@ $upTime = formatDate($upTime);
 $endTime = formatDate($endTime);
 $callTime = formatDate($callTime);
 
-$SQL = "INSERT INTO Event (Name, Description, Point, Type, Location, UpTime, EndTime, CallTime, UC, SeasonID, noregister) VALUES ('".$name."', '".$description."', '".$point."', '".$type."', '".$location."', '".$upTime."', '".$endTime."', '".$callTime."', '".$uc."', '" . $season . "', '" . $noregister . "')";
+$SQL = "INSERT INTO Event (Name, Description, Point, Type, Location, UpTime, EndTime, CallTime, UC, SeasonID, noregister) VALUES ('" . $name . "', '" . $description . "', '" . $point . "', '" . $type . "', '" . $location . "', '" . $upTime . "', '" . $endTime . "', '" . $callTime . "', '" . $uc . "', '" . $season . "', '" . $noregister . "')";
 mysql_query($SQL) or die(mysql_error());
 
 $_SESSION['success'] = "The event has successfully been created.";
