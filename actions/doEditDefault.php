@@ -20,12 +20,12 @@ if(!empty($row))
 	$SQL2 = "UPDATE Defaults SET Archived=1, DeletedBy=" . $deletedBy . " WHERE UserID=" . $user . " AND DefaultID=" . $id . ";";
 	mysql_query($SQL2);
 	$_SESSION['success'] = "You have removed the default.";
-	header("Location: edit-user.php?ID=" . $user);
+	header("Location: /edit-user.php?ID=" . $user);
 }
 else
 {
 	$_SESSION['error'] = "You did not supply a proper username or default identification number. Please go back and try again.";
-	header("Location: edit-user.php?ID=" . $user);
+	header("Location: /edit-user.php?ID=" . $user);
 }
 
 

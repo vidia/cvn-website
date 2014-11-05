@@ -1,7 +1,7 @@
 <?php session_start(); 
 include_once("../assets/includes/constants.php");
 include_once("../assets/includes/db.php");
-include("../assets/include/verify-admin.php");
+include("../assets/includes/verify-admin.php");
 
 if($_SESSION["AccountType"] == "ADMIN") {
 
@@ -16,6 +16,6 @@ else {
 	$_SESSION["error"] = "You must be an admin to update the scores in this way."; 
 }
 
-header("Location: site-admin.php");
+header("Location: /site-admin.php");
 
 ?>

@@ -21,11 +21,11 @@ if($num_rows>0) {
 	$headers = "Content-type: text/html\r\n";
 	mail($Email, $Subject, $Message, $headers);
 	$_SESSION['success'] = "An email has been sent to the supplied email address with instructions on reseting your password. Please check your spam box if you do not receive the email.";
-	header("Location: login.php");
+	header("Location: /login.php");
 } else {
 	//echo "not valid";
 	$_SESSION['error'] = "The supplied email address does not match any in our system. Please try again or <a class='alert-link' href='../register.php'>register here</a> for a new account.";
-	header("Location: login.php");
+	header("Location: /login.php");
 }
 
 ?>

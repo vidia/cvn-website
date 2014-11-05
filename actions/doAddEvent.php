@@ -48,5 +48,5 @@ $SQL = "INSERT INTO Event (Name, Description, Point, Type, Location, UpTime, End
 mysql_query($SQL) or die(mysql_error());
 
 $_SESSION['success'] = "The event has successfully been created.";
-header("Location: event-admin.php");
+header("Location: /event-admin.php");
 ?>

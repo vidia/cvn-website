@@ -13,5 +13,5 @@ $SQL = "DELETE FROM Attendance WHERE UserID='".$userid."'";
 mysql_query($SQL);
 
 $_SESSION['success'] = "You have successfully deleted the user.";
-header("Location: user-admin.php");
+header("Location: /user-admin.php");
 ?>

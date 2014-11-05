@@ -23,7 +23,7 @@ $requestDate = date("Y-m-d H:i:s");
 		$SQL = "INSERT INTO Attendance (ID, UserID, EventID, RequestStatus, RequestDate) VALUES (null, '".$_SESSION['UID']."', '".$eventid."', 'Requested', '".$requestDate."')";
 		mysql_query($SQL);
 		$_SESSION['success'] = "Your request has been received and you will be notified if you are selected to usher. Thanks!";
-		header("Location: dashboard.php");
+		header("Location: /dashboard.php");
 	}
 	else
 	// if there is a return then send an error saying they signed up the show they weren't supposed to
@@ -34,7 +34,7 @@ $requestDate = date("Y-m-d H:i:s");
 		$row3 = mysql_fetch_array($result);
 
 		$_SESSION["error"] = "Unfortunately, you cannot request to usher this show and <strong>" . $row3["Name"] . "</strong>, which you have already requested. You can either remove your request from " . $row3["Name"] . " or request another show. If you believe you have come across this in error, please let Kate or your Executive Board know.";
-		header("Location: dashboard.php");
+		header("Location: /dashboard.php");
 	}
 
 

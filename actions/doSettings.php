@@ -24,6 +24,6 @@ else {
     $_SESSION["error"] = "You do not have authorization to change site settings.";
 }
 
-header("Location: site-admin.php");
+header("Location: /site-admin.php");
 
 ?>

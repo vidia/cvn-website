@@ -12,5 +12,5 @@ $SQL = "UPDATE Email SET Email_Subject='".$emailSubject."', Email_Body='".$email
 mysql_query($SQL);
 
 $_SESSION['success'] = "The email has successfully been edited";
-header("Location: edit-email.php?ID=".$emailID);
+header("Location: /edit-email.php?ID=".$emailID);
 ?>

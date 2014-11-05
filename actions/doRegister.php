@@ -33,7 +33,7 @@ if(isSchoolEmail($Email))
 	if($FirstName ==  "" || $LastName == "" || $Email == "" || $CEmail == "" || $Password == "" || $CPassword == "") 
 	{ 
 		$_SESSION['error'] = "Please fill in all required fields.";
-		header("Location: register.php");
+		header("Location: /register.php");
 	}
 	else {
 		if(accountExistForEmail($Email)) {
@@ -41,12 +41,12 @@ if(isSchoolEmail($Email))
 			header("Location: register.php");
 		} elseif($Email != $CEmail) { 
 			$_SESSION['error'] = "Please make sure that the emails match. It will be used as your username.";
-			header("Location: register.php");
+			header("Location: /register.php");
 		} else {
 
 			if($Password != $CPassword || $Password == "" || $CPassword == "") { 
 				$_SESSION['error'] = "Please make sure that your passwords match.";
-				header("Location: register.php");
+				header("Location: /register.php");
 			} else {
 				$Password = md5($Password);
 				
@@ -63,7 +63,7 @@ if(isSchoolEmail($Email))
 					$_SESSION['LastLogin'] = "Just Registered";
 				}
 				$_SESSION["success"] = "Welcome to your Dashboard. From here, you can sign up to usher upcoming events.";
-				header("Location: dashboard.php");
+				header("Location: /dashboard.php");
 			}
 		}
 	}
@@ -71,7 +71,7 @@ if(isSchoolEmail($Email))
 else
 {
 	$_SESSION['error'] = "You must register with a Purdue University or Ivy Tech e-mail address.";
-	header("Location: register.php");	
+	header("Location: /register.php");
 }
 
 function accountExistForEmail($email) {

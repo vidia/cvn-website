@@ -14,6 +14,6 @@ $body .= pullAttendance($numberWanted,$eventID,0,0);
 mail("cvn2@purdue.edu, purduekenny@gmail.com", "[debug] Pull attendance debug email", $body, "Content-type: text/html\r\n");
 
 $_SESSION['success'] = "The attendance has been successfully pulled and the ushers have been notified.";
-header("Location: attendance-admin.php");
+header("Location: /attendance-admin.php");
 
 ?>

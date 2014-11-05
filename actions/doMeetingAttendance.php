@@ -47,5 +47,5 @@ for($i=0; $i<$total; $i++) {
 }
 
 $_SESSION['success'] = "The attendance has been updated for this meeting.";
-header("Location: meeting-attendance.php?ID=".$eventID);
+header("Location: /meeting-attendance.php?ID=".$eventID);
 ?>

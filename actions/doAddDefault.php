@@ -26,7 +26,7 @@ if($reason != "Select a Reason")
 else
 {
 	$_SESSION['error'] = "Please select a reason for the UC's default.";
-	header("Location: edit-user.php?ID=" . $UserID);
+	header("Location: /edit-user.php?ID=" . $UserID);
 }
 
 

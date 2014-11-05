@@ -25,5 +25,5 @@ while($user = mysql_fetch_array($results)) {
 
 
 $_SESSION['success'] = "The season has successfully been updated.";
-header("Location: event-admin.php");
+header("Location: /event-admin.php");
 ?>

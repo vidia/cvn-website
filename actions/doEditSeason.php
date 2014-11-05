@@ -29,24 +29,6 @@ else {
     //error
 }
 
-header("Location: season-admin.php");
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+header("Location: /season-admin.php");
 
 ?>

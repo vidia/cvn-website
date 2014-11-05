@@ -12,5 +12,5 @@ $SQL = "DELETE FROM Attendance WHERE EventID='".$eventid."'";
 mysql_query($SQL);
 
 $_SESSION['success'] = "You have successfully deleted the event.";
-header("Location: event-admin.php");
+header("Location: /event-admin.php");
 ?>

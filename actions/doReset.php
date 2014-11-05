@@ -23,7 +23,7 @@ if($num_rows>0) {
 
 	if($Password != $CPassword || $Password == '' || $CPassword == '') {
 		$_SESSION['error'] = "Your passwords didnt match.";
-		header("Location: reset-password.php?Email=".$Email."&Key=".$ConfirmationKey);
+		header("Location: /reset-password.php?Email=".$Email."&Key=".$ConfirmationKey);
 	} else {
 		//update db
 		$Password = md5($Password);
@@ -35,14 +35,14 @@ if($num_rows>0) {
 		// $_SESSION['AccountType'] = $AcctType;
 		// $_SESSION['LastLogin'] = $LastLogin;
 		$_SESSION['success'] = "Your password has successfully been updated. Please login to verify your changes.";
-		header("Location: login.php");
+		header("Location: /login.php");
 	}
 	
 	
 } else {
 	//echo "not valid";
 	$_SESSION['error'] = "Our system has encountered an error while trying to reset your password. For security purposes please start the recovery process over by <a href='../recover-password.php'>clicking here.</a>";
-	header("Location: reset-password.php");
+	header("Location: /reset-password.php");
 }
 
 ?>

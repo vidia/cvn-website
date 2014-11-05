@@ -55,5 +55,5 @@ mysql_query($SQL) or die($SQL);
 
 
 $_SESSION['success'] = "The event has successfully been edited!";
-header("Location: edit-event.php?ID=".$eventID);
+header("Location: /edit-event.php?ID=".$eventID);
 ?>

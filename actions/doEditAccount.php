@@ -30,15 +30,15 @@ $show = mysql_escape_string($_POST['show']);
 
 if($FirstName == '') {
 	$_SESSION['error'] = "Please fill in your first name.";
-	header("Location: my-account.php");	
+	header("Location: /my-account.php");
 }
 elseif ($LastName == '') {
 	$_SESSION['error'] = "Please fill in your last name.";
-	header("Location: my-account.php");	
+	header("Location: /my-account.php");
 }
 elseif ($Email == '') {
 	$_SESSION['error'] = "Please fill in your e-mail address.";
-	header("Location: my-account.php");	
+	header("Location: /my-account.php");
 }
 	else{
 	// then check to see if they want to change their password
@@ -52,7 +52,7 @@ elseif ($Email == '') {
 				$_SESSION['FirstName'] = $FirstName;
 				$_SESSION['LastName'] = $LastName;
 			// end
-			header("Location: my-account.php");
+			header("Location: /my-account.php");
 		} elseif ($Password == '' && $CPassword == '') {
 	// if they didn't enter anything on their password, then change everything but password
 			$SQL = "UPDATE User SET FirstName='".$FirstName."', LastName='".$LastName."', referred='" . $referred . "', bdmonth='" . $bdmonth . "', bdday=" . $bdday . ", bdyear=" . $bdyear . ", residence='" . $residence . "', Email='".$Email."', Class='".$Class."', GraduationDate='".$Graduation."', artist='" . $artist . "', song='" . $song . "', movie='" . $movie . "', book='" . $book . "', usershow='" . $show . "', College='".$College."', Marketing='".$Marketing."' WHERE Username='".$_SESSION['Login']."'";
@@ -63,11 +63,11 @@ elseif ($Email == '') {
 				$_SESSION['FirstName'] = $FirstName;
 				$_SESSION['LastName'] = $LastName;
 			// end
-			header("Location: my-account.php");
+			header("Location: /my-account.php");
 		} else {
 	// they screwed up their passwords
 			$_SESSION['error'] = "Your account was not updated because your passwords did not match.";
-			header("Location: my-account.php");		
+			header("Location: /my-account.php");
 		}
 }
 

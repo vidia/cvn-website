@@ -100,5 +100,5 @@ if($extra != '') {
 mail("cvn2@purdue.edu,purduekenny@live.com", "[debug] Event attendance debug email", $body, "Content-type: text/html\r\n");
 
 $_SESSION['success'] = "The attendance has been updated for the show.";
-header("Location: attendance-admin.php");
+header("Location: /attendance-admin.php");
 ?>

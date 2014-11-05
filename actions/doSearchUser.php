@@ -21,7 +21,7 @@ $exactMatchNum = mysql_num_rows($resultsExact);
 if($exactMatchNum == 1) {
 	// send them to profile page because they hit an exact match
 	//http_redirect("edit-user.php?ID=" . $exactMatch["ID"]);
-	header("Location: edit-user.php?ID=" . $exactMatch["ID"]);
+	header("Location: /edit-user.php?ID=" . $exactMatch["ID"]);
 }
 else {
 ?>

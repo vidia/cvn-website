@@ -40,7 +40,7 @@ if($num_rows>0) {
 		{
 			$_SESSION['error'] = "Sorry, this site is currently in maintenance mode and logging in is disabled. If you think that this is in error, please contact <a href='mailto:kenny@digital-inflection.com'>the webmaster</a>.";
 			session_destroy();
-			header("Location: login.php?r=mm");
+			header("Location: ../login.php?r=mm");
 			die();
 		}
 	}
@@ -96,16 +96,16 @@ if($num_rows>0) {
 	$row = mysql_fetch_array($result);
 	if($row["College"] == "Other" || $row["College"] == "College of Consumer and Family Sciences" || $row["College"] == "College of Pharmacy, Nursing, and Health Sciences" || $row["College"] == "Not Selected")
 	{
-		header("Location: my-account.php?college=" . $row["College"] . "&status=old");
+		header("Location: /my-account.php?college=" . $row["College"] . "&status=old");
 	}
 
-	header("Location: dashboard.php");
+	header("Location: /dashboard.php");
 } else {
 	//echo "not valid";
 	$_SESSION['Username'] = $Username;
 	$_SESSION['Login'] = "";
 	$_SESSION['error'] = "Your password and username did not match, please try again.";
-	header("Location: login.php");
+	header("Location: /login.php");
 }
 
 ?>

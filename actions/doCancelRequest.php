@@ -127,5 +127,5 @@ if($callTime < $fiveDayLimit && $callTime > $twoDayLimit) {
 mail("cvn2@purdue.edu", "[debug] Cancel debug email", $body, "Content-type: text/html\r\n");
 
 $_SESSION['success'] = "You have successfully cancelled your request.";
-header("Location: dashboard.php");
+header("Location: /dashboard.php");
 ?>
