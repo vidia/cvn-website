@@ -41,7 +41,6 @@ if ($_SESSION["AccountType"] != "ADMIN") {
                 $_SESSION['error'] = '';
             }
             ?>
-
             <div class="row">
                 <div class="col-md-4">
 
@@ -106,10 +105,47 @@ if ($_SESSION["AccountType"] != "ADMIN") {
         </div>
     </div>
 
+    <div class="row">
+        <div class="col-lg-12">
+            <h1>Hello</h1>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Set Page Banner</h3>
+                </div>
+
+
+                <div class="panel-body">
+
+
+                    <?php
+                    $sql = "SELECT * FROM Settings WHERE intSettingsID=1";
+                    $result = mysql_query($sql);
+                    $settings = mysql_fetch_array($result);
+                    if ($settings["isMaintenance"]) :
+                        ?>
+                        <a href="actions/doSettings.php?action=disablemm" class="btn btn-default btn-block"><i
+                                class="fa fa-times"></i> Disable Maintenance Mode</a>
+                    <?php else : ?>
+                        <a href="actions/doSettings.php?action=enablemm" class="btn btn-default btn-block"><i
+                                class="fa fa-check"></i> Enable Maintenance Mode</a>
+                    <?php endif; ?>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
 </div>
 
-
-
-            <?php
-            include_once("assets/includes/footer.php");
-            ?>
+<?php
+include_once("assets/includes/footer.php");
+?>
