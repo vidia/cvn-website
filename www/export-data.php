@@ -6,7 +6,7 @@ include_once("assets/includes/constants.php");
 ?>
 
 
-<script src="assets/js/datetimepicker_css.js"></script>
+<script src="../assets/js/datetimepicker_css.js"></script>
 <div class="container">
       <div class="row">
         <div class="col-lg-12">

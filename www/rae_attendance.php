@@ -14,17 +14,17 @@ include("assets/includes/constants.php");
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
-<link rel="stylesheet" type="text/css" href="assets/css/screen.css"/>
+<link rel="stylesheet" type="text/css" href="../assets/css/screen.css"/>
 <!--[if lt IE 8]>
-   <link href="assets/css/ie.css" rel="stylesheet" type="text/css" />  
-<![endif]-->
+    <link href="../assets/css/ie.css" rel="stylesheet" type="text/css"/>
+    <![endif]-->
 <title>Purdue CVN || Usher Tracker</title>
 </head>
 
 <body class="admin">
 	<div id="container">
     	<div id="header">
-        	<img src="assets/images/cvn-header.jpg" alt="CVN Header" />
+        	<img src="../assets/images/cvn-header.jpg" alt="CVN Header" />
         	<?php 
 			if($_SESSION['Login'] != '') {
 				include("assets/includes/admin-menu.php");

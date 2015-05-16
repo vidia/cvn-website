@@ -3,20 +3,20 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<script type="text/javascript" src="assets/js/jquery.js"></script>
-<script type="text/javascript" src="assets/js/jquery.plugins.js"></script>
-<script type="text/javascript" src="assets/js/jquery.cvn.js"></script>
-<link rel="stylesheet" type="text/css" href="assets/css/screen.css"/>
+<script type="text/javascript" src="../assets/js/jquery.js"></script>
+<script type="text/javascript" src="../assets/js/jquery.plugins.js"></script>
+<script type="text/javascript" src="../assets/js/jquery.cvn.js"></script>
+<link rel="stylesheet" type="text/css" href="../assets/css/screen.css"/>
 <!--[if lt IE 8]>
-   <link href="assets/css/ie.css" rel="stylesheet" type="text/css" />  
-<![endif]-->
+    <link href="../assets/css/ie.css" rel="stylesheet" type="text/css"/>
+    <![endif]-->
 <title>Purdue CVN || Usher Tracker</title>
 </head>
 
 <body class="cvn login">
 	<div id="container">
     	<div id="header">
-        	<img src="assets/images/cvn-header.jpg" alt="CVN Header" />
+        	<img src="../assets/images/cvn-header.jpg" alt="CVN Header" />
         	<?php 
 			if($_SESSION['Login'] != '') {
 				include("assets/includes/admin-menu.php");
