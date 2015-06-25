@@ -1,0 +1,25 @@
+Structure
+=========
+
+
+.
++-- http/
+|   +-- routes/
+|   |   +-- index.js		# attach all routes
+|   +-- index.js			# create express deps
++-- config/					# component for variables, settings
+|   +-- index.js
+|   +-- database.js
++-- view/ 
+|   +-- templates/
+|   |   +-- *.jade
+|   +-- //forms, etc. 
++-- model/
+|   +-- models
+|   |   +-- index.js		# Add the models in proper order
+|   |   +-- show.js
+|   |   +-- user.js
+|   |   +-- attendance.js
+|   +-- index.js
++-- app.js					# broadway.use all components
++-- //other helper modules
