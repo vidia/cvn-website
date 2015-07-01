@@ -1,6 +1,5 @@
-var express = require('express');
 
-exports.name = 'http';
+exports.name = 'model';
 
 exports.attach = function(options) {
     var app = this;
@@ -13,7 +12,7 @@ exports.attach = function(options) {
 
 
     //routes/index.js runs a require against all routes
-    require('./routes')(app);
+    require('./user')(app);
 };
 
 exports.init = function(done) {

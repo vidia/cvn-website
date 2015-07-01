@@ -1,7 +1,6 @@
 Structure
 =========
 
-
 .
 +-- http/
 |   +-- routes/
