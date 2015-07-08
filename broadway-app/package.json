@@ -1,0 +1,13 @@
+{
+  "name": "purduecvn",
+  "description": "Purdue CVN User Management Website",
+  "author": "David Tschida <dmtschida1@gmail.com>",
+  "dependencies": {
+    "architect": "^0.1.11",
+    "broadway": "*",
+    "express": "*",
+    "mysql": "^2.7.0",
+    "path": "^0.11.14",
+    "sequelize": "*"
+  }
+}

@@ -1,13 +1,13 @@
-var broadway = require('broadway'),
-    app = new broadway.App();
+var architect = require("architect");
+var path = require("path");
 
-//Attach the http handler and it's routes. 
-app.use(require('./http'));
+var config = architect.loadConfig(path.join(__dirname, "/config/architect"));
 
-//Attach the model (ORM, schemas, object functions)
-
-
-
-app.init(function(err) {
-    app.http.listen(8080);
+architect.createApp(config, function (err, app) {
+	if (err) {
+		console.log("Error!", err);
+		throw err; 
+		return; 
+	}
+	console.log("Success"); 
 });
