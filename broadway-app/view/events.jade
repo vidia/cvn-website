@@ -1,0 +1,107 @@
+extends ./base.jade
+
+block main-content
+  .container
+    .row
+      .col-lg-12
+        h1.page-header
+          | Event Administrator 
+          small
+            | Moien David Tschida 
+            a.label.label-info(href='my-account.php#breakdown', rel='tooltip', title='', data-original-title='Total points') 58
+        ol.breadcrumb
+          li
+            a(href='dashboard.php') Dashboard
+          li.active Event Administrator
+    .row
+      .col-lg-12
+        .clearfix(style='margin-bottom: 5px;')
+          a.btn.btn-success.pull-right(style='margin: 5px;', href='add-event.php')
+            i.fa.fa-plus
+            |  Add Event
+          |       
+          button.btn.btn-default.pull-right(style='margin: 5px;', data-toggle='modal', data-target='#myModal')
+            i.fa.fa-refresh
+            |  Change Season
+          //
+            <a style="margin: 5px;" data-toggle="modal" data-target="#changeSeason" class="btn btn-default pull-right"><i class="fa fa-refresh"></i> Change Season</a>
+        |     
+        table.table.table-hover.table-striped.table-bordered
+          thead
+            tr
+              td(style='width:30%;') Name
+              |           
+              td(style='width:3%;') Date
+              |           
+              td(style='width:25%;') UC
+              |           
+              td(style='width:5%;', colspan='2') Admin
+          |       
+          tbody
+            tr
+              td(style='vertical-align: middle;') La Yegros
+              |           
+              td(style='vertical-align: middle;') 09/12/14
+              |           
+              td(style='vertical-align: middle;')
+                a(href='mailto:abolten@purdue.edu') abolten@purdue.edu
+              |           
+              td(style='text-align: center;vertical-align: middle;')
+                a.btn.btn-default(rel='tooltip', href='edit-event.php?ID=364', title='', data-original-title='Edit La Yegros')
+                  i.fa.fa-edit
+              |           
+              td(style='text-align: center;vertical-align: middle;')
+                a.btn.btn-default(onclick='return Verify_Delete()', href='actions/doDeleteEvent.php?ID=364', rel='tooltip', title='', data-original-title='Delete La Yegros')
+                  i.fa.fa-times
+            tr
+              td(style='vertical-align: middle;') La Yegros
+              |           
+              td(style='vertical-align: middle;') 09/12/14
+              |           
+              td(style='vertical-align: middle;')
+                a(href='mailto:abolten@purdue.edu') abolten@purdue.edu
+              |           
+              td(style='text-align: center;vertical-align: middle;')
+                a.btn.btn-default(rel='tooltip', href='edit-event.php?ID=364', title='', data-original-title='Edit La Yegros')
+                  i.fa.fa-edit
+              |           
+              td(style='text-align: center;vertical-align: middle;')
+                a.btn.btn-default(onclick='return Verify_Delete()', href='actions/doDeleteEvent.php?ID=364', rel='tooltip', title='', data-original-title='Delete La Yegros')
+                  i.fa.fa-times
+        // Modal
+        #myModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
+          .modal-dialog
+            .modal-content
+              .modal-header
+                button.close(type='button', data-dismiss='modal', aria-hidden='true') &times;
+                |             
+                h4#myModalLabel.modal-title Change Season
+              |           
+              .modal-body
+                form.form-horizontal(action='actions/doChangeSeason.php', method='post')
+                  .form-group
+                    label.col-sm-2.control-label(for='season') Current Season
+                    |                 
+                    .col-sm-10
+                      select#season.form-control(name='season')
+                        option(value='2') 2010-2011 &nbsp; &nbsp; 
+                        |                     
+                        option(value='3') 2011-2012 &nbsp; &nbsp; 
+                        |                     
+                        option(value='4') 2012-2013 &nbsp; &nbsp; 
+                        |                     
+                        option(value='5') 2013-2014 &nbsp; &nbsp; 
+                        |                     
+                        option(value='6', selected='selected') Fall 2014 &nbsp; &nbsp; 
+                        |                     
+                        option(value='7') Spring 2015 &nbsp; &nbsp; 
+                        |                     
+                        option(value='8') Fall 2015 &nbsp; &nbsp; 
+              |           
+              .modal-footer
+                button.btn.btn-default(type='button', data-dismiss='modal') Close
+                |             
+                button.btn.btn-success(type='submit') Change Season
+            // /.modal-content
+          // /.modal-dialog
+        // /.modal

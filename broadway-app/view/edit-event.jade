@@ -1,0 +1,42 @@
+extends base.jade
+
+include eventform.mixin.jade
+
+block main-content
+  .container
+    .row
+      .col-lg-12
+        h1.page-header
+          | Edit {{Event}} 
+          small
+            | Hola David Tschida 
+            a.label.label-info(href='my-account.php#breakdown', rel='tooltip', title='', data-original-title='Total points') 58
+        ol.breadcrumb
+          li
+            a(href='dashboard.php') Dashboard 
+          li
+            a(href='event-admin.php') Manage Events 
+          li.active Edit {{Event}} 
+    .row
+      .col-lg-8
+        +eventform("foobar/doit", {}, "Edit Event", "fa-save")
+      .col-lg-4
+        .panel.panel-default
+          .panel-heading
+            h3.panel-title Event Overview 
+          .panel-body
+            strong La Yegros
+            br
+            div(style='margin-left: 15px;')
+              i.fa.fa-clock-o(rel='tooltip', title='', data-original-title='Post Time')
+              |  Sep 04, 2014 at 07:00 PM
+              br
+              i.fa.fa-sign-in(rel='tooltip', title='', data-original-title='Call Time')
+              |  Sep 12, 2014 at  06:45 PM 
+              br
+              i.fa.fa-sign-out(rel='tooltip', title='', data-original-title='End of Show')
+              |  Sep 12, 2014 at 02:00 PM
+              br
+              i.fa.fa-user(rel='tooltip', title='', data-original-title='User Coordinator')
+              a(href='mailto:abolten@purdue.edu')  abolten@purdue.edu 
+        img.img-thumbnail.hidden-md.hidden-sm.hidden-xs(src='//localhost:88/assets/images/convos.jpg', alt='Convocations.org')

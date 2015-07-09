@@ -1,145 +1,137 @@
 html(lang='en')
 head
   meta(charset='utf-8')
-    meta(name='viewport', content='width=device-width, initial-scale=1.0')
-    meta(name='description', content='Convocations Voice Network (CVN) was officially established in 1985 to support and promote the performing-arts events brought to campus by Purdue Convocations. Today, CVN has a membership of more than 300 students from various majors and backgrounds who participate in every performance of the season by ushering and selling merchandise and concessions for all Convocations events. All members ushering for a given show are invited to stay and see that show for free! CVN members may usher for as many or as few shows as they like.')
-    meta(name='author', content='kenny@digital-inflection.com')
-    title CVN Ushering Dashboard
-    // Bootstrap core CSS
-    link(href='css/bootstrap.css', rel='stylesheet')
-    // Add custom CSS here
-    link(href='css/modern-business.css', rel='stylesheet')
-    link(href='font-awesome/css/font-awesome.min.css', rel='stylesheet')
-    script(src='/assets/js/konami.js')
-    script.
-      var easter_egg = new Konami();
-      easter_egg.code = function(){
-        var s=document.createElement('script');
-        s.setAttribute('src','https://nthitz.github.io/turndownforwhatjs/tdfw.js');
-        document.body.appendChild(s);
-      };
-      easter_egg.load();
-  body(cz-shortcut-listen='true')
-    nav.navbar.navbar-inverse.navbar-fixed-top(role='navigation')
-      .container
-        .navbar-header
-          button.navbar-toggle(type='button', data-toggle='collapse', data-target='.navbar-ex1-collapse')
-            span.sr-only Toggle navigation
-            span.icon-bar
-            span.icon-bar
-            span.icon-bar
-          // You'll want to use a responsive image option so this logo looks good on devices - I recommend using something like retina.js (do a quick Google search for it and you'll find it)
-          a.navbar-brand(href='/')
-            img(src='http://www.purduecvn.com/wp-content/uploads/2014/03/logo_main.png')
-        // Collect the nav links, forms, and other content for toggling
-        .collapse.navbar-collapse.navbar-ex1-collapse
-          ul.nav.navbar-nav.navbar-right(style='margin-top: 10px;')
-            li
-              a(href='/')
-                i.fa.fa-arrow-left
-                |  Back to Public Site
-            li
-              a(href='register.php')
-                i.fa.fa-plus
-                |  Register
-            li
-              a(href='login.php')
-                i.fa.fa-sign-in
-                |  Log In
+  meta(name='viewport', content='width=device-width, initial-scale=1.0')
+  meta(name='description', content='Convocations Voice Network (CVN) was officially established in 1985 to support and promote the performing-arts events brought to campus by Purdue Convocations. Today, CVN has a membership of more than 300 students from various majors and backgrounds who participate in every performance of the season by ushering and selling merchandise and concessions for all Convocations events. All members ushering for a given show are invited to stay and see that show for free! CVN members may usher for as many or as few shows as they like.')
+  meta(name='author', content='kenny@digital-inflection.com')
+  title CVN Ushering Dashboard
+  // Bootstrap core CSS
+  link(href='//localhost:88/css/bootstrap.css', rel='stylesheet')
+  // Add custom CSS here
+  link(href='https://raw.githubusercontent.com/IronSummitMedia/startbootstrap-modern-business/gh-pages/css/modern-business.css', rel='stylesheet')
+  link(href='//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css', rel='stylesheet')
+  //script(src='/assets/js/konami.js')
+  //script.
+    var easter_egg = new Konami();
+    easter_egg.code = function(){
+      var s=document.createElement('script');
+      s.setAttribute('src','https://nthitz.github.io/turndownforwhatjs/tdfw.js');
+      document.body.appendChild(s);
+    };
+    easter_egg.load();
+body(cz-shortcut-listen='true')
+  nav.navbar.navbar-inverse.navbar-fixed-top(role='navigation')
+    .container
+      .navbar-header
+        button.navbar-toggle(type='button', data-toggle='collapse', data-target='.navbar-ex1-collapse')
+          span.sr-only Toggle navigation     
+          span.icon-bar
+          span.icon-bar
+          span.icon-bar
+        a.navbar-brand(href='dashboard.php')
+          img(src='http://www.purduecvn.com/wp-content/uploads/2014/03/logo_main.png')
+      // Collect the nav links, forms, and other content for toggling
+      .collapse.navbar-collapse.navbar-ex1-collapse
+        ul.nav.navbar-nav.navbar-right(style='margin-top: 10px;')
+          li.dropdown
+            a.dropdown-toggle(href='#', data-toggle='dropdown')
+              i.fa.fa-bookmark
+              |  Resources 
+              b.caret
+            ul.dropdown-menu
+              li
+                a(href='resources') Ushering Resources
+              li
+                a(href='dress-code') Dress Code
+          li.dropdown
+            a.dropdown-toggle(href='#', data-toggle='dropdown')
+              i.fa.fa-lock
+              |  Control Panel 
+              b.caret
+            ul.dropdown-menu
+              li
+                a(href='event-admin.php')
+                  i.fa.fa-calendar-o
+                  |  Events
+              li
+                a(href='attendance-admin.php')
+                  i.fa.fa-check-square-o
+                  |  Attendances
+              li
+                a(href='meeting-admin.php')
+                  i.fa.fa-check-square-o
+                  |  Meeting Attendances
+              li
+                a(href='season-admin.php')
+                  i.fa.fa-exchange
+                  |  Manage Seasons (A)
+              li
+                a(href='edit-email.php')
+                  i.fa.fa-envelope
+                  |  Emails
+              li
+                a(href='user-admin.php')
+                  i.fa.fa-users
+                  |  Users
+              li
+                a(href='export-data.php')
+                  i.fa.fa-bar-chart-o
+                  |  Data
+              li
+                a(href='site-admin.php')
+                  i.fa.fa-cog
+                  |  Site Settings (A)
+          li.dropdown
+            a.dropdown-toggle(href='#', data-toggle='dropdown')
+              i.fa.fa-user
+              |  {{David Tschida}} 
+              b.caret
+            ul.dropdown-menu
+              li
+                a(href='my-account.php')
+                  i.fa.fa-user
+                  |  Update Profile
+              li
+                a(href='my-account.php')
+                  i.fa.fa-list
+                  |  Point Total
+              li
+                a(href='my-account.php')
+                  i.fa.fa-clock-o
+                  |  Show History
+              li
+                a(href='logout.php')
+                  i.fa.fa-sign-out
+                  |  Logout
         // /.navbar-collapse
       // /.container
-    br  
-    br   
-    script(src='assets/js/datetimepicker_css.js')
-    .container
+  br
+  br   
+  script(src='//localhost:88/assets/js/datetimepicker_css.js')
+  block main-content
+  .container
+    hr
+    footer
       .row
         .col-lg-12
-          h1.page-header
-            | Dashboard 
-            small Guten Tag David Tschida 
-              a.label.label-info(href='my-account.php#breakdown', rel='tooltip', title='', data-original-title='Total points') 58
-          ol.breadcrumb
-            li Dashboard
-      // /.row
-      .row
-        .col-lg-12.hidden-xs
-          img.img-thumbnail.img-responsive(src='assets/images/banner.jpg')
-      // /.row
-      // Service Images
-      .row
-        .col-lg-12
-          h2.page-header Manage Your Events
-        .col-sm-4
-          h3
-            i.fa.fa-star-o
-            |  Available Events
           p
-            | Below is a list of events that you can request to usher. Simply click the 
-            span.label.label-success
-              i.fa.fa-plus-circle
-              |  Request Event
-            |  button and your name will be submitted to usher the event.
-          .panel.panel-default
-            .panel-heading
-              span.pull-right.badge(rel='tooltip', title='', data-original-title='Points offered for this event.') 12
-              h4.list-group-item-heading
-                small
-                  i.fa.fa-magic(rel='tooltip', title='', data-original-title='Show')
-                |  Fake Event
-              p
-                i.fa.fa-clock-o July 20, 2015, 9:59 pm 
-                button.btn.btn-sm.btn-default.pull-right(type='button', data-toggle='collapse', data-target='#desc0')
-                  i.fa.fa-eye Toggle Description
-                br
-                i.fa.fa-building-o Here
-              #desc0.collapse
-                blockquote
-                  | There
-              p
-                a.btn.btn-sm.btn-block.btn-success(href='actions/doRequest.php?id=392')
-                  i.fa.fa-plus-circle
-                  |  Request Event
-        .col-sm-4
-          h3
-            i.fa.fa-star-half-o
-            |  Requested Events
-          p
-            | Below is a list of events you&apos;ve requested to usher. A few days before the event, the Usher Coordinator will choose the ushers for a show based on point total.
-        .col-sm-4
-          h3
-            i.fa.fa-star
-            |  Scheduled Events
-          p
-            | Below is a list of events that you are scheduled to usher. You can cancel your attendance up to 48 hours before a show with no point deduction. 
-            a(href='http://www.purduecvn.com/resources/') Learn more about points
-            | .
-          h3
-            i.fa.fa-times
-            |  Cut Events
-          p
-            | Below is a list of events that you have been cut from. Being cut means you are on a waiting list in case otther ushers drop the show. 
-            a(href='http://www.purduecvn.com/resources/') Learn more about being cut
-            | .
-      // /.row
-    .container
-      hr
-      footer
-        .row
-          .col-lg-12
-            p
-              | Copyright &copy; 
-              a(href='http://purduecvn.com') Convocations Voice Network
-              | 2015 | 
-              a(href='http://goo.gl/forms/tVmrUh6Sni') Feedback form
-    // /.container
-    // JavaScript
-    script(src='js/jquery-1.10.2.js')
-    script(src='js/bootstrap.js')
-    script(src='js/modern-business.js')
-    script.
+            | Copyright &copy; 
+            a(href='http://purduecvn.com') Convocations Voice Network
+            | 2015 | 
+            a(href='http://goo.gl/forms/tVmrUh6Sni') Feedback form
+  // /.container
+  // JavaScript
+  script(src='//code.jquery.com/jquery-latest.min.js')
+  script(src='//code.jquery.com/ui/1.10.2/jquery-ui.js')
+  script(src='//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js')
+  script(src='//localhost:88/js/modern-business.js')
+  script.
+    $(document).ready(function() {
       $(function () {
-      $("[rel='tooltip']").tooltip();
+        $("[rel='tooltip']").tooltip();
       });
       $(function () {
-      $("[rel='popover']").popover();
+        $("[rel='popover']").popover();
       });
+    });
+    

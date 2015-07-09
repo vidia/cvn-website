@@ -1,0 +1,23 @@
+extends base.jade
+
+include eventform.mixin.jade
+
+block main-content
+    .container
+        .row
+            .col-lg-12
+                h1.page-header
+                  | Create an Event 
+                  small
+                    | Hola David Tschida 
+                    a.label.label-info(href='my-account.php#breakdown', rel='tooltip', title='', data-original-title='Total points') 58
+                ol.breadcrumb
+                  li
+                    a(href='dashboard.php') Dashboard 
+                  li
+                    a(href='event-admin.php') Manage Events 
+                  li.active Create an Event 
+        .row
+          .col-lg-12
+            +eventform("foobar/doit", {}, "Create Event", "fa-plus")
+            

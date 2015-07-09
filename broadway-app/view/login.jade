@@ -1,0 +1,33 @@
+extends ./base.jade 
+
+block main-content
+  .container
+    .row
+      .col-lg-12
+          h1.page-header
+            | Log In 
+            small Gain access to sign up for events and manage your profile
+          |           
+          ol.breadcrumb
+            li
+              a(href='/') Home
+            |             
+            li.active Log In
+    .row
+      .col-lg-12
+        form.form-horizontal(enctype='application/x-www-form-urlencoded', action='actions/doLogin.php', method='post')
+          .form-group
+            label.col-sm-2.control-label(for='username') Username
+            .col-sm-6
+              input#username.form-control(type='text', name='username', value='')
+          .form-group
+            label.col-sm-2.control-label(for='password') Password
+            .col-sm-6
+              input#password.form-control(type='password', name='password')
+          .form-group
+            label.col-sm-2.control-label(for='username')
+            .col-sm-6
+              button#login.btn.btn-success(type='submit', name='login') Log In
+              |  
+              small
+                a(style='cursor:pointer;', data-toggle='modal', data-target='#myModal') Forgot your password?

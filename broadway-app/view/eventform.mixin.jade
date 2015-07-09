@@ -1,0 +1,100 @@
+mixin eventform(action, event, confirmtext, buttonIcon)
+  form.form-horizontal(action=action, method='post')
+    .panel.panel-default
+      .panel-heading
+        h3.panel-title General Information
+      .panel-body
+        .form-group
+          label.col-sm-2.control-label(for='Name') Name
+          .col-sm-10
+            input#Name.form-control(placeholder='NEEDTOBREATHE Concert', type='text', name='Name')
+        .form-group
+          label.col-sm-2.control-label(for='Type') Type
+          .col-sm-10
+            select#Type.form-control(name='Type')
+              option(value='Show') Show
+              option(value='Meeting') Meeting
+        .form-group
+          label.col-sm-2.control-label(for='preshow') Exception
+          .col-sm-10
+            select#preshow.form-control(name='preshow')
+              option(value='0') No Exception
+              option(value='364') La Yegros
+              option(value='365') James Barrat Keynote
+              option(value='366') VeggieTales Live! #1
+              option(value='367') VeggieTales Live! #2
+              option(value='368') Pentatonix
+            .help-block
+              | An exception will not allow a user to sign up for both this show and the show you select above.
+        .form-group
+          label.col-sm-2.control-label(for='Location') Location
+          .col-sm-10
+            input#Location.form-control(placeholder='Loeb Playhouse', type='text', name='Location')
+        .form-group
+          label.col-sm-2.control-label(for='Description') Event Description
+          .col-sm-10
+            input#Description.form-control(placeholder='Some info about this event', type='text', rows='5', name='Description')
+        .form-group
+          label.col-sm-2.control-label(for='Point') Point Value
+          .col-sm-10
+            input#Point.form-control(placeholder='10', type='text', name='Point')
+    .panel.panel-default
+      .panel-heading
+        h3.panel-title Scheduling
+      .panel-body
+        .form-group
+          label.col-sm-2.control-label(for='UpTime') Post Time
+          .col-sm-10
+            .input-group
+              input#UpTime.form-control(placeholder='Use the calendar button to the right to select.', type='text', name='UpTime', maxlength='25', size='25')
+              span.input-group-addon
+                a(style='color:#000; cursor: pointer;', onclick="javascript:NewCssCal ('UpTime','MMddyyyy','arrow',true,'12')")
+                  i.fa.fa-calendar
+        .form-group
+          label.col-sm-2.control-label(for='UpTime') End Time
+          .col-sm-10
+            .input-group
+              input#EndTime.form-control(placeholder='Use the calendar button to the right to select.', type='text', name='EndTime', maxlength='25', size='25')
+              span.input-group-addon
+                a(style='color:#000; cursor: pointer;', onclick="javascript:NewCssCal ('EndTime','MMddyyyy','arrow',true,'12')")
+                  i.fa.fa-calendar
+        .form-group
+          label.col-sm-2.control-label(for='UpTime') Call Time
+          .col-sm-10
+            .input-group
+              input#CallTime.form-control(placeholder='Use the calendar button to the right to select.', type='text', name='CallTime', maxlength='25', size='25')
+              span.input-group-addon
+                a(style='color:#000; cursor: pointer;', onclick="javascript:NewCssCal ('CallTime','MMddyyyy','arrow',true,'12')")
+                  i.fa.fa-calendar
+    // /.panel
+    .panel.panel-default
+      .panel-heading
+        h3.panel-title Administration
+      .panel-body
+        .form-group
+          label.col-sm-2.control-label(for='UC') Coordinator
+          .col-sm-10
+            select#UC.form-control(name='UC')
+              option(value='cvn2@purdue.edu') cvn2@purdue.edu
+              option(value='cbourdon@purdue.edu') cbourdon@purdue.edu
+              option(value='aeeddy@purdue.edu') aeeddy@purdue.edu
+              option(value='sgokhal@purdue.edu') sgokhal@purdue.edu
+              option(value='purduekenny@gmail.com') purduekenny@gmail.com
+              option(value='balesb@purdue.edu') balesb@purdue.edu
+        .form-group
+          label.col-sm-2.control-label(for='season') Season
+          .col-sm-10
+            select#season.form-control(name='season')
+              option(value='2') 2010-2011 &nbsp; &nbsp;
+              option(value='3') 2011-2012 &nbsp; &nbsp;
+              option(value='4') 2012-2013 &nbsp; &nbsp;
+              option(value='5') 2013-2014 &nbsp; &nbsp;
+              option(value='6', selected='selected') Fall 2014 &nbsp; &nbsp;
+              option(value='7') Spring 2015 &nbsp; &nbsp;
+              option(value='8') Fall 2015 &nbsp; &nbsp;
+    // /.panel
+    .form-group
+      .col-sm-12
+        button#submit-event.btn.btn-success.btn-block(type='submit', name='submit-eventl')
+          i(class="fa #{buttonIcon}")
+          =' '+confirmtext

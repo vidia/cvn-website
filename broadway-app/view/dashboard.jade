@@ -1,0 +1,70 @@
+extends ./user-base.jade
+
+block content
+  .container
+    .row   
+      .col-lg-12
+        h2.page-header Manage Your Events
+      .col-sm-4
+        h3
+          i.fa.fa-star-o
+          |  Available Events
+        p
+          | Below is a list of events that you can request to usher. Simply click the 
+          span.label.label-success
+            i.fa.fa-plus-circle
+            |  Request Event
+          |  button and your name will be submitted to usher the event.
+        .panel.panel-default
+          .panel-heading
+            span.pull-right.badge(rel='tooltip', title='', data-original-title='Points offered for this event.') 12
+            |                         
+            h4.list-group-item-heading
+              small
+                i.fa.fa-magic(rel='tooltip', title='', data-original-title='Show')
+              |  Fake Event
+          |                       
+          .panel-body
+            p
+              i.fa.fa-clock-o
+              |  July 20, 2015, 9:59 pm                          
+              button.btn.btn-sm.btn-default.pull-right(type='button', data-toggle='collapse', data-target='#desc0')
+                i.fa.fa-eye
+                |  Toggle Description
+              |                           
+              br
+              |                         
+              i.fa.fa-building-o
+              |  Here
+            |                         
+            #desc0.in(style='height: auto;')
+              blockquote
+                | There
+            |                         
+            p
+              a.btn.btn-sm.btn-block.btn-success(href='actions/doRequest.php?id=392')
+                i.fa.fa-plus-circle
+                |  Request Event
+
+      .col-sm-4
+        h3
+          i.fa.fa-star-half-o
+          |  Requested Events
+        p
+          | Below is a list of events you&apos;ve requested to usher. A few days before the event, the Usher Coordinator will choose the ushers for a show based on point total.
+      .col-sm-4
+        h3
+          i.fa.fa-star
+          |  Scheduled Events
+        p
+          | Below is a list of events that you are scheduled to usher. You can cancel your attendance up to 48 hours before a show with no point deduction. 
+          a(href='http://www.purduecvn.com/resources/') Learn more about points
+          | .
+        |           
+        h3
+          i.fa.fa-times
+          |  Cut Events
+        p
+          | Below is a list of events that you have been cut from. Being cut means you are on a waiting list in case otther ushers drop the show. 
+          a(href='http://www.purduecvn.com/resources/') Learn more about being cut
+          | .
