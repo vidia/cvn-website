@@ -7,8 +7,8 @@ exports.attach = function(options) {
 
     var server = app.http = express();
     server.use(server.router);
-
-    //TODO: Add error handling here. 
+    server.set("view engine", "jade");
+    //TODO: Add error handling here.
     //Maybe add a component to look up error codes
 
 
@@ -18,4 +18,4 @@ exports.attach = function(options) {
 
 exports.init = function(done) {
     done();
-};
+}
