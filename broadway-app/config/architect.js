@@ -1,5 +1,12 @@
 module.exports = [
 {
-	packagePath: "../model"
+	packagePath: "../model",
+    main: "index.js",
+    plugin: {
+        provides: ["model"]
+    }
+},
+{
+    packagePath: "../http"
 }
 ]

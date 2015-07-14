@@ -6,8 +6,8 @@ var config = architect.loadConfig(path.join(__dirname, "/config/architect"));
 architect.createApp(config, function (err, app) {
 	if (err) {
 		console.log("Error!", err);
-		throw err; 
-		return; 
+		throw err;
+		return;
 	}
-	console.log("Success"); 
+	console.log("Success");
 });
