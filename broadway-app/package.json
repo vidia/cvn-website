@@ -3,18 +3,19 @@
   "description": "Purdue CVN User Management Website",
   "author": "David Tschida <dmtschida1@gmail.com>",
   "repository": {
-    "type":"git", 
-    "url":"https://github.com/vidia/cvn-website"
+    "type": "git",
+    "url": "https://github.com/vidia/cvn-website"
   },
   "bugs": {
-      "url": "https://github.com/vidia/cvn-website/issues"
+    "url": "https://github.com/vidia/cvn-website/issues"
   },
   "main": "./app.js",
-  "license":"GPL v3.0",
+  "license": "GPL v3.0",
   "dependencies": {
     "architect": "^0.1.11",
     "broadway": "*",
     "express": "*",
+    "jade": "^1.11.0",
     "mysql": "^2.7.0",
     "path": "^0.11.14",
     "sequelize": "*"

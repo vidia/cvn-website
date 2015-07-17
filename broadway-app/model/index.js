@@ -20,9 +20,7 @@ module.exports = function setup(options, imports, register) {
 
     debugger;
     register(null, {
-        models: {
-            sequelize : sequelize,
-            attendance : Attendance
-        }
+        user: User, 
+        attendance: Attendance
     })
 };

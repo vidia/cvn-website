@@ -1,10 +1,11 @@
 {
-    "name": "models",
+    "name": "auth",
     "version": "0.0.1",
     "main": "index.js",
     "private": true,
 
     "plugin": {
-        "provides": ["user", "attendance"]
+        "provides": ["auth"], 
+        "consumes":["model"]
     }
 }

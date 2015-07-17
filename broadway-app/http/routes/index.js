@@ -4,5 +4,5 @@ module.exports = function(app) {
 		throw new Error("Express was not attached as 'http'");
 	}
 
-	require("user")(app);
+	require("./user")(app);
 }
