@@ -16,7 +16,9 @@ module.exports = function setup(options, imports, register) {
 
     //routes/index.js runs a require against all routes
     require('./routes')(app);
+
     server.listen(3000, function(err) {
     	console.log("Listening on port 3000"); 
     }); 
 }
+
