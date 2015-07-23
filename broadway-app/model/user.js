@@ -1,3 +1,5 @@
+var bcrypt = require('bcryptjs');
+
 module.exports = function(sequalize, DataTypes) {
 	var User = sequalize.define("User", {
 		uuid: {
@@ -7,9 +9,9 @@ module.exports = function(sequalize, DataTypes) {
 		},
 		name: {
 			type: DataTypes.STRING,
+			allowNull: false, 
 			validate: {
-				notEmpty: true, 
-				notNull: true
+				notEmpty: true
 			}
 		},
 		preferedname: {
@@ -19,27 +21,43 @@ module.exports = function(sequalize, DataTypes) {
 		},
 		email: {
 			type: DataTypes.STRING, 
+			allowNull: false, 
 			validate: {
 				isEmail: {
 					msg: "Must be a valid email."
 				}, 
-				notNull: true, 
 				notEmpty: true
 			}
 		}, 
-		passwordHash: {
+		password: {
 			type: DataTypes.STRING, 
+			allowNull: false,
 			validate: {
-				notNull: true, 
 				notEmpty: true
+			}, 
+			set: function(value) {
+				console.log("Hashing password"); 
+				var salt = bcrypt.genSaltSync(10);
+	            var hash = bcrypt.hashSync(value, salt);
+
+	            this.setDataValue('password', hash);
+	            this.setDataValue("passwordsalt", salt); 
 			}
 		}, 
+		passwordsalt: {
+			type: DataTypes.STRING,
+			allowNull: false,
+			validate: {
+				notEmpty: true
+			}
+		},
 		accountType: {
 			type: DataTypes.ENUM(
 				"UC", 
 				"Usher", 
 				"Admin"
-			)
+			), 
+			defaultValue: "Usher"
 		}, 
 
 
@@ -97,6 +115,16 @@ module.exports = function(sequalize, DataTypes) {
 		favorite_show: {
 			type: DataTypes.STRING
 		}
+	},
+	{
+	  classMethods: {
+	    method1: function(){ return 'smth' }
+	  },
+	  instanceMethods: {
+	    checkPassword: function() { 
+	    	return 'foo'; 
+	    }
+	  }
 	}) //end define
 
 	//user associations

@@ -5,7 +5,7 @@
     "private": true,
 
     "plugin": {
-        "provides": ["auth"], 
-        "consumes":["model"]
+        "provides": ["auth", "passport"], 
+        "consumes":["user"]
     }
 }

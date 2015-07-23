@@ -5,6 +5,7 @@
     "private": true,
 
     "plugin": {
+    	"consumes": ["logger"],
         "provides": ["user", "attendance"]
     }
 }

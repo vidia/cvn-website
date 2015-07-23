@@ -13,24 +13,20 @@ block main-content
             li.active Register an Account
     .row
       .col-lg-8
-        form.form-horizontal(enctype='application/x-www-form-urlencoded', action='actions/doRegister.php', method='post')
+        form.form-horizontal(action='/signup', method='post')
           .panel.panel-default
             .panel-heading
               h3.panel-title General Information
             .panel-body
               .form-group
-                label.col-sm-2.control-label(for='firstname') First Name
+                label.col-sm-2.control-label(for='name') Full Name
                 .col-sm-10
-                  input#firstname.form-control(placeholder='John', type='text', name='firstname', value='')
-              .form-group
-                label.col-sm-2.control-label(for='lastname') Last Name
-                .col-sm-10
-                  input#lastname.form-control(placeholder='Doe', type='text', name='lastname', value='')
+                  input#name.form-control(placeholder='John', type='text', name='name', value='')
               .form-group
                 label.col-sm-2.control-label(for='email') Email
                 .col-sm-10
                   input#email.form-control(placeholder='jdoe@purdue.edu', type='email', name='email', value='')
-              .form-group
+              //.form-group
                 label.col-sm-2.control-label(for='confirm-email') Confirm Email
                 .col-sm-10
                   input#confirm-email.form-control(placeholder='jdoe@purdue.edu', type='email', name='confirm-email', value='')
@@ -44,10 +40,10 @@ block main-content
                 .col-sm-10
                   input#password.form-control(type='password', name='password')
               .form-group
-                label.col-sm-2.control-label(for='confirm-password') Confirm Password
+                label.col-sm-2.control-label(for='confirmpassword') Confirm Password
                 .col-sm-10
-                  input#confirm-password.form-control(type='password', name='confirm-password')
-          .panel.panel-default
+                  input#confirm-password.form-control(type='password', name='confirmpassword')
+          //.panel.panel-default
             .panel-heading
               h3.panel-title College Information
             .panel-body
@@ -82,7 +78,7 @@ block main-content
                     option(value='School of Veterinary Medicine') School of Veterinary Medicine
                     option(value='Other') Other
           // /.panel
-          .panel.panel-default
+          //.panel.panel-default
             .panel-heading
               h3.panel-title Volunteer Opportunities
             .panel-body

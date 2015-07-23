@@ -1,13 +1,39 @@
-module.exports = function(app)
+module.exports = function(app, imports)
 {
-    app.http.get("/login", function(req, res){
+    app.get("/login", function(req, res){
         res.render("login", {});
     });
 
-    app.http.get("/signup", function(req, res){
-    	res.render("signup", {}); 
+    app.post('/login', 
+        imports.passport.authenticate('local', 
+            { successRedirect: '/dashboard',
+              failureRedirect: '/login' }));
+
+    //SIGNUP 
+
+    app.get("/signup", function(req, res){
+    	res.render("register", {}); 
     })
 
-    app.http.post('/login', passport.authenticate('local', { successRedirect: '/dashboard',
-                                                    failureRedirect: '/login' }));
+    app.post("/signup", function(req, res) {
+        if(req.body.password === req.body.confirmpassword) {
+            imports.logger.info("Passwords match")
+            var user = imports.user.build({
+                email: req.body.email, 
+                password: req.body.password,
+                name: req.body.name
+            })
+            .save()
+            .then(function(anotherTask) {
+                imports.logger.info("User saved")
+                res.redirect("../login")
+            }).catch(function(error) {
+                imports.logger.error("User failed to save", error)
+
+            })
+        } else {
+            imports.logger.debug("Passwords did not match")
+            res.render("register", {message: "Passwords do not match"}); 
+        }
+    });
 };

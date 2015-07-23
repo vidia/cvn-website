@@ -15,7 +15,7 @@ block main-content
             li.active Log In
     .row
       .col-lg-12
-        form.form-horizontal(enctype='application/x-www-form-urlencoded', action='actions/doLogin.php', method='post')
+        form.form-horizontal(action='/login', method='post')
           .form-group
             label.col-sm-2.control-label(for='username') Username
             .col-sm-6
@@ -25,7 +25,7 @@ block main-content
             .col-sm-6
               input#password.form-control(type='password', name='password')
           .form-group
-            label.col-sm-2.control-label(for='username')
+            label.col-sm-2.control-label(for='login')
             .col-sm-6
               button#login.btn.btn-success(type='submit', name='login') Log In
               |  

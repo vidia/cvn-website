@@ -1,8 +1,14 @@
 module.exports = [
 {
-	packagePath: "../http"
+	packagePath: "../logger"
 },
 {
     packagePath: "../model"
+},
+{
+	packagePath: "../auth"
+},
+{
+	packagePath: "../http"
 }
 ]
