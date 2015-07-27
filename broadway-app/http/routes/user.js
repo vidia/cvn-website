@@ -4,10 +4,17 @@ module.exports = function(app, imports)
         res.render("login", {});
     });
 
-    app.post('/login', 
-        imports.passport.authenticate('local', 
-            { successRedirect: '/dashboard',
-              failureRedirect: '/login' }));
+    app.post('/login', function(req, res, next){
+        imports.logger.info("Logging in a user"); 
+        next(); 
+    }, 
+    imports.passport.authenticate('local', 
+        { 
+            successRedirect: '/dashboard',
+            failureRedirect: '/login' 
+        })
+    );
+    
 
     //SIGNUP 
 

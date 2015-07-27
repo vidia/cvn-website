@@ -121,8 +121,8 @@ module.exports = function(sequalize, DataTypes) {
 	    method1: function(){ return 'smth' }
 	  },
 	  instanceMethods: {
-	    checkPassword: function() { 
-	    	return 'foo'; 
+	    checkPassword: function(password) { 
+	    	return bcrypt.compareSync(password, this.password);
 	    }
 	  }
 	}) //end define
