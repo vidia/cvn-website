@@ -5,7 +5,6 @@ var session = require("express-session");
 module.exports = function setup(options, imports, register) {
 	imports.logger.info("Loading auth plugin.")
 
-
 	// Serialize sessions
 	passport.serializeUser(function(user, done) {
 	  done(null, user.uuid);
@@ -45,7 +44,7 @@ module.exports = function setup(options, imports, register) {
 					secret: "sdfgbsthnrtbtsdfhthaerhnrdsfhbtranet5",
 					saveUninitialized: true,
                 	resave: true
-                }));
+                })); 
 				app.use(passport.initialize())
 				app.use(passport.session())
 			}
