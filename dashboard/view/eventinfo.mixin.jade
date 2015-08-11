@@ -1,0 +1,25 @@
+mixin eventinfo(event)
+  .panel.panel-default
+    .panel-heading
+      span.pull-right.badge(rel='tooltip', title='', data-original-title='Points offered for this event.') 10
+      h4.list-group-item-heading
+        small
+          i.fa.fa-magic(rel='tooltip', title='', data-original-title='Show')
+        = event.name
+    .panel-body
+      p
+        i.fa.fa-clock-o
+        = event.showtime                         
+        button.btn.btn-sm.btn-default.pull-right(type='button', data-toggle='collapse', data-target='#desc0')
+          i.fa.fa-eye
+          |  Toggle Description
+        br
+        i.fa.fa-building-o
+        = event.location
+      #desc0.collapse
+        blockquote
+          = event.description
+      p
+        a.btn.btn-sm.btn-block.btn-success(href='/events/#{event.uuid}/request')
+          i.fa.fa-plus-circle
+          |  Request Event

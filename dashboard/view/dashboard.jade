@@ -1,5 +1,7 @@
 extends ./user-base.jade
 
+include eventinfo.mixin.jade
+
 block content
   .container
     .row   
@@ -15,37 +17,8 @@ block content
             i.fa.fa-plus-circle
             |  Request Event
           |  button and your name will be submitted to usher the event.
-        .panel.panel-default
-          .panel-heading
-            span.pull-right.badge(rel='tooltip', title='', data-original-title='Points offered for this event.') 12
-            |                         
-            h4.list-group-item-heading
-              small
-                i.fa.fa-magic(rel='tooltip', title='', data-original-title='Show')
-              |  Fake Event
-          |                       
-          .panel-body
-            p
-              i.fa.fa-clock-o
-              |  July 20, 2015, 9:59 pm                          
-              button.btn.btn-sm.btn-default.pull-right(type='button', data-toggle='collapse', data-target='#desc0')
-                i.fa.fa-eye
-                |  Toggle Description
-              |                           
-              br
-              |                         
-              i.fa.fa-building-o
-              |  Here
-            |                         
-            #desc0.in(style='height: auto;')
-              blockquote
-                | There
-            |                         
-            p
-              a.btn.btn-sm.btn-block.btn-success(href='actions/doRequest.php?id=392')
-                i.fa.fa-plus-circle
-                |  Request Event
-
+        each event in events
+          +eventinfo(event)
       .col-sm-4
         h3
           i.fa.fa-star-half-o

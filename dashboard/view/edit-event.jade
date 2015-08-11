@@ -19,7 +19,7 @@ block main-content
           li.active Edit {{Event}} 
     .row
       .col-lg-8
-        +eventform("foobar/doit", {}, "Edit Event", "fa-save")
+        +eventform("/events/" + event.uuid, event, "Edit Event", "fa-save")
       .col-lg-4
         .panel.panel-default
           .panel-heading
@@ -29,13 +29,13 @@ block main-content
             br
             div(style='margin-left: 15px;')
               i.fa.fa-clock-o(rel='tooltip', title='', data-original-title='Post Time')
-              |  Sep 04, 2014 at 07:00 PM
+              = event.posttime
               br
               i.fa.fa-sign-in(rel='tooltip', title='', data-original-title='Call Time')
-              |  Sep 12, 2014 at  06:45 PM 
+              = event.calltime 
               br
               i.fa.fa-sign-out(rel='tooltip', title='', data-original-title='End of Show')
-              |  Sep 12, 2014 at 02:00 PM
+              = event.showtime
               br
               i.fa.fa-user(rel='tooltip', title='', data-original-title='User Coordinator')
               a(href='mailto:abolten@purdue.edu')  abolten@purdue.edu 

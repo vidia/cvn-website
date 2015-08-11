@@ -1,137 +1,130 @@
 html(lang='en')
-head
-  meta(charset='utf-8')
-  meta(name='viewport', content='width=device-width, initial-scale=1.0')
-  meta(name='description', content='Convocations Voice Network (CVN) was officially established in 1985 to support and promote the performing-arts events brought to campus by Purdue Convocations. Today, CVN has a membership of more than 300 students from various majors and backgrounds who participate in every performance of the season by ushering and selling merchandise and concessions for all Convocations events. All members ushering for a given show are invited to stay and see that show for free! CVN members may usher for as many or as few shows as they like.')
-  meta(name='author', content='kenny@digital-inflection.com')
-  title CVN Ushering Dashboard
-  // Bootstrap core CSS
-  link(href='/dist/css/bootstrap.css', rel='stylesheet')
-  // Add custom CSS here
-  link(href='/dist/css/modern-business.css', rel='stylesheet')
-  link(href='//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css', rel='stylesheet')
-  //script(src='/assets/js/konami.js')
-  //script.
-    var easter_egg = new Konami();
-    easter_egg.code = function(){
-      var s=document.createElement('script');
-      s.setAttribute('src','https://nthitz.github.io/turndownforwhatjs/tdfw.js');
-      document.body.appendChild(s);
-    };
-    easter_egg.load();
-body(cz-shortcut-listen='true')
-  nav.navbar.navbar-inverse.navbar-fixed-top(role='navigation')
-    .container
-      .navbar-header
-        button.navbar-toggle(type='button', data-toggle='collapse', data-target='.navbar-ex1-collapse')
-          span.sr-only Toggle navigation     
-          span.icon-bar
-          span.icon-bar
-          span.icon-bar
-        a.navbar-brand(href='dashboard.php')
-          img(src='//placekitten.com/50/100')
-      // Collect the nav links, forms, and other content for toggling
-      .collapse.navbar-collapse.navbar-ex1-collapse
-        ul.nav.navbar-nav.navbar-right(style='margin-top: 10px;')
-          li.dropdown
-            a.dropdown-toggle(href='#', data-toggle='dropdown')
-              i.fa.fa-bookmark
-              |  Resources 
-              b.caret
-            ul.dropdown-menu
-              li
-                a(href='resources') Ushering Resources
-              li
-                a(href='dress-code') Dress Code
-          li.dropdown
-            a.dropdown-toggle(href='#', data-toggle='dropdown')
-              i.fa.fa-lock
-              |  Control Panel 
-              b.caret
-            ul.dropdown-menu
-              li
-                a(href='event-admin.php')
-                  i.fa.fa-calendar-o
-                  |  Events
-              li
-                a(href='attendance-admin.php')
-                  i.fa.fa-check-square-o
-                  |  Attendances
-              li
-                a(href='meeting-admin.php')
-                  i.fa.fa-check-square-o
-                  |  Meeting Attendances
-              li
-                a(href='season-admin.php')
-                  i.fa.fa-exchange
-                  |  Manage Seasons (A)
-              li
-                a(href='edit-email.php')
-                  i.fa.fa-envelope
-                  |  Emails
-              li
-                a(href='user-admin.php')
-                  i.fa.fa-users
-                  |  Users
-              li
-                a(href='export-data.php')
-                  i.fa.fa-bar-chart-o
-                  |  Data
-              li
-                a(href='site-admin.php')
-                  i.fa.fa-cog
-                  |  Site Settings (A)
-          li.dropdown
-            a.dropdown-toggle(href='#', data-toggle='dropdown')
-              i.fa.fa-user
-              |  {{David Tschida}} 
-              b.caret
-            ul.dropdown-menu
-              li
-                a(href='my-account.php')
-                  i.fa.fa-user
-                  |  Update Profile
-              li
-                a(href='my-account.php')
-                  i.fa.fa-list
-                  |  Point Total
-              li
-                a(href='my-account.php')
-                  i.fa.fa-clock-o
-                  |  Show History
-              li
-                a(href='logout.php')
-                  i.fa.fa-sign-out
-                  |  Logout
-        // /.navbar-collapse
-      // /.container
-  br
-  br   
-  script(src='/dist/js/datetimepicker_css.js')
-  block main-content
-  .container
-    hr
-    footer
-      .row
-        .col-lg-12
-          p
-            | Copyright &copy; 
-            a(href='/') Convocations Voice Network
-            | 2015 | 
-            a(href='http://goo.gl/forms/tVmrUh6Sni') Feedback form
-  // /.container
-  // JavaScript
-  script(src='//code.jquery.com/jquery-latest.min.js')
-  script(src='//code.jquery.com/ui/1.10.2/jquery-ui.js')
-  script(src='//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js')
-  script(src='/dist/js/modern-business.js')
-  script.
-    $(document).ready(function() {
-      $(function () {
-        $("[rel='tooltip']").tooltip();
-      });
-      $(function () {
-        $("[rel='popover']").popover();
-      });
-    });
+  head
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    meta(name='description', content='Convocations Voice Network (CVN) was officially established in 1985 to support and promote the performing-arts events brought to campus by Purdue Convocations. Today, CVN has a membership of more than 300 students from various majors and backgrounds who participate in every performance of the season by ushering and selling merchandise and concessions for all Convocations events. All members ushering for a given show are invited to stay and see that show for free! CVN members may usher for as many or as few shows as they like.')
+    meta(name='author', content='kenny@digital-inflection.com')
+    title CVN Ushering Dashboard
+    // Bootstrap core CSS
+    //link(href='/dist/css/bootstrap.css', rel='stylesheet')
+    // Add custom CSS here
+    link(href='/dist/css/modern-business.css', rel='stylesheet')
+    link(href='//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css', rel='stylesheet')
     
+    script(type='text/javascript', src='/bower_components/jquery/dist/jquery.min.js')
+    script(type='text/javascript', src='/bower_components/moment/min/moment.min.js')
+    script(type='text/javascript', src='/bower_components/bootstrap/dist/js/bootstrap.min.js')
+    script(src='//code.jquery.com/ui/1.10.2/jquery-ui.js')
+    script(type='text/javascript', src='//cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/e8bddc60e73c1ec2475f827be36e1957af72e2ea/src/js/bootstrap-datetimepicker.js')
+    link(rel='stylesheet', href='/bower_components/bootstrap/dist/css/bootstrap.min.css')
+    link(rel='stylesheet', href='/bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css')
+
+  body(cz-shortcut-listen='true')
+    nav.navbar.navbar-inverse.navbar-fixed-top(role='navigation')
+      .container
+        .navbar-header
+          button.navbar-toggle(type='button', data-toggle='collapse', data-target='.navbar-ex1-collapse')
+            span.sr-only Toggle navigation     
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+          a.navbar-brand(href='dashboard.php')
+            img(src='//placekitten.com/50/100')
+        // Collect the nav links, forms, and other content for toggling
+        .collapse.navbar-collapse.navbar-ex1-collapse
+          ul.nav.navbar-nav.navbar-right(style='margin-top: 10px;')
+            li.dropdown
+              a.dropdown-toggle(href='#', data-toggle='dropdown')
+                i.fa.fa-bookmark
+                |  Resources 
+                b.caret
+              ul.dropdown-menu
+                li
+                  a(href='resources') Ushering Resources
+                li
+                  a(href='dress-code') Dress Code
+            li.dropdown
+              a.dropdown-toggle(href='#', data-toggle='dropdown')
+                i.fa.fa-lock
+                |  Control Panel 
+                b.caret
+              ul.dropdown-menu
+                li
+                  a(href='event-admin.php')
+                    i.fa.fa-calendar-o
+                    |  Events
+                li
+                  a(href='attendance-admin.php')
+                    i.fa.fa-check-square-o
+                    |  Attendances
+                li
+                  a(href='meeting-admin.php')
+                    i.fa.fa-check-square-o
+                    |  Meeting Attendances
+                li
+                  a(href='season-admin.php')
+                    i.fa.fa-exchange
+                    |  Manage Seasons (A)
+                li
+                  a(href='edit-email.php')
+                    i.fa.fa-envelope
+                    |  Emails
+                li
+                  a(href='user-admin.php')
+                    i.fa.fa-users
+                    |  Users
+                li
+                  a(href='export-data.php')
+                    i.fa.fa-bar-chart-o
+                    |  Data
+                li
+                  a(href='site-admin.php')
+                    i.fa.fa-cog
+                    |  Site Settings (A)
+            li.dropdown
+              a.dropdown-toggle(href='#', data-toggle='dropdown')
+                i.fa.fa-user
+                |  {{David Tschida}} 
+                b.caret
+              ul.dropdown-menu
+                li
+                  a(href='my-account.php')
+                    i.fa.fa-user
+                    |  Update Profile
+                li
+                  a(href='my-account.php')
+                    i.fa.fa-list
+                    |  Point Total
+                li
+                  a(href='my-account.php')
+                    i.fa.fa-clock-o
+                    |  Show History
+                li
+                  a(href='logout.php')
+                    i.fa.fa-sign-out
+                    |  Logout
+          // /.navbar-collapse
+        // /.container
+    br
+    br   
+    block main-content
+    .container
+      hr
+      footer
+        .row
+          .col-lg-12
+            p
+              | Copyright &copy; 
+              a(href='/') Convocations Voice Network
+              | 2015 | 
+              a(href='http://goo.gl/forms/tVmrUh6Sni') Feedback form
+    // /.container
+    // JavaScript
+    script(src='/dist/js/modern-business.js')
+    script.
+      $(document).ready(function() {
+        $(function () {
+          $("[rel='tooltip']").tooltip();
+        });
+      });
+      

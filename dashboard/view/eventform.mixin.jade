@@ -5,16 +5,16 @@ mixin eventform(action, event, confirmtext, buttonIcon)
         h3.panel-title General Information
       .panel-body
         .form-group
-          label.col-sm-2.control-label(for='Name') Name
+          label.col-sm-2.control-label(for='name') Name
           .col-sm-10
-            input#Name.form-control(placeholder='NEEDTOBREATHE Concert', type='text', name='Name')
-        .form-group
+            input#name.form-control(placeholder='Pentatonix Concert', type='text', name='name', value=event.name)
+        //.form-group
           label.col-sm-2.control-label(for='Type') Type
           .col-sm-10
             select#Type.form-control(name='Type')
               option(value='Show') Show
               option(value='Meeting') Meeting
-        .form-group
+        //.form-group
           label.col-sm-2.control-label(for='preshow') Exception
           .col-sm-10
             select#preshow.form-control(name='preshow')
@@ -27,14 +27,14 @@ mixin eventform(action, event, confirmtext, buttonIcon)
             .help-block
               | An exception will not allow a user to sign up for both this show and the show you select above.
         .form-group
-          label.col-sm-2.control-label(for='Location') Location
+          label.col-sm-2.control-label(for='location') Location
           .col-sm-10
-            input#Location.form-control(placeholder='Loeb Playhouse', type='text', name='Location')
+            input#location.form-control(placeholder='Loeb Playhouse', type='text', name='location', value=event.location)
         .form-group
-          label.col-sm-2.control-label(for='Description') Event Description
+          label.col-sm-2.control-label(for='description') Event Description
           .col-sm-10
-            input#Description.form-control(placeholder='Some info about this event', type='text', rows='5', name='Description')
-        .form-group
+            input#description.form-control(placeholder='Some info about this event', type='text', rows='5', name='description', value=event.description)
+        //.form-group
           label.col-sm-2.control-label(for='Point') Point Value
           .col-sm-10
             input#Point.form-control(placeholder='10', type='text', name='Point')
@@ -43,31 +43,35 @@ mixin eventform(action, event, confirmtext, buttonIcon)
         h3.panel-title Scheduling
       .panel-body
         .form-group
-          label.col-sm-2.control-label(for='UpTime') Post Time
+          label.col-sm-2.control-label(for='posttime') Post Time
           .col-sm-10
-            .input-group
-              input#UpTime.form-control(placeholder='Use the calendar button to the right to select.', type='text', name='UpTime', maxlength='25', size='25')
+            .datetimepicker.input-group.date
+              input#posttime.datepicker.form-control(placeholder='Use the calendar button to the right to select.', type='text', name='posttime', size='25', value=event.posttime)
               span.input-group-addon
-                a(style='color:#000; cursor: pointer;', onclick="javascript:NewCssCal ('UpTime','MMddyyyy','arrow',true,'12')")
+                a(style='color:#000; cursor: pointer;')
                   i.fa.fa-calendar
         .form-group
-          label.col-sm-2.control-label(for='UpTime') End Time
+          label.col-sm-2.control-label(for='showtime') Show Time
           .col-sm-10
-            .input-group
-              input#EndTime.form-control(placeholder='Use the calendar button to the right to select.', type='text', name='EndTime', maxlength='25', size='25')
+            .datetimepicker.input-group.date
+              input#showtime.datepicker.form-control(placeholder='Use the calendar button to the right to select.', type='text', name='showtime', size='25', value=event.showtime)
               span.input-group-addon
-                a(style='color:#000; cursor: pointer;', onclick="javascript:NewCssCal ('EndTime','MMddyyyy','arrow',true,'12')")
+                a(style='color:#000; cursor: pointer;')
                   i.fa.fa-calendar
         .form-group
-          label.col-sm-2.control-label(for='UpTime') Call Time
+          label.col-sm-2.control-label(for='calltime') Call Time
           .col-sm-10
-            .input-group
-              input#CallTime.form-control(placeholder='Use the calendar button to the right to select.', type='text', name='CallTime', maxlength='25', size='25')
+            .datetimepicker.input-group.date
+              input#calltime.datepicker.form-control(placeholder='Use the calendar button to the right to select.', type='text', name='calltime', size='25', value=event.calltime)
               span.input-group-addon
-                a(style='color:#000; cursor: pointer;', onclick="javascript:NewCssCal ('CallTime','MMddyyyy','arrow',true,'12')")
+                a(style='color:#000; cursor: pointer;')
                   i.fa.fa-calendar
+        script.
+          $(function () {
+              $('.datetimepicker').datetimepicker();
+            });
     // /.panel
-    .panel.panel-default
+    //.panel.panel-default
       .panel-heading
         h3.panel-title Administration
       .panel-body
@@ -95,6 +99,6 @@ mixin eventform(action, event, confirmtext, buttonIcon)
     // /.panel
     .form-group
       .col-sm-12
-        button#submit-event.btn.btn-success.btn-block(type='submit', name='submit-eventl')
+        button#submit-event.btn.btn-success.btn-block(type='submit', name='submit')
           i(class="fa #{buttonIcon}")
           =' '+confirmtext
