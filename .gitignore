@@ -93,3 +93,5 @@ com_crashlytics_export_strings.xml
 # Ignores for node and phpstorm
 node_modules/
 .idea/
+
+bower_components/
