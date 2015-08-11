@@ -1,0 +1,27 @@
+{
+  "name": "cvn-dashboard",
+  "version": "0.0.1",
+  "homepage": "https://github.com/vidia/cvn-website",
+  "authors": [
+    "David Tschida <dmtschida1@gmail.com>"
+  ],
+  "description": "Website for managing ushers for the CVN.",
+  "main": "app.js",
+  "keywords": [
+    "cvn",
+    "volunteer",
+    "usher"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.3.5",
+    "eonasdan-bootstrap-datetimepicker": "~4.15.35"
+  }
+}
