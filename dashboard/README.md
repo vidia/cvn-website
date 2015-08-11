@@ -11,3 +11,9 @@ Contributions
 ===
 
 Fork the project and create a PR. 
+
+
+Instalation
+====
+database url should be stored in an environment variable named CVNDATABASE
+Note: use the ip of the DB specifically. Windows seems to not resolve localhost when there is no network connection. 
