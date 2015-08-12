@@ -6,6 +6,6 @@
 
     "plugin": {
     	"consumes": ["logger"],
-        "provides": ["user", "attendance"]
+        "provides": ["user", "attendance", "event"]
     }
 }

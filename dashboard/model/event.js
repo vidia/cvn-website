@@ -1,5 +1,5 @@
 module.exports = function(sequalize, DataTypes) {
-	var Show = sequalize.define("Show", {
+	var Event = sequalize.define("Event", {
 		uuid: {
 			type: DataTypes.UUID,
 			defaultValue: DataTypes.UUIDV1,
@@ -7,11 +7,14 @@ module.exports = function(sequalize, DataTypes) {
 		},
 		name: {
 			type: DataTypes.STRING,
+			allowNull: false,
 			validate: {
-				notEmpty: true, 
-				notNull: true
+				notEmpty: true
 			}
 		}, 
+		location: {
+			type: DataTypes.STRING
+		},
 		showtime: {
 			type: DataTypes.DATE
 		}, 
@@ -21,12 +24,12 @@ module.exports = function(sequalize, DataTypes) {
 		posttime: {
 			type: DataTypes.DATE
 		}, 
-		summary: {
+		description: {
 			type: DataTypes.TEXT
 		}
 	});
 
 	//Define associations
 
-	return Show;
+	return Event;
 }

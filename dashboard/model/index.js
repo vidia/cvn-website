@@ -7,20 +7,28 @@ module.exports = function setup(options, imports, register) {
     var sequelize = new Sequelize(require("../config/database")());
 
     var Attendance = sequelize.import(__dirname + "/attendance");
-    //var AttendanceType = sequelize.import(__dirname + "/attendanceType");
+    var AttendanceType = sequelize.import(__dirname + "/attendanceType");
     //var Message = sequelize.import(__dirname + "/message");
     //var Season = sequelize.import(__dirname + "/season");
     //var Setting = sequelize.import(__dirname + "/setting");
-    //var Show = sequelize.import(__dirname + "/show");
+    var Event = sequelize.import(__dirname + "/event");
     var User = sequelize.import(__dirname + "/user");
 
 
-    User.sync().then(function () {
+    //Attendance.belongsTo(AttendanceType); 
+
+    User.belongsToMany(Event, { as: "attendances", through: Attendance })
+    Event.belongsToMany(User, { as: "attendances", through: Attendance })
+
+
+
+    sequelize.sync({force:false}).then(function () {
         imports.logger.info("Database connected"); 
         // Table created
         register(null, {
             user: User, 
-            attendance: Attendance
+            attendance: Attendance, 
+            event: Event
         })
     });
 
