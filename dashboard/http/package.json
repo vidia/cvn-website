@@ -6,6 +6,6 @@
 
     "plugin": {
         "provides": ["http"], 
-        "consumes": ["auth", "passport", "user", "logger"]
+        "consumes": ["auth", "passport", "user", "logger", "event"]
     }
 }

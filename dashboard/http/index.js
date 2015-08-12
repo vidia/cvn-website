@@ -2,7 +2,9 @@ var express = require('express');
 var path = require("path")
 var bodyParser = require("body-parser"); 
 var morgan = require('morgan')
-
+var session = require("express-session"); 
+var cookieParser = require("cookie-parser"); 
+var flash    = require('connect-flash');
 
 module.exports = function setup(options, imports, register) {
     imports.logger.info("Loading http plugin"); 
@@ -16,8 +18,18 @@ module.exports = function setup(options, imports, register) {
         extended: true
     }));
     server.use(bodyParser.json());
+    server.use(session({
+        secret: "sdfgbsthnrtbtsdfhthaerhnrdsfhbtranet5",
+        saveUninitialized: true,
+        resave: true
+    })); 
+    server.use(flash()); 
+
+
     //statics 
     server.use("/dist", express.static(path.join(__dirname, "public"))); 
+    server.use("/bower_components", express.static(path.join(__dirname, "../bower_components"))); 
+
     //TODO: Add error handling here.
     //Maybe add a component to look up error codes
 

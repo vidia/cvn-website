@@ -7,13 +7,10 @@ module.exports = function(app, imports)
     app.post('/login', function(req, res, next){
         imports.logger.info("Logging in a user"); 
         next(); 
-    }, 
-    imports.passport.authenticate('local', 
-        { 
-            successRedirect: '/dashboard',
-            failureRedirect: '/login' 
-        })
-    );
+    }, imports.passport.authenticate('local', {
+        successRedirect: "/dashboard", 
+        failureRedirect: "/login"
+    }));
     
 
     //SIGNUP 
@@ -36,11 +33,15 @@ module.exports = function(app, imports)
                 res.redirect("../login")
             }).catch(function(error) {
                 imports.logger.error("User failed to save", error)
-
             })
         } else {
             imports.logger.debug("Passwords did not match")
             res.render("register", {message: "Passwords do not match"}); 
         }
     });
+
+    app.get("/logout", imports.auth.authenticate, function(req, res) {
+        req.logout();
+        res.redirect("login"); 
+    })
 };

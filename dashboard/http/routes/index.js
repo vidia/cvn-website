@@ -5,4 +5,7 @@ module.exports = function(app, imports) {
 	}
 
 	require("./user")(app.http, imports);
+	require("./dashboard")(app.http, imports);
+	require("./event")(app.http, imports);
+
 }
