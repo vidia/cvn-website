@@ -46,17 +46,6 @@ body {
   border: 1px solid #cccccc;
 }
 
-/* Half Page Height Carousel Customization */
-.carousel {
-  height: 50%;
-}
-
-.item,
-.active,
-.carousel-inner {
-  height: 100%;
-}
-
 .fill {
   width: 100%;
   height: 100%;
@@ -118,13 +107,4 @@ body {
 /* Footer Styles */
 footer {
   margin: 50px 0;
-}
-
-/* Responsive Styles */
-@media (max-width: 767px) {
-
-.carousel {
-  height: 70%; /* increases the carousel height so it looks good on phones */
-}
-
 }
