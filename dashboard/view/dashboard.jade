@@ -25,6 +25,8 @@ block content
           |  Requested Events
         p
           | Below is a list of events you&apos;ve requested to usher. A few days before the event, the Usher Coordinator will choose the ushers for a show based on point total.
+        each attendance in requested
+          +eventinfo(attendance)
       .col-sm-4
         h3
           i.fa.fa-star
