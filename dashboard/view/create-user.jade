@@ -1,0 +1,86 @@
+extends ./user-base.jade 
+
+block main-content
+  .container
+    .row
+      .col-lg-8
+        form.form-horizontal(action='/users/new', method='post')
+          .panel.panel-default
+            .panel-heading
+              h3.panel-title General Information
+            .panel-body
+              .form-group
+                label.col-sm-2.control-label(for='name') Full Name
+                .col-sm-10
+                  input#name.form-control(placeholder='John', type='text', name='name', value='')
+              .form-group
+                label.col-sm-2.control-label(for='email') Email
+                .col-sm-10
+                  input#email.form-control(placeholder='jdoe@purdue.edu', type='email', name='email', value='')
+              //.form-group
+                label.col-sm-2.control-label(for='confirm-email') Confirm Email
+                .col-sm-10
+                  input#confirm-email.form-control(placeholder='jdoe@purdue.edu', type='email', name='confirm-email', value='')
+          // /.panel
+          .panel.panel-default
+            .panel-heading
+              h3.panel-title Account Information
+            .panel-body
+              .form-group
+                label.col-sm-2.control-label(for='password') Password
+                .col-sm-10
+                  input#password.form-control(type='password', name='password')
+              .form-group
+                label.col-sm-2.control-label(for='confirmpassword') Confirm Password
+                .col-sm-10
+                  input#confirm-password.form-control(type='password', name='confirmpassword')
+          //.panel.panel-default
+            .panel-heading
+              h3.panel-title College Information
+            .panel-body
+              .form-group
+                label.col-sm-2.control-label(for='year') Class
+                .col-sm-10
+                  select#year.form-control(name='year')
+                    option(value='Freshman') Freshman
+                    option(value='Sophomore') Sophomore
+                    option(value='Junior') Junior
+                    option(value='Senior') Senior
+                    option(value='Graduate Student') Graduate Student
+                    option(value='Staff') Staff
+              .form-group
+                label.col-sm-2.control-label(for='grad') Graduation Year
+                .col-sm-10
+                  input#grad.form-control(type='text', name='grad', maxlength='4', value='')
+                  .help-block Example: 2016
+              .form-group
+                label.col-sm-2.control-label(for='college') College
+                .col-sm-10
+                  select#college.form-control(name='college')
+                    option(value='College of Agriculture') College of Agriculture
+                    option(value='College of Consumer and Family Sciences') College of Consumer and Family Sciences
+                    option(value='College of Education') College of Education
+                    option(value='College of Engineering') College of Engineering
+                    option(value='College of Liberal Arts') College of Liberal Arts
+                    option(value='Krannert School of Management') Krannert School of Management
+                    option(value='College of Pharmacy, Nursing, and Health Sciences') College of Pharmacy, Nursing, and Health Sciences
+                    option(value='College of Science') College of Science
+                    option(value='College of Technology') College of Technology
+                    option(value='School of Veterinary Medicine') School of Veterinary Medicine
+                    option(value='Other') Other
+          // /.panel
+          //.panel.panel-default
+            .panel-heading
+              h3.panel-title Volunteer Opportunities
+            .panel-body
+              .form-group
+                label.col-sm-2.control-label(for='confirm-password') Options
+                .col-sm-10
+                  .checkbox
+                    label
+                      input#marketing(type='checkbox', value='1', name='marketing')
+                      |  Yes, I am interested in being contacted to help with marketing events in exchange for show tickets
+          .form-group
+            .col-sm-12
+              button#create.btn.btn-success.btn-block(type='submit', name='create') Save
+      

@@ -1,0 +1,55 @@
+extends ./user-base.jade
+
+block content 
+  .row
+    .col-lg-12
+      a.btn.btn-success.pull-right(href='/users/new')
+        i.fa.fa-plus
+        |  Add User
+      .pull-right(style='width: 210px; margin-right: 10px;')
+        form(action='/users', method='post', role='form')
+          .form-group
+            label.sr-only(for='search') Search Users
+            .input-group
+              span.twitter-typeahead(style='position: relative; display: inline-block; direction: ltr;')
+                input.form-control.tt-hint(type='text', rel='typeahead', disabled='', autocomplete='off', spellcheck='false', style='position: absolute; top: 0px; left: 0px; border-color: transparent; box-shadow: none; background: none 0% 0% / auto repeat scroll padding-box border-box rgb(255, 255, 255);')
+                input#search.form-control.tt-input(type='text', rel='typeahead', name='terms', placeholder='Search Users', autocomplete='off', spellcheck='false', dir='auto', style='position: relative; vertical-align: top; background-color: transparent;')
+                pre(aria-hidden='true', style="position: absolute; visibility: hidden; white-space: pre; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 14px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: 0px; text-indent: 0px; text-rendering: auto; text-transform: none;").
+                span.tt-dropdown-menu(style='position: absolute; top: 100%; left: 0px; z-index: 100; display: none; right: auto;')
+                  .tt-dataset-users
+              span.input-group-btn
+                button.btn.btn-default(type='submit')
+                  i.fa.fa-search
+                  span.sr-only Search
+            // /input-group
+      br.clearfix
+      br.clearfix
+      table.table.table-bordered.table-hover.table-striped(style='vertical-align:center')
+        thead
+          tr
+            th(style='width:3%;')
+            th Name
+            th Email
+            th Points
+            th(colspan='2', style='text-align: center;') Admin
+        tbody
+          each user in users
+            tr
+              td(style='vertical-align:center')
+                i.fa.fa-star-o(rel='tooltip', title='', data-original-title='Usher Coordinator')
+              td
+                strong 1
+                | . 
+                a(href='edit-user.php?ID=866')
+                = user.name
+              td
+                a(href='mailto:#{user.email}')
+                = user.email
+              td(style='text-align:center;') 
+                strong TBD
+              td(style='text-align:center;')
+                a.btn.btn-default(rel='tooltip', href='/users/#{user.uuid}/edit', title='', data-original-title='Edit #{user.name}')
+                  i.fa.fa-edit
+              td(style='text-align:center;')
+                a.btn.btn-danger(href='/users/#{user.uuid}/delete', style='cursor: pointer;', rel='tooltip', title='', data-original-title='Delete Test4 AAA_4Four')
+                  i.fa.fa-trash-o

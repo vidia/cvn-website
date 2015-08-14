@@ -1,0 +1,57 @@
+extends ./user-base.jade
+
+mixin ushertr(user)
+  tr
+    td(width='3%', style='text-align: center;')
+      input.checkbox(type='checkbox', checked='checked', name='present[]', value='#{user.uuid}')
+    td=user.name
+    td=user.email
+    td Insert Points
+
+mixin evententry(index, event)
+  .panel.panel-default
+    .panel-heading
+      h4.panel-title
+        a(data-toggle='collapse', data-parent='#accordion2', href='#collapse#{index}')=event.name
+    .panel-collapse.collapse(id='collapse#{index}')
+      .panel-body
+        a.btn.btn-default.pull-right(href='/attendance/#{event.uuid}/export')
+          i.fa.fa-download
+          |  Download Event Attendance
+        //a.btn.btn-success.pull-right(style='display:none;', rel='364')
+          i.fa.fa-plus
+          |  Add extra
+        br.clearfix
+        br.clearfix
+        form.form-horizontal(action='/attendance/#{event.uuid}/confirm', method='post')
+          table.table.table-striped.table-bordered.table-hover
+            tbody
+              tr
+                th  
+                th Usher
+                th Email
+                th Points
+              tr
+                td(colspan='4') Confirmed Ushers
+              each attendance in attendances[event.uuid]
+                +ushertr(attendance)
+              tr
+                td(colspan='4') Cut Ushers
+              each attendance in attendances[event.uuid]
+                +ushertr(attendance)
+          input(type='hidden', value='#{event.uuid}', name='EventID')
+          br
+          input.btn.btn-lg.btn-success.btn-block(type='submit', name='submit-event-attendance', value='Submit Attendance')
+        
+block content
+  .container
+    .row   
+      .col-lg-12
+        .panel.panel-primary
+          .panel-heading
+            h3.panel-title Events to Confirm Attendance
+          .panel-body
+            - for (var i = 0; i < events.length; ++i) {
+              +evententry(i, events[i])
+            - }
+

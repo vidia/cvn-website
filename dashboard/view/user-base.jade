@@ -7,15 +7,9 @@ block main-content
           h1.page-header
             | Dashboard 
             small
-              | Guten Tag David Tschida 
-              a.label.label-info(href='my-account.php#breakdown', rel='tooltip', title='', data-original-title='Total points') 58
+              | Hello #{currentuser.name} 
+              a.label.label-info(href='/user/#{currentuser.uuid}', rel='tooltip', title='', data-original-title='Total points') 58
           ol.breadcrumb
             li Dashboard
-      // /.row
-      .row
-        .col-lg-12.hidden-xs
-          img.img-thumbnail.img-responsive(src='//localhost:88/assets/images/banner.jpg')
-      // /.row
-      // Service Images
       .row
         block content

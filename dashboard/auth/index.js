@@ -50,8 +50,10 @@ module.exports = function setup(options, imports, register) {
 			}, 
 			authenticate: function(req, res, next) {
 				// if user is authenticated in the session, carry on 
-			    if (req.isAuthenticated())
+			    if (req.isAuthenticated()) {
+			    	res.locals.currentuser = req.user; 
 			        return next();
+			    }
 
 			    // if they aren't redirect them to the home page
 			    res.redirect('/login'); //TODO: add a param to redirect better to attempted page. 

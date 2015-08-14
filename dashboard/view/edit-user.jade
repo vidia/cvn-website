@@ -1,0 +1,176 @@
+extends ./user-base
+
+block content
+	.col-lg-6
+		form.form-horizontal(action='/users/#{user.uuid}/edit', method='post')
+			.panel.panel-default
+				.panel-heading
+					h3.panel-title General Information
+				.panel-body
+					.form-group
+						label.col-sm-2.control-label(for='Name') Username
+						.col-sm-10
+							input#username.form-control(type='text', name='username', disabled='disabled', value='#{user.email}')
+					.form-group
+						label.col-sm-2.control-label(for='Name') Points
+						.col-sm-10
+							input#points.form-control(type='text', name='points', disabled='disabled', value='XX')
+					.form-group
+						label.col-sm-2.control-label(for='Name') Name
+						.col-sm-10
+							input#name.form-control(type='text', name='name', value=user.name)
+					//.form-group
+						label.col-sm-2.control-label(for='Name') Last Name
+						.col-sm-10
+							input#lastname.form-control(type='text', name='lastname', value='Adair')
+			// /.panel
+			.panel.panel-default
+				.panel-heading
+					h3.panel-title Account Information
+				.panel-body
+					.form-group
+						label.col-sm-2.control-label(for='Name') Email
+						.col-sm-10
+							input#email.form-control(type='text', name='email', value='#{user.email}')
+					#passNotice(style='display: none;')
+						.alert.alert-info
+							| A password is not required to modify the user's profile. If you do not want their password changed, you may leave these fields blank.
+					.form-group
+						label.col-sm-2.control-label(for='Name') Password
+						.col-sm-10
+							input#password.form-control(onfocus="showthetable('passNotice')", type='password', name='password')
+					.form-group
+						label.col-sm-2.control-label(for='Name') Confirm Password
+						.col-sm-10
+							input#confirm-password.form-control(type='password', name='confirm-password')
+					.form-group
+						label.col-sm-2.control-label(for='Name') Account Type
+						.col-sm-10
+							select#AcctType.form-control(name='AcctType')
+								option(selected='selected', value='USHER')    USHER 
+								option(value='UC')    UC 
+								option(value='ADMIN')    ADMIN 
+			// /.panel
+			.panel.panel-default
+				.panel-heading
+					h3.panel-title Account Information
+				.panel-body
+					.form-group
+						label.col-sm-2.control-label(for='Name') Class
+						.col-sm-10
+							select#year.form-control(name='year')
+								option(selected='selected', value='Freshman') Freshman 
+								option(value='Sophomore') Sophomore 
+								option(value='Junior') Junior 
+								option(value='Senior') Senior 
+								option(value='Graduate Student') Graduate Student 
+								option(value='Staff') Staff 
+					.form-group
+						label.col-sm-2.control-label(for='Name') Graduation Year
+						.col-sm-10
+							input#grad.form-control(type='text', name='grad', maxlength='4', value='2018')
+					.form-group
+						label.col-sm-2.control-label(for='Name') College
+						.col-sm-10
+							select#college.form-control(name='college')
+								option(value='College of Agriculture') College of Agriculture
+								option(value='College of Consumer and Family Sciences') College of Consumer and Family Sciences
+								option(value='College of Education') College of Education
+								option(selected='selected', value='College of Engineering') College of Engineering
+								option(value='College of Liberal Arts') College of Liberal Arts
+								option(value='Krannert School of Management') Krannert School of Management
+								option(value='College of Pharmacy, Nursing, and Health Sciences') College of Pharmacy, Nursing, and Health Sciences
+								option(value='College of Science') College of Science
+								option(value='College of Technology') College of Technology
+								option(value='School of Veterinary Medicine') School of Veterinary Medicine
+								option(value='Other') Other
+					.form-group
+						label.col-sm-2.control-label(for='Name') Marketing
+						.col-sm-10
+							input#marketing(type='checkbox', name='marketing', checked='checked')
+							|  User is interested in being contacted to help with marketing events in exchange for show tickets
+			// /.panel
+			.form-group
+				.col-sm-12
+					input#edit-user.btn.btn-success.btn-block(type='submit', value='Edit User', name='edit-user')
+					input#ID(type='hidden', name='ID', value='1318')
+	.col-lg-6
+		.panel.panel-default
+			.panel-heading
+				h3.panel-title Point Breakdown
+			.panel-body
+				.list-group
+					li.list-group-item
+						h4.list-group-item-heading
+							| Total Points: 
+							span(style='color: #009900;') 25
+					li.list-group-item
+						h4.list-group-item-heading Point Breakdown
+						p.list-group-item-text
+							strong 25
+							|    = 1(
+							strong
+								acronym(rel='tooltip', style='cursor: pointer;', title='', data-original-title='Points for Shows Ushered') 10
+							| ) + 15(
+							strong
+								acronym(rel='tooltip', style='cursor: pointer;', title='', data-original-title='Shows Cut') 1
+							| )- 45(
+							strong
+								acronym(rel='tooltip', style='cursor: pointer;', title='', data-original-title='Shows Signed Up & Skipped') 0
+							| ) - 15(
+							strong
+								acronym(rel='tooltip', style='cursor: pointer;', title='', data-original-title='Shows Cancelled Within 48 Hours of Call Time') 0
+							| ) - 15(
+							strong
+								acronym(rel='tooltip', style='cursor: pointer;', title='', data-original-title='Arrived More Than 15 Minutes Late') 0
+							| )+ 5(
+							strong
+								acronym(rel='tooltip', style='cursor: pointer;', title='', data-original-title='Arrived Less Than 15 Minutes Late') 0
+							| )+ 5(
+							strong
+								acronym(rel='tooltip', style='cursor: pointer;', title='', data-original-title='Dress Code Violation') 0
+							| )+ 7(
+							strong
+								acronym(rel='tooltip', style='cursor: pointer;', title='', data-original-title='Social Events/Meetings') 0
+							| )+ 
+							strong
+								acronym(rel='tooltip', style='cursor: pointer;', title='', data-original-title='Years Involved') 0
+							| + 
+							strong
+								acronym(rel='tooltip', style='cursor: pointer;', title='', data-original-title='Previous Semester Rollover') 0
+		// /.panel
+		.panel.panel-default
+			.panel-heading
+				h3.panel-title Kristen Adair's Attendance Administration
+			.panel-body
+				a.btn.btn-success.pull-right(href='add-attendance.php?ID=1318') Add Attendance
+				br.clear
+				br.clear
+				table.table.table-bordered.table-striped.table-hover
+					tbody
+						tr.head
+							td Event Name
+							td Status
+							td(colspan='2') Modify
+						tr
+							td Pentatonix
+							td(valign='top')
+								select#RequestStatus.form-control(name='RequestStatus')
+									option(value='Requested')    Requested  
+									option(selected='selected', value='Present')    Present  
+									option(value='Cancelled')    Cancelled  
+									option(value='Cut')    Cut  
+									option(value='No-Show')    No-Show  
+									option(value='Dress-Violation')    Dress-Violation  
+									option(value='Late')    Late  
+									option(value='Tardy')    Tardy  
+									option(value='Late-Add-Cancel')    Late-Add-Cancel  
+							td(width='15%', valign='middle')
+								input.btn.btn-default(type='submit', value='Update')
+							td(width='15%')
+								a.btn.btn-danger(onclick='return Verify_Delete()', href='actions/doEditAttendance.php?action=delete&user=1318&ID=10701') Delete
+						input(type='hidden', name='action', value='edit')
+						input(type='hidden', name='user', value='1318')
+						input(type='hidden', name='attendanceID', value='10701')
+						form.form-horizontal(action='actions/doEditAttendance.php', method='post')
+		// /.panel
