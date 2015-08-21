@@ -31,7 +31,8 @@ module.exports = function(app, imports)
             if(!event) {
                 res.sendStatus(404); 
             } else {
-                res._event = event; 
+                res._event = event; //TODO: Remove, compat. 
+                res.locals._event = event; 
                 next(); 
             }
         })

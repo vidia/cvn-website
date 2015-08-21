@@ -109,7 +109,6 @@ module.exports = function(app, imports)
 
     //TODO: Ugh not DRY. Make a middleware. 
     app.post("/profile/edit", imports.auth.authenticate, function(req, res) {
-
         for(var attr in req.body) {
             if(req.body[attr])
                 res.locals.currentuser[attr] = req.body[attr];

@@ -19,14 +19,24 @@ block content
           |  button and your name will be submitted to usher the event.
         each event in events
           +eventinfo(event)
+            form(action='/attendance', method='post')
+              input#user.form-control(type='hidden', name='user', value=currentuser.uuid)
+              input#event.form-control(type='hidden', name='event', value=event.uuid)
+              input#type.form-control(type='hidden', name='type', value=requestType.uuid)
+              input#request-event.btn.btn-sm.btn-success.btn-block(type='submit', value='Request Event', name='request-event')
       .col-sm-4
         h3
           i.fa.fa-star-half-o
           |  Requested Events
         p
-          | Below is a list of events you&apos;ve requested to usher. A few days before the event, the Usher Coordinator will choose the ushers for a show based on point total.
+          | Below is a list of events you've requested to usher. A few days before the event, the Usher Coordinator will choose the ushers for a show based on point total.
         each attendance in requested
           +eventinfo(attendance)
+            form(action='/attendance', method='post')
+              input#user.form-control(type='hidden', name='user', value=currentuser.uuid)
+              input#event.form-control(type='hidden', name='event', value=attendance.uuid)
+              input#type.form-control(type='hidden', name='type', value=cancelType.uuid)
+              input#cancel-event.btn.btn-sm.btn-danger.btn-block(type='submit', value='Cancel Event', name='cancel-event')
       .col-sm-4
         h3
           i.fa.fa-star

@@ -3,7 +3,7 @@ extends ./user-base.jade
 mixin ushertr(user)
   tr
     td(width='3%', style='text-align: center;')
-      input.checkbox(type='checkbox', checked='checked', name='present[]', value='#{user.uuid}')
+      input.checkbox(type='checkbox', checked='checked', name='confirmed[]', value='#{user.uuid}')
     td=user.name
     td=user.email
     td Insert Points

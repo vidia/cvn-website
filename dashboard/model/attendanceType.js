@@ -7,20 +7,16 @@ module.exports = function(sequalize, DataTypes) {
 		},
 		name: {
 			type: DataTypes.STRING,
+			allowNull: false,
 			validate: {
-				notEmpty: true, 
-				notNull: true
+				notEmpty: true
 			}
 		}, 
 		pointValue: {
 			type: DataTypes.INTEGER
 		}, 
 		isEnabled: {
-			type: DataTypes.BOOLEAN, 
-			defaultValue: 1, 
-			validate: {
-				isIn: [[0, 1]]
-			}
+			type: DataTypes.BOOLEAN
 		}
 	});
 

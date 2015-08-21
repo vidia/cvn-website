@@ -10,16 +10,14 @@ mixin eventinfo(event)
       p
         i.fa.fa-clock-o
         = event.showtime                         
-        button.btn.btn-sm.btn-default.pull-right(type='button', data-toggle='collapse', data-target='#desc0')
+        button.btn.btn-sm.btn-default.pull-right(type='button', data-toggle='collapse', data-target='#desc#{event.uuid}')
           i.fa.fa-eye
           |  Toggle Description
         br
         i.fa.fa-building-o
         = event.location
-      #desc0.collapse
+      div.collapse(id="desc#{event.uuid}")
         blockquote
           = event.description
       p
-        a.btn.btn-sm.btn-block.btn-success(href='/events/#{event.uuid}/request')
-          i.fa.fa-plus-circle
-          |  Request Event
+        block

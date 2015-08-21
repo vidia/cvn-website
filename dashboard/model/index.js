@@ -14,13 +14,9 @@ module.exports = function setup(options, imports, register) {
     var Event = sequelize.import(__dirname + "/event");
     var User = sequelize.import(__dirname + "/user");
 
-
-    //Attendance.belongsTo(AttendanceType); 
-
+    AttendanceType.hasOne(Attendance);
     User.belongsToMany(Event, { as: "attendances", through: Attendance })
     Event.belongsToMany(User, { as: "attendances", through: Attendance })
-
-
 
     sequelize.sync({force:false}).then(function () {
         imports.logger.info("Database connected"); 
@@ -28,9 +24,8 @@ module.exports = function setup(options, imports, register) {
         register(null, {
             user: User, 
             attendance: Attendance, 
+            attendanceType: AttendanceType,
             event: Event
         })
     });
-
-    
 };

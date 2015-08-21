@@ -1,0 +1,44 @@
+extends ./user-base.jade
+
+block content 
+    .col-lg-12
+      form.form-horizontal(action='/attendance/type/create', method='post')
+        .panel.panel-default
+          .panel-heading
+            h3.panel-title Create new type
+          .panel-body
+            .form-group
+              label.col-sm-2.control-label(for='Name') Name
+              .col-sm-10
+                input#username.form-control(type='text', name='name')
+            .form-group
+              label.col-sm-2.control-label(for='Name') Points
+              .col-sm-10
+                input#points.form-control(type='text', name='pointValue')
+            input.btn.btn-lg.btn-success.btn-block(type='submit', name='submit-attendance-type', value='Add Attendance Type')
+      table.table.table-bordered.table-hover(style='vertical-align:center')
+        thead
+          tr
+            th Title
+            th Points
+            th Archived?
+            th Admin
+        tbody
+          tr
+            td Requested
+            td 0
+            td n/a
+            td(style='text-align:center;')
+                a.btn.btn-danger.disabled(style='cursor: pointer;', rel='tooltip', title='', data-original-title='Archive')
+                  i.fa.fa-trash-o
+          each type in types
+            tr
+              td 
+                = type.name
+              td 
+                = type.pointValue
+              td 
+                = !type.isEnabled
+              td(style='text-align:center;')
+                a.btn.btn-danger(href='/attendance/type/#{type.uuid}/archive', style='cursor: pointer;', rel='tooltip', title='', data-original-title='Archive')
+                  i.fa.fa-trash-o
