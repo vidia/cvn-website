@@ -123,6 +123,9 @@ module.exports = function(sequalize, DataTypes) {
 	  instanceMethods: {
 	    checkPassword: function(password) { 
 	    	return bcrypt.compareSync(password, this.password);
+	    }, 
+	    getPoints: function(callback) {
+	    	callback(23); //Make queries to get a users points here. 
 	    }
 	  }
 	}) //end define

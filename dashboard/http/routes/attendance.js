@@ -3,13 +3,18 @@ var async = require("async");
 module.exports = function(app, imports)
 {
     app.get("/attendance", imports.auth.authenticate, function(req, res){
-        imports.event.findAll({include:[imports.user]}).then(function(events) {
+        imports.event.findAll().then(function(events) {
             var eventAttendances = {};
 
             async.each(events, function(event, callback) {
-                event.getAttendances().then(function(attendances) {
+                imports.attendance.findAll({
+                    where: {
+                        EventUuid : event.uuid
+                    }, 
+                    include: [imports.user]
+                }).then(function(attendances) {
                     eventAttendances[event.uuid] = attendances; 
-                    callback();
+                    callback(); 
                 })
             }, function(err) {
                 res.render("pull-attendance", {events: events, attendances: eventAttendances})
@@ -61,8 +66,8 @@ module.exports = function(app, imports)
             }
         }).then(function(attendance, created) {
             attendance = attendance[0]; 
-            if (attendance.AttendanceTypeUuid != req.body.type) {
-                attendance.AttendanceTypeUuid = req.body.type;
+            attendance.AttendanceTypeUuid = req.body.type;
+            if(attendance.changed("AttendanceTypeUuid")) {
                 attendance.save()
                 .then(function() {
                     imports.logger.info("Saved or updated an attendance")

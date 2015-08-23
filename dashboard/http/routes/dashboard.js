@@ -21,7 +21,8 @@ module.exports = function(app, imports)
 					    		},
 					    		defaults: {
 					    			points: 0, 
-					    			isEnabled: 1
+					    			isEnabled: 1, 
+					    			includeShow: 1
 					    		}
 				    		}).then(function(requestType) {
 				    			requestType = requestType[0]; 
@@ -38,7 +39,7 @@ module.exports = function(app, imports)
 					    		defaults: {
 					    			points: 0, 
 					    			isEnabled: 1
-					    		}
+								}
 				    		}).then(function(cancelType, created) {
 				    			res.locals.cancelType = cancelType[0];
 				    			cb(null); 
