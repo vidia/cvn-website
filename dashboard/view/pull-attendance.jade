@@ -1,9 +1,13 @@
 extends ./user-base.jade
 
-mixin ushertr(user)
+mixin ushertr(user, checked)
   tr
     td(width='3%', style='text-align: center;')
-      input.checkbox(type='checkbox', checked='checked', name='confirmed[]', value='#{user.uuid}')
+      if checked
+        input.checkbox(type='checkbox', checked="checked", name='confirmed[]', value='#{user.uuid}')
+      else 
+        input.checkbox(type='checkbox', name='confirmed[]', value='#{user.uuid}')
+      input(type="hidden", name='users[]', value='#{user.uuid}')
     td=user.name
     td=user.email
     td Insert Points
@@ -23,7 +27,7 @@ mixin evententry(index, event)
           |  Add extra
         br.clearfix
         br.clearfix
-        form.form-horizontal(action='/attendance/#{event.uuid}/confirm', method='post')
+        form.form-horizontal(action='/attendance/confirm', method='post')
           table.table.table-striped.table-bordered.table-hover
             tbody
               tr
@@ -34,12 +38,19 @@ mixin evententry(index, event)
               tr
                 td(colspan='4') Confirmed Ushers
               each attendance in attendances[event.uuid]
-                +ushertr(attendance)
+                if attendance.AttendanceType.name === "Confirmed"
+                  +ushertr(attendance.User, true)
+              tr
+                td(colspan='4') Requested Ushers
+              each attendance in attendances[event.uuid]
+                if attendance.AttendanceType.name === "Requested"
+                  +ushertr(attendance.User)
               tr
                 td(colspan='4') Cut Ushers
               each attendance in attendances[event.uuid]
-                +ushertr(attendance)
-          input(type='hidden', value='#{event.uuid}', name='EventID')
+                if attendance.AttendanceType.name === "Cut"
+                  +ushertr(attendance.User)
+          input(type='hidden', value='#{event.uuid}', name='event')
           br
           input.btn.btn-lg.btn-success.btn-block(type='submit', name='submit-event-attendance', value='Submit Attendance')
         
