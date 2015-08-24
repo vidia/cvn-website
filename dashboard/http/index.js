@@ -6,6 +6,8 @@ var session = require("express-session");
 var cookieParser = require("cookie-parser"); 
 var flash    = require('connect-flash');
 
+var MySQLStore = require('connect-mysql')(session);
+
 module.exports = function setup(options, imports, register) {
     imports.logger.info("Loading http plugin"); 
     var app = this;
@@ -21,7 +23,8 @@ module.exports = function setup(options, imports, register) {
     server.use(session({
         secret: "sdfgbsthnrtbtsdfhthaerhnrdsfhbtranet5",
         saveUninitialized: true,
-        resave: true
+        resave: true, 
+        store: new MySQLStore({config: require("../config/database")()})
     })); 
     server.use(flash()); 
 
