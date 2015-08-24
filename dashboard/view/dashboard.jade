@@ -17,11 +17,11 @@ block content
             i.fa.fa-plus-circle
             |  Request Event
           |  button and your name will be submitted to usher the event.
-        each event in events
-          +eventinfo(event)
+        each available in availableEvents
+          +eventinfo(available.Event)
             form(action='/attendance', method='post')
               input#user.form-control(type='hidden', name='user', value=currentuser.uuid)
-              input#event.form-control(type='hidden', name='event', value=event.uuid)
+              input#event.form-control(type='hidden', name='event', value=available.Event.uuid)
               input#type.form-control(type='hidden', name='type', value=requestType.uuid)
               input#request-event.btn.btn-sm.btn-success.btn-block(type='submit', value='Request Event', name='request-event')
       .col-sm-4
@@ -30,11 +30,11 @@ block content
           |  Requested Events
         p
           | Below is a list of events you've requested to usher. A few days before the event, the Usher Coordinator will choose the ushers for a show based on point total.
-        each attendance in requested
-          +eventinfo(attendance)
+        each attendance in requestedEvents
+          +eventinfo(attendance.Event)
             form(action='/attendance', method='post')
               input#user.form-control(type='hidden', name='user', value=currentuser.uuid)
-              input#event.form-control(type='hidden', name='event', value=attendance.uuid)
+              input#event.form-control(type='hidden', name='event', value=attendance.Event.uuid)
               input#type.form-control(type='hidden', name='type', value=cancelType.uuid)
               input#cancel-event.btn.btn-sm.btn-danger.btn-block(type='submit', value='Cancel Event', name='cancel-event')
       .col-sm-4
@@ -45,7 +45,13 @@ block content
           | Below is a list of events that you are scheduled to usher. You can cancel your attendance up to 48 hours before a show with no point deduction. 
           a(href='http://www.purduecvn.com/resources/') Learn more about points
           | .
-        |           
+        each attendance in confirmedEvents
+          +eventinfo(attendance.Event)
+            form(action='/attendance', method='post')
+              input#user.form-control(type='hidden', name='user', value=currentuser.uuid)
+              input#event.form-control(type='hidden', name='event', value=attendance.Event.uuid)
+              input#type.form-control(type='hidden', name='type', value=cancelType.uuid)
+              input#cancel-event.btn.btn-sm.btn-danger.btn-block(type='submit', value='Cancel Event', name='cancel-event')           
         h3
           i.fa.fa-times
           |  Cut Events
@@ -53,3 +59,6 @@ block content
           | Below is a list of events that you have been cut from. Being cut means you are on a waiting list in case otther ushers drop the show. 
           a(href='http://www.purduecvn.com/resources/') Learn more about being cut
           | .
+        each attendance in cutEvents
+          +eventinfo(attendance.Event)
+            .btn.btn-sm.btn-danger.disabled.btn-block Cancel Event
