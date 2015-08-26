@@ -9,8 +9,8 @@ module.exports = function setup(options, imports, register) {
     var Attendance = sequelize.import(__dirname + "/attendance");
     var AttendanceType = sequelize.import(__dirname + "/attendanceType");
     //var Message = sequelize.import(__dirname + "/message");
-    //var Season = sequelize.import(__dirname + "/season");
-    //var Setting = sequelize.import(__dirname + "/setting");
+    var Season = sequelize.import(__dirname + "/season");
+    var Setting = sequelize.import(__dirname + "/setting");
     var Event = sequelize.import(__dirname + "/event");
     var User = sequelize.import(__dirname + "/user");
 
@@ -20,6 +20,8 @@ module.exports = function setup(options, imports, register) {
     Attendance.belongsTo(Event); 
     Attendance.belongsTo(AttendanceType); 
 
+    Event.belongsTo(Season); 
+
     sequelize.sync({force:false}).then(function () {
         imports.logger.info("Database connected"); 
         // Table created
@@ -27,7 +29,9 @@ module.exports = function setup(options, imports, register) {
             user: User, 
             attendance: Attendance, 
             attendanceType: AttendanceType,
-            event: Event
+            event: Event, 
+            settings: Setting, 
+            season: Season
         })
     });
 };

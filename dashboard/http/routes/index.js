@@ -8,4 +8,5 @@ module.exports = function(app, imports) {
 	require("./dashboard")(app.http, imports);
 	require("./event")(app.http, imports);
 	require("./attendance")(app.http, imports); 
+	require("./season")(app.http, imports); 
 }

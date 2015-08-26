@@ -1,0 +1,50 @@
+extends ./user-base.jade
+
+block content 
+    .col-lg-12
+      form.form-horizontal(action='/seasons/create', method='post')
+        .panel.panel-default
+          .panel-heading
+            h3.panel-title Create new season
+          .panel-body
+            .form-group
+              label.col-sm-2.control-label(for='startDate') Start Date
+              .col-sm-10
+                .datetimepicker.input-group.date
+                  input#startDate.datepicker.form-control(placeholder='Use the calendar button to the right to select.', type='text', name='startDate', size='25')
+                  span.input-group-addon
+                    a(style='color:#000; cursor: pointer;')
+                      i.fa.fa-calendar
+            .form-group
+              label.col-sm-2.control-label(for='endDate') End Date
+              .col-sm-10
+                .datetimepicker.input-group.date
+                  input#endDate.datepicker.form-control(placeholder='Use the calendar button to the right to select.', type='text', name='endDate', size='25')
+                  span.input-group-addon
+                    a(style='color:#000; cursor: pointer;')
+                      i.fa.fa-calendar
+            script.
+              $(function () {
+                  $('.datetimepicker').datetimepicker();
+                });
+            input.btn.btn-lg.btn-success.btn-block(type='submit', name='submit-attendance-type', value='Add Season Type')
+      table.table.table-bordered.table-hover(style='vertical-align:center')
+        thead
+          tr
+            th Start Sate
+            th End Date
+            th Active?
+            th Admin
+        tbody
+          each season in seasons
+            tr
+              td 
+                = season.startDate
+              td 
+                = season.endDate
+              td 
+                = activeSeason == season.uuid
+              td(style='text-align:center;')
+                form(action='/seasons/setActive', method='post')
+                  input#user.form-control(type='hidden', name='season', value=season.uuid)
+                  input#request-event.btn.btn-sm.btn-success.btn-block(type='submit', value='Set Active', name='set-active')

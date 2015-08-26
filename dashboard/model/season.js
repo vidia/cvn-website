@@ -5,19 +5,11 @@ module.exports = function(sequalize, DataTypes) {
 			defaultValue: DataTypes.UUIDV1,
 			primaryKey: true
 		},
-		year: {
-			type: DataTypes.INTEGER, 
-			validate: {
-				isYear: function(value) {
-					year = parseInt(value)
-					if (year > 1800 && year < 2999)
-					{
-						return;
-					} else {
-						throw new Error("Please enter a reasonable year.")
-					}
-				}
-			}
+		startDate: {
+			type: DataTypes.DATE
+		}, 
+		endDate: {
+			type: DataTypes.DATE
 		}
 	});
 

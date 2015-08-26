@@ -170,7 +170,7 @@ module.exports = function(app, imports)
         })
     });
 
-    app.get("/attendance/type/:typeid/archive", function(req, res) {
+    app.get("/attendance/type/:typeid/archive", imports.auth.authenticate, function(req, res) {
         res.locals.type.isEnabled = !res.locals.type.isEnabled; 
         res.locals.type.save().then(function() {
             res.redirect("/attendance/type"); 
