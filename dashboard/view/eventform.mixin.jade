@@ -1,4 +1,4 @@
-mixin eventform(action, event, confirmtext, buttonIcon)
+mixin eventform(action, event, confirmtext, buttonIcon, seasons)
   form.form-horizontal(action=action, method='post')
     .panel.panel-default
       .panel-heading
@@ -70,6 +70,20 @@ mixin eventform(action, event, confirmtext, buttonIcon)
           $(function () {
               $('.datetimepicker').datetimepicker();
             });
+    .panel.panel-default#accordion
+      .panel-heading
+        h3.panel-title 
+          a.accordion-toggle.collapsed(data-toggle="collapse" data-target="#collapseAdvanced") Advanced Options
+      .panel-collapse.collapse#collapseAdvanced
+        .panel-body
+          .form-group
+            label.col-sm-2.control-label(for='season') Coordinator
+            .col-sm-10
+              select#season.form-control(name='SeasonUuid')
+                each season in seasons
+                  option(value=season.uuid) 
+                    = season.startDate + " to " + season.endDate
+
     // /.panel
     //.panel.panel-default
       .panel-heading

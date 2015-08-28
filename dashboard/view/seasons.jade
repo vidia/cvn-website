@@ -8,6 +8,10 @@ block content
             h3.panel-title Create new season
           .panel-body
             .form-group
+              label.col-sm-2.control-label(for='name') Name
+              .col-sm-10
+                input#name.form-control(placeholder='Fall 2016 - Spring 2017', type='text', name='name')
+            .form-group
               label.col-sm-2.control-label(for='startDate') Start Date
               .col-sm-10
                 .datetimepicker.input-group.date
@@ -31,6 +35,7 @@ block content
       table.table.table-bordered.table-hover(style='vertical-align:center')
         thead
           tr
+            th Name
             th Start Sate
             th End Date
             th Active?
@@ -38,6 +43,8 @@ block content
         tbody
           each season in seasons
             tr
+              td
+                = season.name
               td 
                 = season.startDate
               td 

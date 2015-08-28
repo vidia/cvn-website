@@ -36,6 +36,7 @@ module.exports = function(app, imports)
 
     app.post("/seasons/create", imports.auth.authenticate, function(req, res) {
         var season = imports.season.build({
+            name: req.body.name,
             startDate: req.body.startDate, 
             endDate: req.body.endDate
         })

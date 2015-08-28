@@ -5,6 +5,9 @@ module.exports = function(sequalize, DataTypes) {
 			defaultValue: DataTypes.UUIDV1,
 			primaryKey: true
 		},
+		name: {
+			type: DataTypes.STRING
+		},
 		startDate: {
 			type: DataTypes.DATE
 		}, 

@@ -2,10 +2,18 @@ module.exports = function(app, imports)
 {
 
     app.get("/events/create", imports.auth.authenticate, function(req, res){
-        res.render("create-event", {});
+        imports.season.findAll().then(function(seasons) {
+            res.render("create-event", {seasons: seasons});
+
+        })
     });
 
     app.post('/events/create', imports.auth.authenticate, function(req, res, next){
+        if (!req.body.SeasonUuid) {
+            //Need to flash saying "please make a season"
+            res.redirect("../events/create")
+        }
+
         imports.event.build(req.body)
         .save()
         .then(function() {
