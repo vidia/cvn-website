@@ -14,11 +14,12 @@ module.exports = function setup(options, imports, register) {
     var Event = sequelize.import(__dirname + "/event");
     var User = sequelize.import(__dirname + "/user");
 
-    User.belongsToMany(Event, { as: "attendances", through: Attendance })
-    Event.belongsToMany(User, { as: "attendances", through: Attendance })
     Attendance.belongsTo(User); 
     Attendance.belongsTo(Event); 
     Attendance.belongsTo(AttendanceType); 
+
+    User.hasMany(Attendance, {as: "Attendances"});
+    Event.hasMany(Attendance, {as: "Attendances"});
 
     Event.belongsTo(Season); 
 

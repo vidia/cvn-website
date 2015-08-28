@@ -18,10 +18,10 @@ block content
             |  Request Event
           |  button and your name will be submitted to usher the event.
         each available in availableEvents
-          +eventinfo(available.Event)
+          +eventinfo(available)
             form(action='/attendance', method='post')
               input#user.form-control(type='hidden', name='user', value=currentuser.uuid)
-              input#event.form-control(type='hidden', name='event', value=available.Event.uuid)
+              input#event.form-control(type='hidden', name='event', value=available.uuid)
               input#type.form-control(type='hidden', name='type', value=requestType.uuid)
               input#request-event.btn.btn-sm.btn-success.btn-block(type='submit', value='Request Event', name='request-event')
       .col-sm-4

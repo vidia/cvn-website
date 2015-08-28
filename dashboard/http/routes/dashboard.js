@@ -124,20 +124,10 @@ module.exports = function(app, imports)
 					})
 				}, 
 				function(callback){
-					imports.attendance.findAll({
-						include: [
-							{
-								model: imports.event
-							}, 
-							{
-								model: imports.attendanceType, 
-								where: {
-									uuid: {
-										$notIn: [res.locals.cutType.uuid, res.locals.confirmedType.uuid, res.locals.requestType.uuid]
-									}
-								}
-							}
-						]
+					imports.event.findAll({
+						where: {
+							
+						}
 					}).then(function(events) {
 						imports.logger.info("Got available events");
 						res.locals.availableEvents = events;
