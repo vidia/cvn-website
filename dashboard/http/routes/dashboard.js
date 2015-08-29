@@ -122,21 +122,51 @@ module.exports = function(app, imports)
 						res.locals.confirmedEvents = events; 
 						callback(null);
 					})
-				}, 
-				function(callback){
-					imports.event.findAll({
+				}
+			], function() {
+
+				imports.event.findAll({
 						where: {
 							
 						}
 					}).then(function(events) {
-						imports.logger.info("Got available events");
-						res.locals.availableEvents = events;
-						callback(null); 
-					})
-				}
-			], function() {
-				imports.logger.info("Got events for types"); 
-				res.render("dashboard");
+
+						async.filter(events, function(event, callback) {
+							for(var i = 0; i < res.locals.cutEvents.length; i++) {
+								if (res.locals.cutEvents[i] && res.locals.cutEvents[i].Event) {
+									if (res.locals.cutEvents[i].Event.uuid == event.uuid) {
+										callback(false); 
+										return;
+									}
+								}
+							}
+							for(var i = 0; i < res.locals.requestedEvents.length; i++) {
+								if (res.locals.requestedEvents[i] && res.locals.requestedEvents[i].Event) {
+									if(res.locals.requestedEvents[i].Event.uuid == event.uuid) {
+										callback(false); 
+										return;
+									}
+								}
+							}
+							for(var i = 0; i < res.locals.confirmedEvents.length; i++) {
+								if (res.locals.confirmedEvents[i] && res.locals.confirmedEvents[i].Event) {
+									if (res.locals.confirmedEvents[i].Event.uuid == event.uuid) {
+										callback(false); 
+										return;
+									}
+								}
+							}
+							callback(true); 
+
+						}, function(results) {
+							imports.logger.info("Got available events");
+							res.locals.availableEvents = results;
+							imports.logger.info("Got events for types"); 
+							res.render("dashboard");
+						}); 
+											
+				})
+				
 			}); // end get events for types. 
 		}); //End get attendance types. 
     }); //end .get()
