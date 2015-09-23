@@ -15,4 +15,12 @@ Comtributions to the site are accepted via pull requests.
 
 ## Repo format
 
-Currently the data on `master` is live on `www.purduecvn.com` and the data on `dev` is live on `cvn.thatisa.link`. 
+Currently master is the old PHP and wordpress environment that is live at purduecvn.com version 2.0 is in progress on "skeleton" and will be hosted in a sandbox environment soon.
+
+The new version will mirror the functionality of the original at first then deviate to add new much needed features. 
+
+## Goals
+
+* the repo will be cleaned up and organized in the next week
+
+* a development version of version 2 will be hosted 
