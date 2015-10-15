@@ -7,7 +7,7 @@ include_once("constants.php");
 
 $sql = "SELECT * FROM User";
 $results = mysql_query($sql);
-while($user = mysql_fetch_array($results)) {
+while ($user = mysql_fetch_array($results)) {
     echo $user["ID"] . " | " . $user["Username"] . " | " . calculatePointTotalDB($user["ID"]) . " <br />";
 }
 

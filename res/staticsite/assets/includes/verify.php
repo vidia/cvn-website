@@ -1,11 +1,9 @@
 <?php
 session_start();
-if($_SESSION["Login"] == "")
-{
-  $_SESSION["error"] = "You must be logged in to view this page.";
-  header("Location: login.php?r=auth");
+if ($_SESSION["Login"] == "") {
+    $_SESSION["error"] = "You must be logged in to view this page.";
+    header("Location: login.php?r=auth");
 }
-
 
 
 // function curPageURL() {
