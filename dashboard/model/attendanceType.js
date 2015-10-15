@@ -1,3 +1,5 @@
+var async = require("async"); 
+
 module.exports = function(sequalize, DataTypes) {
 	var AttendanceType = sequalize.define("AttendanceType", {
 		uuid: {
@@ -27,6 +29,94 @@ module.exports = function(sequalize, DataTypes) {
 						// from the type. 
 			type: DataTypes.BOOLEAN, 
 			defaultValue: false
+		}
+	}, 
+	{
+		classMethods: {
+			getRequestedType: function(callback) {
+				this.findOrCreate({ 
+	    			where: {
+		    			name: "Requested"
+		    		},
+		    		defaults: {
+		    			points: 0, 
+		    			isEnabled: 1, 
+		    			includeShow: 1
+		    		}
+	    		}).then(function(typeArr, created) {
+	    			callback(typeArr[0], created); 
+	    		});
+			}, 
+			getCanceledType: function(callback) {
+				this.findOrCreate({ 
+	    			where: {
+		    			name: "Canceled"
+		    		},
+		    		defaults: {
+		    			points: 0, 
+		    			isEnabled: 1
+					}
+	    		}).then(function(cancelType, created) {
+	    			callback(cancelType[0], created);  
+	    		});
+			}, 
+			getConfirmedType: function(callback) {
+				this.findOrCreate({ 
+	    			where: {
+		    			name: "Confirmed"
+		    		},
+		    		defaults: {
+		    			points: 0, 
+		    			isEnabled: 1
+					}
+	    		}).then(function(confirmedType, created) {
+	    			callback(confirmedType[0], created); 
+	    		});
+			}, 
+			getCutType: function(callback) {
+				this.findOrCreate({ 
+	    			where: {
+		    			name: "Cut"
+		    		},
+		    		defaults: {
+		    			points: 20, 
+		    			isEnabled: 1
+					}
+	    		}).then(function(cutType, created) {
+	    			callback(cutType[0], created);  
+	    		});
+			}, 
+			getAllDefaultTypesMiddleware: function(req, res, next) {
+				attendanceType = this; 
+				async.parallel([
+					function(cb) {
+						attendanceType.getRequestedType(function(requestType) {
+			    			res.locals.requestType = requestType; 
+			    			cb(null); 
+			    		});
+					}, 
+					function(cb) {
+						attendanceType.getCanceledType(function(canceledType) { 
+			    			res.locals.cancelType = cancelType;
+			    			cb(null); 
+			    		});
+					}, 
+					function(cb) {
+						attendanceType.getConfirmedType(function(confirmedType) {
+			    			res.locals.confirmedType = confirmedType;
+			    			cb(null); 
+			    		});
+					}, 
+					function(cb) {
+						attendanceType.getCutType(function(cutType) {
+			    			res.locals.cutType = cutType;
+			    			cb(null); 
+			    		});
+					}
+				], function() {
+					next(); 
+				});
+			}
 		}
 	});
 

@@ -3,35 +3,72 @@ var async = require("async");
 module.exports = function(app, imports)
 {
     app.get("/attendance", imports.auth.authenticate, function(req, res){
-        imports.event.findAll().then(function(events) {
-            var eventAttendances = {};
 
-            async.each(events, function(event, callback) {
-                imports.attendance.findAll({
-                    where: {
-                        EventUuid : event.uuid
-                    }, 
-                    include: [imports.user, {
-                        model: imports.attendanceType, 
-                        where: {
-                            $or: [{
-                                name: "Confirmed"
-                            }, {
-                                name: "Requested"
-                            }, {
-                                name: "Cut"
+        async.parallel([
+            function(callback) {
+                imports.attendanceType.findAll().then(function(types) {
+                    res.locals.attendanceTypes = types; 
+                    callback();
+                });
+            }, 
+            function(cb) {
+                imports.event.findAll().then(function(events) {
+                    res.locals.events = events;
+                    var eventAttendances = {};
+
+                    async.each(events, function(event, callback) {
+                        imports.attendance.findAll({
+                            where: {
+                                EventUuid : event.uuid
+                            }, 
+                            include: [imports.user, {
+                                model: imports.attendanceType, 
+                                where: {
+                                    $or: [{
+                                        name: "Confirmed"
+                                    }, {
+                                        name: "Requested"
+                                    }, {
+                                        name: "Cut"
+                                    }]
+                                }
                             }]
-                        }
-                    }]
-                }).then(function(attendances) {
-                    eventAttendances[event.uuid] = attendances; 
-                    callback(); 
-                })
-            }, function(err) {
-                res.render("pull-attendance", {events: events, attendances: eventAttendances})
-            });
-        });
+                        }).then(function(attendances) {
+                            eventAttendances[event.uuid] = attendances; 
+                            callback(); 
+                        })
+                    }, function(err) {
+                        res.locals.attendances = eventAttendances; 
+                        cb(); 
+                    });
+                });
+            }
+        ], function() {
+            res.render("pull-attendance")
+        }); 
     });
+    
+    app.post("/attendance/pull", imports.auth.authenticate, function(req, res) {
+
+        imports.attendance.findAll({
+            where: {
+                EventUuid: req.body.event
+            }, 
+            include: [
+                {
+                    model: imports.attendanceType, 
+                    where: {
+                        name: "Requested"
+                    }
+                }
+            ]
+        }).then(function(attendances) {
+
+            
+            
+            res.send("Hi, nothing changed."); 
+        }); 
+    }); 
 
     app.post("/attendance", imports.auth.authenticate, function(req, res) {
         imports.attendance.findOrCreate({
@@ -58,35 +95,15 @@ module.exports = function(app, imports)
     app.post("/attendance/confirm", imports.auth.authenticate, function(req, res) {
         async.parallel({
             confirmedType: function(callback) {
-                imports.attendanceType.findOrCreate({ 
-                    where: {
-                        name: "Confirmed"
-                    },
-                    defaults: {
-                        points: 0, 
-                        isEnabled: 1, 
-                        includeShow: 0
-                    }
-                }).then(function(confirmedType) {
-                    confirmedType = confirmedType[0]; 
+                imports.attendanceType.getConfirmedType(function(confirmedType) {
                     imports.logger.info("Got the confirmed type" + confirmedType.uuid)
                     callback(null, confirmedType); 
                 });
             }, 
             cutType: function(callback) {
-                imports.attendanceType.findOrCreate({ 
-                    where: {
-                        name: "Cut"
-                    },
-                    defaults: {
-                        points: 20, 
-                        isEnabled: 1, 
-                        includeShow: 0
-                    }
-                }).then(function(confirmedType) {
-                    confirmedType = confirmedType[0]; 
-                    imports.logger.info("Got the confirmed type" + confirmedType.uuid)
-                    callback(null, confirmedType); 
+                imports.attendanceType.getCutType(function(cutType) {
+                    imports.logger.info("Got the cut type" + cutType.uuid)
+                    callback(null, cutType); 
                 });
             }, 
             updates: function(callback) {
