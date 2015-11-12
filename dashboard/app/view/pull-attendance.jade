@@ -1,0 +1,65 @@
+extends ./user-base.jade
+
+mixin ushertr(user, checked)
+  tr
+    td(width='3%', style='text-align: center;')
+      if checked
+        input.checkbox(type='checkbox', checked="checked", name='confirmed[]', value='#{user.uuid}')
+      else
+        input.checkbox(type='checkbox', name='confirmed[]', value='#{user.uuid}')
+      input(type="hidden", name='users[]', value='#{user.uuid}')
+    td=user.name
+    td=user.email
+    td Insert Points
+
+mixin evententry(index, event)
+  .panel.panel-default
+    .panel-heading
+      h4.panel-title
+        =event.name
+    .panel-body
+      a.btn.btn-default.pull-right(href='/attendance/#{event.uuid}/export')
+        i.fa.fa-download
+        |  Download Event Attendance
+      //a.btn.btn-success.pull-right(style='display:none;', rel='364')
+        i.fa.fa-plus
+        |  Add extra
+      br.clearfix
+      br.clearfix
+      form.form-horizontal(action='/attendance/confirm', method='post')
+        table.table.table-striped.table-bordered.table-hover
+          tbody
+            tr
+              th  
+              th Usher
+              th Email
+              th Points
+            tr
+              td(colspan='4') Confirmed Ushers
+            each attendance in attendances
+              if attendance.AttendanceType.name === "Confirmed"
+                +ushertr(attendance.User, true)
+            tr
+              td(colspan='4') Requested Ushers
+            each attendance in attendances
+              if attendance.AttendanceType.name === "Requested"
+                +ushertr(attendance.User)
+            tr
+              td(colspan='4') Cut Ushers
+            each attendance in attendances
+              if attendance.AttendanceType.name === "Cut"
+                +ushertr(attendance.User)
+        input(type='hidden', value='#{event.uuid}', name='event')
+        br
+        input.btn.btn-lg.btn-success.btn-block(type='submit', name='submit-event-attendance', value='Submit Attendance')
+
+block content
+  .container
+    .row
+      .col-lg-12
+        .panel.panel-primary
+          .panel-heading
+            h3.panel-title Events to Confirm Attendance
+          .panel-body
+            +evententry(i, _event)
+

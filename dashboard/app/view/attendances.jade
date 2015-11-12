@@ -1,0 +1,29 @@
+extends ./user-base.jade
+
+mixin evententry(index, event)
+  tr
+    td 
+      =event.name
+    td 
+      a.btn.btn-default(href="/attendance/#{event.uuid}/pull") Pull Attendances
+    td 
+      a.btn.btn-default(href="/attendance/#{event.uuid}/confirm") Confirm Attendances
+
+
+block content
+  .container
+    .row
+      .col-lg-12
+        .panel.panel-primary
+          .panel-heading
+            h3.panel-title Events to Confirm Attendance
+          .panel-body
+            table.table.table-striped.table-bordered.table-hover
+              tbody
+                tr 
+                  th Event name
+                  th(colspan="2") Actions
+              - for (var i = 0; i < events.length; ++i) {
+                +evententry(i, events[i])
+              - }
+  
