@@ -25,7 +25,8 @@ module.exports = function(app)
         });
     });
 
-    app.get("/attendance/:eventid", auth.authenticate, function(req, res) {
+    //Display the list of ushers that requested the event and disaply a box to pull a number of them to confirmed
+    app.get("/attendance/:eventid/pull", auth.authenticate, function(req, res) {
         models.attendance.findAll({
             where: {
                 EventUuid : res.locals._event.uuid
@@ -47,24 +48,62 @@ module.exports = function(app)
             res.render("pull-attendance");
         });
     });
-
-    app.post("/attendance/:eventId/pull", auth.authenticate, function(req, res) {
-
+    
+    //TODO: Name change? 
+    //Display the ushers that were confirmed and update them to attended, tardy, etc. 
+    app.get("/attendance/:eventid/confirm", auth.authenticate, function(req, res) {
         models.attendance.findAll({
             where: {
-                EventUuid: req.body.event
+                EventUuid : res.locals._event.uuid
             },
-            include: [
-                {
-                    model: models.attendanceType,
-                    where: {
+            include: [models.user, {
+                model: models.attendanceType,
+                where: {
+                    $or: [{
+                        name: "Confirmed"
+                    }, {
                         name: "Requested"
-                    }
+                    }, {
+                        name: "Cut"
+                    }]
                 }
-            ]
+            }]
         }).then(function(attendances) {
-            res.send("Hi, nothing changed.");
+            res.locals.attendances = attendances;
+            res.render("confirm-attendance");
         });
+    });
+
+    //Accept a number of ushers to move from requested to confirmed. 
+    //TODO: ORDER BY points
+    app.post("/attendance/:eventid/pull", auth.authenticate, models.attendanceType.getAllDefaultTypesMiddleware,  function(req, res) {
+       
+        models.attendance.update({
+            AttendanceTypeUuid: res.locals.confirmedType.uuid
+        }, 
+        {
+            where: {
+                AttendanceTypeUuid: res.locals.requestType.uuid
+            },
+            limit: parseInt(req.body.ushers_to_pull) //TODO: Test this in browsers.  
+        }).then(function(affectedCount) {
+            if(affectedCount == parseInt(req.body.ushers_to_pull)) {
+                logger.info("Completed pulling attendances."); 
+                res.redirect("/attendance/" + res.locals._event.uuid + "/pull"); 
+            } else {
+                models.attendance.update({
+                    AttendanceTypeUuid: res.locals.confirmedType.uuid
+                }, 
+                {
+                    where: {
+                        AttendanceTypeUuid: res.locals.cutType.uuid
+                    },
+                    limit: parseInt(req.body.ushers_to_pull) - affectedCount //TODO: Test this in browsers.  
+                }).then(function(affectedCount) {
+                    res.redirect("/attendance/" + res.locals._event.uuid + "/pull"); 
+                });
+            }
+        }); 
     });
 
     app.post("/attendance", auth.authenticate, function(req, res) {
