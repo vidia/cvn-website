@@ -39,7 +39,7 @@ module.exports = function(sequalize, DataTypes) {
 		    			name: "Requested"
 		    		},
 		    		defaults: {
-		    			points: 0,
+		    			pointValue: 0,
 		    			isEnabled: 1,
 		    			includeShow: 1
 		    		}
@@ -53,7 +53,7 @@ module.exports = function(sequalize, DataTypes) {
 		    			name: "Canceled"
 		    		},
 		    		defaults: {
-		    			points: 0,
+		    			pointValue: 0,
 		    			isEnabled: 1
 					}
 	    		}).then(function(cancelType, created) {
@@ -66,7 +66,7 @@ module.exports = function(sequalize, DataTypes) {
 		    			name: "Confirmed"
 		    		},
 		    		defaults: {
-		    			points: 0,
+		    			pointValue: 0,
 		    			isEnabled: 1
 					}
 	    		}).then(function(confirmedType, created) {
@@ -79,42 +79,68 @@ module.exports = function(sequalize, DataTypes) {
 		    			name: "Cut"
 		    		},
 		    		defaults: {
-		    			points: 20,
+		    			pointValue: 20,
 		    			isEnabled: 1
 					}
 	    		}).then(function(cutType, created) {
 	    			callback(cutType[0], created);
 	    		});
 			},
+            getPresentType: function(callback) {
+                this.findOrCreate({
+                    where: {
+                        name: "Present"
+                    }, 
+                    defaults: {
+                        pointValue: 0, 
+                        includeShow: 1, 
+                        isEnabled: 1
+                    }
+                }).then(function(presentType, created) {
+                    callback(presentType[0], created); 
+                })
+            },
+            getAllDefaultTypes: function(callback) {
+                async.parallel(
+                    {
+                        requestType: function(cb) {
+                            AttendanceType.getRequestedType(function(requestType) {
+                                cb(null, requestType);
+                            });
+                        },
+                        canceledType: function(cb) {
+                            AttendanceType.getCanceledType(function(canceledType) {
+                                cb(null, canceledType);
+                            });
+                        },
+                        confirmedType: function(cb) {
+                            AttendanceType.getConfirmedType(function(confirmedType) {
+                                cb(null, confirmedType);
+                            });
+                        },
+                        cutType: function(cb) {
+                            AttendanceType.getCutType(function(cutType) {
+                                cb(null, cutType);
+                            });
+                        }, 
+                        presentType: function(cb) {
+                            AttendanceType.getPresentType(function(presentType) {
+                                cb(null, presentType); 
+                            })
+                        }
+                    }, 
+                    function(err, result) {
+					   callback(err, result); 
+				    }
+                );
+            },
 			getAllDefaultTypesMiddleware: function(req, res, next) {
-				async.parallel([
-					function(cb) {
-						AttendanceType.getRequestedType(function(requestType) {
-			    			res.locals.requestType = requestType;
-			    			cb(null);
-			    		});
-					},
-					function(cb) {
-						AttendanceType.getCanceledType(function(canceledType) {
-			    			res.locals.cancelType = canceledType;
-			    			cb(null);
-			    		});
-					},
-					function(cb) {
-						AttendanceType.getConfirmedType(function(confirmedType) {
-			    			res.locals.confirmedType = confirmedType;
-			    			cb(null);
-			    		});
-					},
-					function(cb) {
-						AttendanceType.getCutType(function(cutType) {
-			    			res.locals.cutType = cutType;
-			    			cb(null);
-			    		});
-					}
-				], function() {
-					next();
-				});
+                this.getAllDefaultTypes(function(err, result) {
+                    for (var type in result) { 
+                        result[type] = res.locals[type]; 
+                    }
+                    next(); 
+                });
 			}
 		}
 	});
