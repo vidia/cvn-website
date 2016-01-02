@@ -17,7 +17,7 @@ module.exports = function(app)
             //Need to flash saying "please make a season"
             res.redirect("../events/create");
         }
-
+        //TODO: Check the inputs here!
         models.event.build(req.body)
         .save()
         .then(function() {
