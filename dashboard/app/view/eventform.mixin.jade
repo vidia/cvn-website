@@ -34,10 +34,10 @@ mixin eventform(action, event, confirmtext, buttonIcon, seasons)
           label.col-sm-2.control-label(for='description') Event Description
           .col-sm-10
             input#description.form-control(placeholder='Some info about this event', type='text', rows='5', name='description', value=event.description)
-        //.form-group
+        .form-group
           label.col-sm-2.control-label(for='Point') Point Value
           .col-sm-10
-            input#Point.form-control(placeholder='10', type='text', name='Point')
+            input#Point.form-control(placeholder='10', type='text', name='pointValue')
     .panel.panel-default
       .panel-heading
         h3.panel-title Scheduling
