@@ -26,7 +26,11 @@ module.exports = function(sequalize, DataTypes) {
 		},
 		description: {
 			type: DataTypes.TEXT
-		}
+		}, 
+        pointValue: {
+			type: DataTypes.INTEGER, 
+            defaultValue: 10
+        }
 	},
 	{
 		classMethods: {
