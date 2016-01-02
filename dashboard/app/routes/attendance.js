@@ -235,7 +235,7 @@ module.exports = function(app)
     app.post("/attendance/type/create", auth.authenticate, function(req, res) {
         var attendanceType = models.attendanceType.build({
             name: req.body.name,
-            points: req.body.pointValue,
+            pointValue: req.body.pointValue,
             isEnabled: true
         });
         attendanceType.save().then(function() {
