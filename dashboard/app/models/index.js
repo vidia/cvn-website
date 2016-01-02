@@ -2,17 +2,21 @@ var logger = require("../logger");
 var Sequelize = require("sequelize");
 var sequelize = new Sequelize(require("../config").databaseUri);
 
-var Attendance = sequelize.import(__dirname + "/attendance");
-var AttendanceType = sequelize.import(__dirname + "/attendanceType");
+var Attendance = sequelize.import("attendance", require("./attendance"));
+var AttendanceType = sequelize.import("attendanceType", require("./attendanceType"));
 //var Message = sequelize.import(__dirname + "/message");
-var Season = sequelize.import(__dirname + "/season");
-var Setting = sequelize.import(__dirname + "/setting");
-var Event = sequelize.import(__dirname + "/event");
-var User = sequelize.import(__dirname + "/user");
+var Season = sequelize.import("season", require("./season"));
+var Setting = sequelize.import("setting", require("./setting"));
+var Event = sequelize.import("event", require("./event"));
+var User = sequelize.import("user", require("./user"));
 
 Attendance.belongsTo(User);
 Attendance.belongsTo(Event);
 Attendance.belongsTo(AttendanceType);
+
+// Attendance.afterCreate("updatePointsHook", function(attendance, options) {
+    
+// }); 
 
 User.hasMany(Attendance, {as: "Attendances"});
 Event.hasMany(Attendance, {as: "Attendances"});
