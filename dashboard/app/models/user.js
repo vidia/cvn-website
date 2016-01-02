@@ -1,7 +1,10 @@
 var bcrypt = require('bcryptjs');
 
-module.exports = function(sequalize, DataTypes) {
-	var User = sequalize.define("User", {
+module.exports = function(sequelize, DataTypes) {
+	var Attendance = sequelize.import("attendance", require("./attendance")); 
+	var AttendanceType = sequelize.import("attendanceType", require("./attendanceType"));
+	
+	var User = sequelize.define("User", {
 		uuid: {
 			type: DataTypes.UUID,
 			defaultValue: DataTypes.UUIDV1,
@@ -117,19 +120,59 @@ module.exports = function(sequalize, DataTypes) {
 		}
 	},
 	{
-	  classMethods: {
-	    method1: function(){
-	    	return 'smth';
-	    }
-	  },
-	  instanceMethods: {
-	    checkPassword: function(password) {
-	    	return bcrypt.compareSync(password, this.password);
-	    },
-	    getPoints: function(callback) {
-	    	callback(23); //Make queries to get a users points here.
-	    }
-	  }
+		defaultScope: {
+            
+        },
+        scopes: {
+            /*pointsScope: {
+                
+		      include: [
+				{
+					model: Attendance,
+					as: "Attendances",
+					include: [
+						{
+							attributes: [ 
+								[
+									sequelize.fn('SUM', sequelize.col('Attendances.AttendanceType.pointValue')),
+									'points'
+								]
+							], 
+							model:AttendanceType
+						}
+					]
+				}
+		      ]
+           }*/
+        }, 
+		classMethods: {
+	  	},
+	  	instanceMethods: {
+	    	checkPassword: function(password) {
+	    		return bcrypt.compareSync(password, this.password);
+	    	},
+            getPoints: function(callback) {
+                sequelize.query(
+                    "select users.name, attendanceTypes.includeShow, sum(attendanceTypes.pointValue), sum(E.pointValue), "+
+                    "sum(case "+
+                    "when attendanceTypes.includeShow = 1 then attendanceTypes.pointValue + E.pointValue "+
+                    "else attendanceTypes.pointValue "+
+                    "end) "+
+                    "as 'userPoints' from users "+
+                    "join attendances on users.uuid = attendances.UserUuid "+
+                    "join events as E on attendances.EventUuid = E.uuid "+
+                    "join attendanceTypes on attendanceTypes.uuid = attendances.AttendanceTypeUuid "+
+                    "where users.uuid = '" + this.uuid + "' "+ 
+                    "group by users.uuid",
+                        { 
+                            type: sequelize.QueryTypes.SELECT
+                        }
+                ).then(function(result) {
+                    callback(null, result[0].userPoints); 
+                });
+            }
+            
+	  	}
 	}); //end define
 
 	//user associations
