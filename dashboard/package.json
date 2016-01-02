@@ -38,6 +38,8 @@
     "winston": "^1.0.1"
   },
   "devDependencies": {
-    "bower": "*"
+    "bower": "*",
+    "gulp": "^3.9.0",
+    "gulp-mocha": "^2.1.3"
   }
 }
