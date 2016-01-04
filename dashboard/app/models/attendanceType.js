@@ -41,7 +41,7 @@ module.exports = function(sequalize, DataTypes) {
 		    		defaults: {
 		    			pointValue: 0,
 		    			isEnabled: 1,
-		    			includeShow: 1
+		    			includeShow: 0
 		    		}
 	    		}).then(function(typeArr, created) {
 	    			callback(typeArr[0], created);
