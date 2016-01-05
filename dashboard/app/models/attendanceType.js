@@ -1,7 +1,7 @@
 var async = require("async");
 
-module.exports = function(sequalize, DataTypes) {
-	var AttendanceType = sequalize.define("AttendanceType", {
+module.exports = function(sequelize, DataTypes) {
+	var AttendanceType = sequelize.define("AttendanceType", {
 		uuid: {
 			type: DataTypes.UUID,
 			defaultValue: DataTypes.UUIDV1,
