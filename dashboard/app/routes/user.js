@@ -1,6 +1,7 @@
 var models = require("../models");
 var auth = require("../auth");
 var logger = require("../logger");
+var async = require("async"); 
 
 module.exports = function(app)
 {
@@ -66,7 +67,15 @@ module.exports = function(app)
 
     app.get("/users", auth.authenticate, function(req, res) {
         models.user.findAll().then(function(users) {
-            res.render("users", {users: users});
+            async.each(users, function eachUser(user, callback) {
+                user.getPoints(function onGetPoints(points) {
+                    user.points = points; 
+                    callback(); 
+                }); 
+            }, 
+            function onComplete(err) {
+                res.render("users", {users: users});
+            })
         });
     });
 
@@ -143,7 +152,7 @@ module.exports = function(app)
             res.render("edit-user", { user : res.locals.user });
         }).catch(function(err) {
             logger.error("user failed to save", err);
-            res.redirect("/users/"+user.locals.currentuser.uuid);
+            res.redirect("/users/"+ res.locals.currentuser.uuid);
         });
     });
 
