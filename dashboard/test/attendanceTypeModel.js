@@ -67,5 +67,54 @@ describe("Models", function() {
                 done(); 
             })
         })
-    })
-})
+        it("should return all default types as middleware", function(done) {
+            this.timeout(5000);
+            var req = {}; 
+            var res = {locals: {}}; //TODO: Get a mocking library
+            
+            model.attendanceType.getAllDefaultTypesMiddleware(req, res, function next() {
+                res.locals.should.have.properties(["requestType", "canceledType", "confirmedType", "cutType", "presentType"]); 
+                var result = res.locals; //convenience for copypasta. 
+                result.should.have.property("requestType"); 
+                    result.should.have.property("canceledType"); 
+                    result.should.have.property("confirmedType"); 
+                    result.should.have.property("cutType"); 
+                    result.should.have.property("presentType"); 
+                    
+                    result.requestType.should.have.properties({
+                        name: "Requested", 
+                        pointValue: 0, 
+                        isEnabled: true, 
+                        includeShow: false
+                    }); 
+                    result.canceledType.should.have.properties({
+                        name: "Canceled", 
+                        pointValue: 0, 
+                        isEnabled: true, 
+                        includeShow: false
+                    }); 
+                    result.cutType.should.have.properties({
+                        name: "Cut", 
+                        pointValue: 20, 
+                        isEnabled: true, 
+                        includeShow: false
+                    }); 
+                    result.presentType.should.have.properties({
+                        name: "Present", 
+                        pointValue: 0, 
+                        isEnabled: true, 
+                        includeShow: true
+                    });
+                    result.confirmedType.should.have.properties({
+                        name: "Confirmed", 
+                        pointValue: 0, 
+                        isEnabled: true, 
+                        includeShow: false
+                    }); 
+                    
+                    done(); 
+                
+            });//end getAllDefaultTypesMiddleware
+        }); //end it should...middleware
+    });//end describe
+});//end describe

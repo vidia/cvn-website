@@ -137,7 +137,7 @@ module.exports = function(sequalize, DataTypes) {
 			getAllDefaultTypesMiddleware: function(req, res, next) {
                 this.getAllDefaultTypes(function(err, result) {
                     for (var type in result) { 
-                        result[type] = res.locals[type]; 
+                        res.locals[type] = result[type];
                     }
                     next(); 
                 });
