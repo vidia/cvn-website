@@ -285,7 +285,9 @@ function sendEmail($UID, $EID, $EmailID) {
 	$headers = "Reply-To: cvn@purdue.edu\r\n";
 //		"Content-type: text/html\r\n";
 
-	mail($UsherEmail, $EmailSubject, $EmailBody, $headers);
+	$mailSuccess = mail($UsherEmail, $EmailSubject, $EmailBody, $headers);
+
+
 }
 
 function pullAttendance($numpull, $eventID, $replacement, $twoday)

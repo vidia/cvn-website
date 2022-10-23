@@ -27,6 +27,12 @@ include_once("assets/includes/constants.php");
         </div>
       </div><!-- /.row -->
 
+      <div class="container">
+          <div class="row">
+              <div class="alert alert-info"><i class="fa fa-info"></i> <strong>Hotbox Pizza</strong> - We would like to thank Hotbox Pizza for providing FREE pizza at our shows!!! Check them out <a href="http://gethotboxpizza.com/locations/w-lafayette-in">here</a></div>
+          </div>
+      </div>
+
       <!-- Service Images -->
       <div class="row">
         <div class="col-lg-12">
